@@ -1,0 +1,282 @@
+@import 'tailwindcss';
+
+/* --------------------------------------------------------------------------
+   Design tokens — Organic Orbit Digital (Light Theme)
+   Brand: deep ink #10172A · orbit blue #4169F5 · organic green #39C985
+          soft off-white #F7F9FC · pure white #FFFFFF
+   -------------------------------------------------------------------------- */
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: var(--font-sora), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --color-midnight-950: #0a1020;
+  --color-midnight-900: #10172a;
+  --color-midnight-800: #18213b;
+  --color-midnight-700: #222d4d;
+  --color-midnight-600: #34416a;
+
+  --color-orbit-50: #eef2fe;
+  --color-orbit-100: #dce4fd;
+  --color-orbit-200: #bccbfb;
+  --color-orbit-300: #93aaf8;
+  --color-orbit-400: #6888f7;
+  --color-orbit-500: #4169f5;
+  --color-orbit-600: #2f55e0;
+  --color-orbit-700: #2544ba;
+  --color-orbit-800: #213a94;
+  --color-orbit-900: #1f3474;
+
+  --color-organic-50: #eafaf2;
+  --color-organic-100: #cdf3e0;
+  --color-organic-200: #9fe6c3;
+  --color-organic-300: #6dd8a5;
+  --color-organic-400: #4dd093;
+  --color-organic-500: #39c985;
+  --color-organic-600: #26a86b;
+  --color-organic-700: #1c8455;
+  --color-organic-800: #1a6946;
+  --color-organic-900: #17563b;
+
+  --color-mist: #f7f9fc;
+  --color-ink: #10172a;
+  --color-muted: #566079;
+  --color-line: #e4e9f2;
+
+  --radius-card: 1.25rem;
+  --shadow-card: 0 1px 2px rgb(16 23 42 / 0.04), 0 8px 24px -12px rgb(16 23 42 / 0.08);
+  --shadow-card-hover: 0 2px 6px rgb(16 23 42 / 0.05), 0 20px 40px -16px rgb(65 105 245 / 0.16);
+  --shadow-glow: 0 10px 28px -8px rgb(65 105 245 / 0.42);
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 4s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.06); }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+@layer base {
+  :root {
+    interpolate-size: allow-keywords;
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight text-balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-orbit-500);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: var(--color-orbit-100);
+    color: var(--color-midnight-900);
+  }
+
+  [id] {
+    scroll-margin-top: 6.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Reusable components
+   -------------------------------------------------------------------------- */
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-20 sm:py-24 lg:py-28;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] uppercase text-orbit-600;
+  }
+  .eyebrow-dark {
+    @apply inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] uppercase text-orbit-600;
+  }
+
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-[0.95rem] font-semibold whitespace-nowrap transition duration-200 ease-out select-none focus-visible:outline-offset-4 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  /* Blue gradient button with a lighter royal/sky minor shade */
+  .btn-primary {
+    background-image: linear-gradient(135deg, #2544ba 0%, #4169f5 52%, #6888f7 100%);
+    @apply text-white shadow-[var(--shadow-glow)] hover:-translate-y-0.5 hover:brightness-105 active:translate-y-0;
+  }
+
+  /* Secondary gradient button (blue into fresh teal/sky) */
+  .btn-accent {
+    background-image: linear-gradient(135deg, #2f55e0 0%, #4169f5 55%, #38bdf8 100%);
+    @apply text-white shadow-[var(--shadow-glow)] hover:-translate-y-0.5 hover:brightness-105 active:translate-y-0;
+  }
+
+  /* Clean light-theme secondary button */
+  .btn-ghost-dark {
+    @apply border border-orbit-200 bg-white text-ink shadow-2xs hover:border-orbit-400 hover:bg-orbit-50/60 hover:text-orbit-700;
+  }
+
+  .btn-outline {
+    @apply border border-line bg-white text-ink shadow-2xs hover:border-orbit-300 hover:bg-orbit-50/40 hover:text-orbit-700;
+  }
+
+  .card {
+    @apply rounded-[var(--radius-card)] border border-line bg-white shadow-[var(--shadow-card)];
+  }
+
+  .link-underline {
+    @apply font-semibold text-orbit-600 underline decoration-orbit-200 decoration-2 underline-offset-4 transition-colors hover:text-orbit-700 hover:decoration-orbit-500;
+  }
+
+  /* Subtle light grid for hero & feature backgrounds */
+  .bg-grid-light,
+  .bg-grid-dark {
+    background-image:
+      linear-gradient(to right, rgb(65 105 245 / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(65 105 245 / 0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 75% 65% at 50% 40%, black 30%, transparent 80%);
+  }
+
+  .bg-dots-light {
+    background-image: radial-gradient(rgb(16 23 42 / 0.07) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  /* Long-form content (legal pages, blog posts) */
+  .prose-site {
+    @apply max-w-none text-[1.0625rem] leading-relaxed text-slate-700;
+  }
+  .prose-site h2 {
+    @apply mt-12 mb-4 text-2xl font-semibold text-ink sm:text-[1.75rem];
+  }
+  .prose-site h3 {
+    @apply mt-8 mb-3 text-xl font-semibold text-ink;
+  }
+  .prose-site p {
+    @apply my-5;
+  }
+  .prose-site ul {
+    @apply my-5 list-disc space-y-2 pl-6 marker:text-organic-600;
+  }
+  .prose-site ol {
+    @apply my-5 list-decimal space-y-2 pl-6 marker:font-semibold marker:text-orbit-600;
+  }
+  .prose-site a {
+    @apply font-medium text-orbit-600 underline decoration-orbit-200 underline-offset-4 hover:decoration-orbit-500;
+  }
+  .prose-site strong {
+    @apply font-semibold text-ink;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Orbit illustration motion
+   -------------------------------------------------------------------------- */
+.orbit-arm {
+  transform: rotate(var(--start, 0deg));
+  animation: orbit-spin var(--duration, 60s) linear infinite;
+}
+.orbit-counter {
+  transform: rotate(calc(var(--start, 0deg) * -1));
+  animation: orbit-counter var(--duration, 60s) linear infinite;
+}
+.orbit-ring-spin {
+  animation: ring-spin 120s linear infinite;
+}
+
+@keyframes orbit-spin {
+  from { transform: rotate(var(--start, 0deg)); }
+  to { transform: rotate(calc(var(--start, 0deg) + 360deg)); }
+}
+@keyframes orbit-counter {
+  from { transform: rotate(calc(var(--start, 0deg) * -1)); }
+  to { transform: rotate(calc(var(--start, 0deg) * -1 - 360deg)); }
+}
+@keyframes ring-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Gentle scroll reveal */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Accessible FAQ accordion */
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-item .faq-icon {
+  transition: transform 0.3s ease;
+}
+.faq-item[open] .faq-icon {
+  transform: rotate(45deg);
+}
+.faq-item::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition: block-size 0.35s ease, content-visibility 0.35s allow-discrete;
+}
+.faq-item[open]::details-content {
+  block-size: auto;
+}
+
+/* Respect reduced-motion preferences everywhere */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .orbit-arm,
+  .orbit-counter,
+  .orbit-ring-spin {
+    animation: none !important;
+  }
+}
