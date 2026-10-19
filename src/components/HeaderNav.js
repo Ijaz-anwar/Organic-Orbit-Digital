@@ -5,13 +5,14 @@ import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ChevronDown, Menu, X, ArrowRight, Mail } from 'lucide-react';
 import Logo from './Logo';
-import LanguageTranslator from './LanguageTranslator';
+import LanguageTranslator, { parseLocalizedPathname } from './LanguageTranslator';
 import { mainNav, siteConfig, mailtoHref } from '@/lib/site-config';
 import { services, servicePath, accentStyles } from '@/lib/services';
 
 function isActive(pathname, href) {
-  if (href === '/') return pathname === '/';
-  return pathname === href || pathname.startsWith(href);
+  const { basePath } = parseLocalizedPathname(pathname);
+  if (href === '/') return basePath === '/';
+  return basePath === href || basePath.startsWith(href);
 }
 
 export default function HeaderNav() {

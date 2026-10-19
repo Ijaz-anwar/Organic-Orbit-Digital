@@ -1,28 +1,53 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { Globe, ChevronDown, Check, RotateCcw } from 'lucide-react';
 
+/**
+ * 6 Major International Languages
+ * Default English uses root URLs (/); other languages use URL prefixes (/de, /es, /fr, /ar, /ur).
+ */
 export const SUPPORTED_LANGUAGES = [
   { code: 'en', short: 'EN', name: 'English', native: 'English' },
-  { code: 'ar', short: 'AR', name: 'Arabic', native: 'العربية' },
-  { code: 'ur', short: 'UR', name: 'Urdu', native: 'اردو' },
+  { code: 'de', short: 'DE', name: 'German', native: 'Deutsch' },
   { code: 'es', short: 'ES', name: 'Spanish', native: 'Español' },
   { code: 'fr', short: 'FR', name: 'French', native: 'Français' },
-  { code: 'de', short: 'DE', name: 'German', native: 'Deutsch' },
-  { code: 'hi', short: 'HI', name: 'Hindi', native: 'हिन्दी' },
-  { code: 'zh-CN', short: 'ZH', name: 'Chinese', native: '简体中文' },
-  { code: 'pt', short: 'PT', name: 'Portuguese', native: 'Português' },
-  { code: 'it', short: 'IT', name: 'Italian', native: 'Italiano' },
-  { code: 'nl', short: 'NL', name: 'Dutch', native: 'Nederlands' },
-  { code: 'tr', short: 'TR', name: 'Turkish', native: 'Türkçe' },
-  { code: 'ru', short: 'RU', name: 'Russian', native: 'Русский' },
-  { code: 'ja', short: 'JA', name: 'Japanese', native: '日本語' },
-  { code: 'ko', short: 'KO', name: 'Korean', native: '한국어' },
-  { code: 'id', short: 'ID', name: 'Indonesian', native: 'Bahasa Indonesia' },
-  { code: 'ms', short: 'MS', name: 'Malay', native: 'Bahasa Melayu' },
-  { code: 'pl', short: 'PL', name: 'Polish', native: 'Polski' },
+  { code: 'ar', short: 'AR', name: 'Arabic', native: 'العربية' },
+  { code: 'ur', short: 'UR', name: 'Urdu', native: 'اردو' },
 ];
+
+export const NON_DEFAULT_LANGS = ['de', 'es', 'fr', 'ar', 'ur'];
+
+export function parseLocalizedPathname(pathname = '/') {
+  const clean = pathname || '/';
+  const segments = clean.split('/').filter(Boolean);
+  const first = segments[0]?.toLowerCase();
+
+  if (first && NON_DEFAULT_LANGS.includes(first)) {
+    const rest = segments.slice(1).join('/');
+    return {
+      urlLang: first,
+      basePath: rest ? `/${rest}/` : '/',
+    };
+  }
+
+  return {
+    urlLang: null,
+    basePath: clean,
+  };
+}
+
+export function buildLocalizedUrl(basePath = '/', langCode = 'en') {
+  const normalizedBase = !basePath || basePath === '/' ? '/' : basePath.startsWith('/') ? basePath : `/${basePath}`;
+  if (langCode === 'en') {
+    return normalizedBase;
+  }
+  if (normalizedBase === '/') {
+    return `/${langCode}`;
+  }
+  return `/${langCode}${normalizedBase}`;
+}
 
 function readGoogTransCookie() {
   if (typeof document === 'undefined') return 'en';
@@ -46,7 +71,6 @@ function writeGoogTransCookie(langCode) {
     : '';
 
   if (langCode === 'en') {
-    // Expire cookie across current path and domain variants
     document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     if (host) {
       document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${host};`;
@@ -77,13 +101,59 @@ function triggerGoogleCombo(langCode) {
 }
 
 export default function LanguageTranslator({ mountWidget = false, variant = 'dropdown' }) {
+  const pathname = usePathname() || '/';
   const [open, setOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState('en');
   const containerRef = useRef(null);
 
+  // Sync language with URL prefix (/de, /es, /fr, /ar, /ur) and cookie on route change
   useEffect(() => {
-    setCurrentLang(readGoogTransCookie());
+    if (typeof window === 'undefined') return;
 
+    const livePath = window.location.pathname || pathname || '/';
+    const { urlLang, basePath } = parseLocalizedPathname(livePath);
+
+    if (urlLang) {
+      // URL explicitly specifies /de, /es, /fr, /ar, or /ur
+      setCurrentLang(urlLang);
+      writeGoogTransCookie(urlLang);
+      window.dispatchEvent(new CustomEvent('oo-lang-change', { detail: { lang: urlLang } }));
+
+      // Normalize homepage /de/ to /de in address bar for clean URL display
+      if (basePath === '/' && livePath.endsWith('/') && livePath.length > 1) {
+        const cleanUrl = `/${urlLang}${window.location.search}${window.location.hash}`;
+        window.history.replaceState(window.history.state, '', cleanUrl);
+      }
+
+      // Trigger Google Translate once widget is ready
+      let attempts = 0;
+      const timer = setInterval(() => {
+        attempts += 1;
+        if (triggerGoogleCombo(urlLang) || attempts >= 20) {
+          clearInterval(timer);
+        }
+      }, 250);
+      return () => clearInterval(timer);
+    } else {
+      // No URL language prefix — check if user already had an active language cookie while navigating
+      const cookieLang = readGoogTransCookie();
+      if (cookieLang && cookieLang !== 'en') {
+        setCurrentLang(cookieLang);
+        if (mountWidget) {
+          const localizedUrl = `${buildLocalizedUrl(basePath, cookieLang)}${window.location.search}${window.location.hash}`;
+          if (window.location.pathname !== localizedUrl) {
+            window.history.replaceState(window.history.state, '', localizedUrl);
+          }
+          triggerGoogleCombo(cookieLang);
+        }
+      } else {
+        setCurrentLang('en');
+      }
+    }
+    return undefined;
+  }, [pathname, mountWidget]);
+
+  useEffect(() => {
     const onSync = (e) => {
       if (e.detail?.lang) setCurrentLang(e.detail.lang);
     };
@@ -110,6 +180,11 @@ export default function LanguageTranslator({ mountWidget = false, variant = 'dro
           },
           'google_translate_element'
         );
+
+        const active = parseLocalizedPathname(window.location.pathname).urlLang || readGoogTransCookie();
+        if (active && active !== 'en') {
+          setTimeout(() => triggerGoogleCombo(active), 250);
+        }
       }
     };
 
@@ -149,18 +224,26 @@ export default function LanguageTranslator({ mountWidget = false, variant = 'dro
     writeGoogTransCookie(langCode);
     window.dispatchEvent(new CustomEvent('oo-lang-change', { detail: { lang: langCode } }));
 
+    const { basePath } = parseLocalizedPathname(window.location.pathname || pathname || '/');
+    const targetPath = buildLocalizedUrl(basePath, langCode);
+    const fullTargetUrl = `${targetPath}${window.location.search}${window.location.hash}`;
+
+    // Update the browser URL immediately (e.g., https://organicorbitdigital.com/de)
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState(window.history.state, '', fullTargetUrl);
+    }
+
     if (langCode === 'en') {
       const switched = triggerGoogleCombo('en');
       if (!switched) {
-        window.location.reload();
+        window.location.href = fullTargetUrl;
       } else {
-        // Also reload if body still has translated classes so original English DOM is 100% clean
         setTimeout(() => {
           if (
             document.documentElement.classList.contains('translated-ltr') ||
             document.documentElement.classList.contains('translated-rtl')
           ) {
-            window.location.reload();
+            window.location.href = fullTargetUrl;
           }
         }, 180);
       }
@@ -169,10 +252,9 @@ export default function LanguageTranslator({ mountWidget = false, variant = 'dro
 
     const switched = triggerGoogleCombo(langCode);
     if (!switched) {
-      // Wait briefly in case the Google script is still initializing, otherwise reload with cookie set
       setTimeout(() => {
         if (!triggerGoogleCombo(langCode)) {
-          window.location.reload();
+          window.location.href = fullTargetUrl;
         }
       }, 350);
     }
@@ -196,7 +278,7 @@ export default function LanguageTranslator({ mountWidget = false, variant = 'dro
               className="inline-flex items-center gap-1 text-xs font-semibold text-orbit-600 hover:text-orbit-700"
             >
               <RotateCcw className="h-3 w-3" aria-hidden="true" />
-              Reset to English
+              English
             </button>
           )}
         </div>
@@ -262,11 +344,11 @@ export default function LanguageTranslator({ mountWidget = false, variant = 'dro
         <div
           role="listbox"
           aria-label="Choose website language"
-          className="absolute right-0 mt-2.5 w-72 overflow-hidden rounded-2xl border border-line bg-white p-2 shadow-[0_20px_44px_-12px_rgb(16_23_42/0.16)] sm:w-80"
+          className="absolute right-0 mt-2.5 w-64 overflow-hidden rounded-2xl border border-line bg-white p-2 shadow-[0_20px_44px_-12px_rgb(16_23_42/0.16)]"
         >
           <div className="flex items-center justify-between border-b border-line px-3 py-2">
             <span className="text-[0.7rem] font-semibold tracking-wider text-muted uppercase">
-              Select Language
+              6 Languages
             </span>
             {currentLang !== 'en' && (
               <button
@@ -280,7 +362,7 @@ export default function LanguageTranslator({ mountWidget = false, variant = 'dro
             )}
           </div>
 
-          <div className="mt-1.5 grid max-h-72 grid-cols-2 gap-1 overflow-y-auto p-1">
+          <div className="mt-1.5 grid grid-cols-1 gap-1 p-1">
             {SUPPORTED_LANGUAGES.map((lang) => {
               const active = lang.code === currentLang;
               return (
@@ -290,21 +372,26 @@ export default function LanguageTranslator({ mountWidget = false, variant = 'dro
                   role="option"
                   aria-selected={active}
                   onClick={() => selectLanguage(lang.code)}
-                  className={`flex items-center justify-between rounded-xl px-2.5 py-2 text-left text-xs transition-colors ${
+                  className={`flex items-center justify-between rounded-xl px-3 py-2 text-left text-xs transition-colors ${
                     active
                       ? 'bg-orbit-50 font-semibold text-orbit-700 ring-1 ring-orbit-200'
                       : 'text-slate-700 hover:bg-mist hover:text-ink'
                   }`}
                 >
-                  <span className="min-w-0 truncate">
-                    <span className="block truncate font-medium text-ink">{lang.native}</span>
-                    <span className="block truncate text-[0.68rem] text-muted">{lang.name}</span>
+                  <span className="flex items-center gap-2.5">
+                    <span className="inline-flex h-6 w-7 items-center justify-center rounded-md bg-mist font-display text-[0.68rem] font-bold text-orbit-600">
+                      {lang.short}
+                    </span>
+                    <span>
+                      <span className="block font-medium text-ink">{lang.native}</span>
+                      <span className="block text-[0.68rem] text-muted">{lang.name}</span>
+                    </span>
                   </span>
                   {active ? (
-                    <Check className="ml-1.5 h-3.5 w-3.5 shrink-0 text-orbit-600" aria-hidden="true" />
+                    <Check className="h-4 w-4 shrink-0 text-orbit-600" aria-hidden="true" />
                   ) : (
-                    <span className="ml-1.5 shrink-0 font-display text-[0.65rem] font-bold text-slate-400">
-                      {lang.short}
+                    <span className="text-[0.68rem] text-slate-400">
+                      {lang.code === 'en' ? '/' : `/${lang.code}`}
                     </span>
                   )}
                 </button>
