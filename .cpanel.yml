@@ -4,7 +4,3 @@ deployment:
     - export DEPLOYPATH=$HOME/organicorbitdigital.com/
     - /bin/mkdir -p $DEPLOYPATH
     - /bin/cp -R out/. $DEPLOYPATH
-    - printf '%s\n' '# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN' 'PassengerAppRoot "/home/onlinepr/german-tool"' 'PassengerBaseURI "/"' 'PassengerNodejs "/home/onlinepr/nodevenv/german-tool/22/bin/node"' 'PassengerAppType node' 'PassengerStartupFile server/src/server.js' '# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END' '# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN' '<IfModule Litespeed>' 'SetEnv NODE_ENV production' '</IfModule>' '# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END' > $HOME/public_html/.htaccess
-    - /bin/chmod 644 $HOME/public_html/.htaccess
-    - /bin/mkdir -p $HOME/german-tool/tmp
-    - /bin/touch $HOME/german-tool/tmp/restart.txt
