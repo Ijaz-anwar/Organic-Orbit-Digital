@@ -107,20 +107,21 @@ export default function Hero() {
           <div className="lg:col-span-7">
             <p className="eyebrow rounded-full border border-orbit-100 bg-orbit-50/80 px-4 py-1.5">
               <Sparkles className="h-3.5 w-3.5 text-orbit-600" aria-hidden="true" />
-              Connected Digital Marketing &amp; Web Development
+              Web Development and Digital Marketing Services: Grow Your Business Online
             </p>
 
-            <h1 className="mt-6 text-4xl leading-[1.08] font-bold tracking-tight text-ink sm:text-5xl lg:text-[3.55rem]">
-              Turn Your Digital Presence Into Your Next{' '}
+            <h1 className="mt-6 text-4xl leading-[1.1] font-bold tracking-tight text-ink sm:text-5xl lg:text-[3.35rem]">
+              Web Development and Digital Marketing Services for{' '}
               <span className="bg-gradient-to-r from-orbit-700 via-orbit-500 to-organic-600 bg-clip-text text-transparent">
-                Growth Engine.
+                Business Growth
               </span>
             </h1>
 
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted sm:text-[1.15rem]">
-              From powerful websites and strategic SEO to social media management, Meta Ads, Google Ads, and qualified
-              lead generation, Organic Orbit Digital helps businesses build visibility, connect with the right audience,
-              and grow online.
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted sm:text-[1.1rem]">
+              In today&apos;s competitive digital world, having a strong online presence is essential for businesses
+              that want to attract customers, generate leads, and increase sales. Whether you own a small business,
+              manage an established company, or operate an online store, investing in professional web development and
+              digital marketing services can help you reach your target audience and build a successful brand.
             </p>
 
             <div className="mt-9 flex flex-col gap-3.5 sm:flex-row sm:items-center">

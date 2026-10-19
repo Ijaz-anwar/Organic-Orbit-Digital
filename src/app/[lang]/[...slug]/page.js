@@ -75,6 +75,7 @@ export async function generateMetadata({ params }) {
       title: `${content.metaTitle} ${tag}`,
       description: `${content.metaDescription} [${langName}]`,
       path: fullPath,
+      absoluteTitle: true,
     });
   }
   if (relPath === 'contact') {
@@ -95,11 +96,12 @@ export async function generateMetadata({ params }) {
     const post = getPostBySlug(slug[1]);
     if (!post) return {};
     return buildMetadata({
-      title: `${post.title} ${tag}`,
-      description: `${post.excerpt} [${langName}]`,
+      title: `${post.metaTitle || post.title} ${tag}`,
+      description: `${post.metaDescription || post.excerpt} [${langName}]`,
       path: fullPath,
       type: 'article',
       image: post.image,
+      absoluteTitle: true,
     });
   }
   if (relPath === 'privacy-policy') {

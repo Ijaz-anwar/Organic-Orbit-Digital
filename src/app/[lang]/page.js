@@ -21,8 +21,8 @@ export async function generateMetadata({ params }) {
   const langName = LANGS[lang];
   if (!langName) return {};
   return buildMetadata({
-    title: `Organic Orbit Digital (${lang.toUpperCase()}) | Digital Marketing & Web Development`,
-    description: `Grow your online presence with Organic Orbit Digital (${langName}): Website Development, Search Engine Optimization, Social Media Management, Meta Ads, Google Ads, and Lead Generation for Business.`,
+    title: `Web Development and Digital Marketing Services for Business Growth (${lang.toUpperCase()})`,
+    description: `Discover professional web development and digital marketing services, including website design, SEO, social media marketing, PPC advertising, and lead generation to grow your business online. [${langName}]`,
     path: `/${lang}/`,
     absoluteTitle: true,
   });

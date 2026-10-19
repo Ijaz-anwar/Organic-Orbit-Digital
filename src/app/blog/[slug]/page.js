@@ -3,8 +3,11 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CalendarDays, Clock, ArrowRight, ListChecks } from 'lucide-react';
 import PageHero from '@/components/PageHero';
+import FAQ from '@/components/FAQ';
+import SectionHeading from '@/components/SectionHeading';
 import CTASection from '@/components/CTASection';
 import JsonLd from '@/components/JsonLd';
+import SeoAuditChecklist from '@/components/SeoAuditChecklist';
 import { getAllPosts, getPostBySlug } from '@/lib/blog';
 import { buildMetadata, blogPostingSchema } from '@/lib/seo';
 import { getService, servicePath } from '@/lib/services';
@@ -20,9 +23,10 @@ export async function generateMetadata({ params }) {
   const post = getPostBySlug(slug);
   if (!post) return {};
   return buildMetadata({
-    title: post.title,
-    description: post.excerpt,
+    title: post.metaTitle || post.title,
+    description: post.metaDescription || post.excerpt,
     path: `/blog/${post.slug}/`,
+    absoluteTitle: true,
     type: 'article',
     image: post.image,
     article: {
@@ -98,7 +102,7 @@ export default async function BlogArticlePage({ params }) {
                 <p id="toc-heading" className="font-display text-xs font-bold tracking-wider text-ink uppercase">
                   On this page
                 </p>
-                <ol className="mt-4 space-y-2.5 text-sm">
+                <ol className="mt-4 max-h-96 space-y-2.5 overflow-y-auto pr-1 text-sm">
                   {post.sections.map((sec) => (
                     <li key={sec.id}>
                       <a
@@ -125,7 +129,10 @@ export default async function BlogArticlePage({ params }) {
                           href={servicePath(svc.slug)}
                           className="group flex items-center justify-between font-medium text-ink hover:text-orbit-600"
                         >
-                          <span>{svc.name}</span>
+                          <span>
+                            <span className="mr-1 font-display text-xs font-bold text-orbit-600">{svc.number}.</span>
+                            {svc.name}
+                          </span>
                           <ArrowRight
                             className="h-4 w-4 text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:text-orbit-600"
                             aria-hidden="true"
@@ -143,9 +150,11 @@ export default async function BlogArticlePage({ params }) {
               {post.sections.map((sec) => (
                 <section key={sec.id} aria-labelledby={sec.id}>
                   <h2 id={sec.id}>{sec.heading}</h2>
-                  {sec.paragraphs.map((p, idx) => (
+
+                  {(sec.paragraphs || []).map((p, idx) => (
                     <p key={idx}>{p}</p>
                   ))}
+
                   {sec.bullets && (
                     <ul>
                       {sec.bullets.map((b) => (
@@ -153,6 +162,69 @@ export default async function BlogArticlePage({ params }) {
                       ))}
                     </ul>
                   )}
+
+                  {sec.table && (
+                    <div className="not-prose my-6 overflow-x-auto rounded-2xl border border-line bg-white shadow-2xs">
+                      <table className="w-full min-w-[36rem] text-left text-sm">
+                        <thead className="border-b border-line bg-mist text-xs font-semibold tracking-wider text-ink uppercase">
+                          <tr>
+                            {sec.table.headers.map((hdr) => (
+                              <th key={hdr} scope="col" className="px-5 py-3.5">
+                                {hdr}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-line">
+                          {sec.table.rows.map((row, rIdx) => (
+                            <tr key={rIdx} className="hover:bg-mist/50">
+                              {row.map((cell, cIdx) =>
+                                cIdx === 0 ? (
+                                  <th
+                                    key={cIdx}
+                                    scope="row"
+                                    className="px-5 py-3.5 font-display font-semibold text-ink"
+                                  >
+                                    {cell}
+                                  </th>
+                                ) : (
+                                  <td key={cIdx} className="px-5 py-3.5 text-slate-700">
+                                    {cell}
+                                  </td>
+                                )
+                              )}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+
+                  {sec.subsections &&
+                    sec.subsections.map((sub) => (
+                      <div key={sub.heading}>
+                        <h3>{sub.heading}</h3>
+                        {(sub.paragraphs || []).map((sp, sIdx) => (
+                          <p key={sIdx}>{sp}</p>
+                        ))}
+                        {sub.bullets && (
+                          <ul>
+                            {sub.bullets.map((sb) => (
+                              <li key={sb}>{sb}</li>
+                            ))}
+                          </ul>
+                        )}
+                        {(sub.outro || []).map((so, oIdx) => (
+                          <p key={oIdx}>{so}</p>
+                        ))}
+                      </div>
+                    ))}
+
+                  {sec.showChecklist && <SeoAuditChecklist />}
+
+                  {(sec.outro || []).map((op, oIdx) => (
+                    <p key={oIdx}>{op}</p>
+                  ))}
                 </section>
               ))}
 
@@ -172,6 +244,7 @@ export default async function BlogArticlePage({ params }) {
                         href={servicePath(svc.slug)}
                         className="btn btn-outline min-h-10 px-4 py-2 text-sm"
                       >
+                        <span className="font-display text-xs font-bold text-orbit-600">{svc.number}.</span>
                         {svc.name}
                         <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                       </Link>
@@ -184,9 +257,30 @@ export default async function BlogArticlePage({ params }) {
         </div>
       </article>
 
+      {/* Article FAQs */}
+      {post.faqs && post.faqs.length > 0 && (
+        <section className="section border-t border-line bg-mist" aria-labelledby="blog-faq-heading">
+          <div className="container-site">
+            <div className="grid gap-12 lg:grid-cols-12">
+              <div className="lg:col-span-5">
+                <SectionHeading
+                  id="blog-faq-heading"
+                  eyebrow="Questions & Answers"
+                  title="Frequently Asked Questions (FAQs)"
+                  intro="Key takeaways and common questions answered clearly."
+                />
+              </div>
+              <div className="lg:col-span-7">
+                <FAQ items={post.faqs} />
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Related posts */}
       {otherPosts.length > 0 && (
-        <section className="section bg-mist" aria-labelledby="more-articles-heading">
+        <section className="section bg-white" aria-labelledby="more-articles-heading">
           <div className="container-site">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <h2 id="more-articles-heading" className="text-2xl font-bold text-ink sm:text-3xl">
