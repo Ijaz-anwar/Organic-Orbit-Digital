@@ -280,3 +280,28 @@
     animation: none !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Google Translate clean UI overrides (hide default banner & tooltips)
+   -------------------------------------------------------------------------- */
+body {
+  top: 0 !important;
+  position: static !important;
+}
+
+.goog-te-banner-frame,
+iframe.goog-te-banner-frame,
+.skiptranslate > iframe,
+.VIpgJd-ZVi9od-ORHb-OEVmcd,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+

@@ -5,6 +5,7 @@ import {
   SearchCheck,
   Share2,
   Megaphone,
+  Target,
   Magnet,
   Sparkles,
   CheckCircle2,
@@ -13,53 +14,69 @@ import { LogoMark } from './Logo';
 
 const orbitNodes = [
   {
-    label: 'Websites',
+    number: '01',
+    label: 'Website Development',
     sub: 'Conversion UX',
     href: '/services/website-development/',
     icon: MonitorSmartphone,
     ring: 'inner',
-    angle: '20deg',
-    duration: '54s',
-    iconCls: 'bg-organic-50 text-organic-700 ring-organic-100',
-  },
-  {
-    label: 'On-Page SEO',
-    sub: 'Search Relevance',
-    href: '/services/on-page-seo/',
-    icon: SearchCheck,
-    ring: 'inner',
-    angle: '200deg',
-    duration: '54s',
-    iconCls: 'bg-teal-50 text-teal-700 ring-teal-100',
-  },
-  {
-    label: 'Social Media',
-    sub: 'Brand & Community',
-    href: '/services/social-media-marketing/',
-    icon: Share2,
-    ring: 'outer',
-    angle: '35deg',
-    duration: '76s',
+    angle: '0deg',
+    duration: '58s',
     iconCls: 'bg-orbit-50 text-orbit-600 ring-orbit-100',
   },
   {
-    label: 'Meta & Google Ads',
-    sub: 'Paid Social & Search',
-    href: '/services/meta-google-ads/',
+    number: '02',
+    label: 'Search Engine Optimization',
+    sub: 'Organic Visibility',
+    href: '/services/search-engine-optimization/',
+    icon: SearchCheck,
+    ring: 'inner',
+    angle: '120deg',
+    duration: '58s',
+    iconCls: 'bg-teal-50 text-teal-700 ring-teal-100',
+  },
+  {
+    number: '03',
+    label: 'Social Media Management',
+    sub: 'Brand & Content',
+    href: '/services/social-media-management/',
+    icon: Share2,
+    ring: 'inner',
+    angle: '240deg',
+    duration: '58s',
+    iconCls: 'bg-organic-50 text-organic-700 ring-organic-100',
+  },
+  {
+    number: '04',
+    label: 'Meta Ads Management',
+    sub: 'Facebook & Instagram',
+    href: '/services/meta-ads-management/',
     icon: Megaphone,
     ring: 'outer',
-    angle: '155deg',
-    duration: '76s',
+    angle: '60deg',
+    duration: '78s',
     iconCls: 'bg-violet-50 text-violet-600 ring-violet-100',
   },
   {
+    number: '05',
+    label: 'Google Ads Management',
+    sub: 'Paid Search Intent',
+    href: '/services/google-ads-management/',
+    icon: Target,
+    ring: 'outer',
+    angle: '180deg',
+    duration: '78s',
+    iconCls: 'bg-indigo-50 text-indigo-600 ring-indigo-100',
+  },
+  {
+    number: '06',
     label: 'Lead Generation',
-    sub: 'Funnels & Capture',
-    href: '/services/lead-generation/',
+    sub: 'Business Funnels',
+    href: '/services/lead-generation-for-business/',
     icon: Magnet,
     ring: 'outer',
-    angle: '275deg',
-    duration: '76s',
+    angle: '300deg',
+    duration: '78s',
     iconCls: 'bg-amber-50 text-amber-700 ring-amber-100',
   },
 ];
@@ -101,8 +118,9 @@ export default function Hero() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted sm:text-[1.15rem]">
-              From powerful websites and strategic SEO to high-performing ad campaigns and qualified lead generation,
-              Organic Orbit Digital helps businesses build visibility, connect with the right audience, and grow online.
+              From powerful websites and strategic SEO to social media management, Meta Ads, Google Ads, and qualified
+              lead generation, Organic Orbit Digital helps businesses build visibility, connect with the right audience,
+              and grow online.
             </p>
 
             <div className="mt-9 flex flex-col gap-3.5 sm:flex-row sm:items-center">
@@ -125,12 +143,12 @@ export default function Hero() {
             </ul>
           </div>
 
-          {/* Orbital Ecosystem Illustration (Light Theme) */}
+          {/* Orbital Ecosystem Illustration (6 Numbered Services) */}
           <div className="lg:col-span-5">
             <div
               className="relative mx-auto aspect-square w-full max-w-[26rem] sm:max-w-[30rem]"
               role="img"
-              aria-label="Orbital diagram showing Website Development, On-Page SEO, Social Media Marketing, Meta and Google Ads, and Lead Generation connected around your business growth."
+              aria-label="Orbital diagram showing 01 Website Development, 02 Search Engine Optimization, 03 Social Media Management, 04 Meta Ads Management, 05 Google Ads Management, and 06 Lead Generation for Business connected around your business."
             >
               {/* Soft central aura */}
               <div
@@ -184,30 +202,33 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Orbiting channel nodes */}
+              {/* Orbiting channel nodes (01 – 06) */}
               {orbitNodes.map((node) => {
                 const Icon = node.icon;
                 const insetCls = node.ring === 'inner' ? 'inset-[22%]' : 'inset-6';
                 return (
                   <div
-                    key={node.label}
+                    key={node.number}
                     className={`orbit-arm pointer-events-none absolute ${insetCls}`}
                     style={{ '--start': node.angle, '--duration': node.duration }}
                   >
                     <div className="absolute -top-5 left-1/2 -translate-x-1/2">
                       <Link
                         href={node.href}
-                        className="orbit-counter pointer-events-auto group flex items-center gap-2.5 rounded-2xl border border-line bg-white px-3 py-2 shadow-md transition-transform hover:scale-105 hover:border-orbit-300"
+                        className="orbit-counter pointer-events-auto group flex items-center gap-2 rounded-2xl border border-line bg-white px-2.5 py-1.5 shadow-md transition-transform hover:scale-105 hover:border-orbit-300"
                         style={{ '--start': node.angle, '--duration': node.duration }}
                       >
-                        <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-xl ring-1 ${node.iconCls}`}>
-                          <Icon className="h-4 w-4" aria-hidden="true" />
+                        <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-lg ring-1 ${node.iconCls}`}>
+                          <Icon className="h-3.5 w-3.5" aria-hidden="true" />
                         </span>
-                        <span className="pr-1 text-left leading-tight">
-                          <span className="block text-xs font-semibold text-ink group-hover:text-orbit-600">
+                        <span className="pr-1 text-left leading-tight whitespace-nowrap">
+                          <span className="block text-[0.72rem] font-semibold text-ink group-hover:text-orbit-600">
+                            <span className="mr-1 font-display text-[0.65rem] font-bold text-orbit-600">
+                              {node.number}.
+                            </span>
                             {node.label}
                           </span>
-                          <span className="hidden text-[0.68rem] text-muted sm:block">{node.sub}</span>
+                          <span className="hidden text-[0.64rem] text-muted sm:block">{node.sub}</span>
                         </span>
                       </Link>
                     </div>

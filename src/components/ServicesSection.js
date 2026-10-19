@@ -5,12 +5,13 @@ import SectionHeading from './SectionHeading';
 import { services } from '@/lib/services';
 
 /**
- * Grid of all five services. Used on the homepage and services overview.
+ * Symmetrical 3x2 grid of all six numbered services (01 – 06).
+ * Used on the homepage and services overview.
  */
 export default function ServicesSection({
   eyebrow = 'What we do',
-  title = 'Connected services for every stage of online growth',
-  intro = 'Each service stands on its own, but they work best together. Your website, search visibility, social presence and advertising should reinforce each other, not compete for attention.',
+  title = 'Six connected services for every stage of online growth',
+  intro = 'Each service stands on its own, but they work best together. From Website Development and Search Engine Optimization to Social Media, Meta Ads, Google Ads, and Lead Generation, every channel reinforces the next.',
   showHeading = true,
   className = 'bg-mist',
 }) {
@@ -26,9 +27,9 @@ export default function ServicesSection({
             </Link>
           </div>
         )}
-        <div className={`${showHeading ? 'mt-14' : ''} grid gap-6 md:grid-cols-2 lg:grid-cols-6`}>
-          {services.map((s, i) => (
-            <div key={s.slug} className={`reveal ${i < 3 ? 'lg:col-span-2' : 'lg:col-span-3'}`}>
+        <div className={`${showHeading ? 'mt-14' : ''} grid gap-6 md:grid-cols-2 lg:grid-cols-3`}>
+          {services.map((s) => (
+            <div key={s.slug} className="reveal">
               <ServiceCard service={s} />
             </div>
           ))}

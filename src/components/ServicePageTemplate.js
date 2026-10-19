@@ -431,7 +431,7 @@ export default function ServicePageTemplate({ slug }) {
               intro="Explore how our other services connect to support your wider marketing goals."
             />
             <Link href="/services/" className="link-underline shrink-0 text-sm">
-              View all 5 services →
+              View all 6 services →
             </Link>
           </div>
 

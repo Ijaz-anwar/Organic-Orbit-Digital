@@ -15,7 +15,7 @@ export const siteConfig = {
   language: 'en',
   tagline: 'Digital Marketing & Web Development',
   description:
-    'Grow your online presence with Organic Orbit Digital. Explore social media marketing, website development, Meta and Google Ads, lead generation, and on-page SEO.',
+    'Grow your online presence with Organic Orbit Digital: Website Development, Search Engine Optimization, Social Media Management, Meta Ads, Google Ads, and Lead Generation for Business.',
   shortDescription:
     'A digital marketing and web development agency helping businesses connect their websites, search, social and advertising into one growth-focused system.',
   announcement: 'Helping businesses build a stronger, more connected online presence.',

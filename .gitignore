@@ -1,9 +1,9 @@
 # dependencies
 /node_modules
 
-# next.js build output
+# next.js build cache (keep /out tracked for cPanel Git deployment)
 /.next/
-/out/
+/out.zip
 
 # environment files (never commit real values)
 .env

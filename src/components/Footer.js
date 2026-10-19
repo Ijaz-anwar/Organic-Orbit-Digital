@@ -34,6 +34,7 @@ export default function Footer() {
             {services.map((s) => (
               <li key={s.slug}>
                 <Link href={servicePath(s.slug)} className="transition-colors hover:text-orbit-600">
+                  <span className="mr-1.5 font-display text-xs font-bold text-orbit-600">{s.number}.</span>
                   {s.name}
                 </Link>
               </li>

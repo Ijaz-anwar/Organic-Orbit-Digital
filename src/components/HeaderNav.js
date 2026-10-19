@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ChevronDown, Menu, X, ArrowRight, Mail } from 'lucide-react';
 import Logo from './Logo';
+import LanguageTranslator from './LanguageTranslator';
 import { mainNav, siteConfig, mailtoHref } from '@/lib/site-config';
 import { services, servicePath, accentStyles } from '@/lib/services';
 
@@ -133,13 +134,13 @@ export default function HeaderNav() {
                   <div
                     id="services-menu"
                     hidden={!servicesOpen}
-                    className="absolute top-full left-1/2 w-[min(46rem,calc(100vw-3rem))] -translate-x-1/2 pt-3"
+                    className="absolute top-full left-1/2 w-[min(54rem,calc(100vw-3rem))] -translate-x-1/2 pt-3"
                   >
                     <div className="grid grid-cols-[1fr_15.5rem] overflow-hidden rounded-2xl border border-line bg-white shadow-[0_24px_48px_-16px_rgb(16_23_42/0.16)]">
-                      <ul className="grid grid-cols-1 gap-1 p-3">
+                      <ul className="grid grid-cols-2 gap-1 p-3">
                         {services.map((s) => {
                           const Icon = s.icon;
-                          const a = accentStyles[s.accent];
+                          const a = accentStyles[s.accent] ?? accentStyles.blue;
                           return (
                             <li key={s.slug}>
                               <Link
@@ -150,8 +151,11 @@ export default function HeaderNav() {
                                   <Icon className="h-5 w-5" aria-hidden="true" />
                                 </span>
                                 <span>
-                                  <span className="block font-semibold text-ink group-hover:text-orbit-600">{s.navLabel}</span>
-                                  <span className="block text-sm text-muted">{s.navHint}</span>
+                                  <span className="block font-semibold text-ink group-hover:text-orbit-600">
+                                    <span className="mr-1.5 font-display text-xs font-bold text-orbit-600">{s.number}.</span>
+                                    {s.navLabel}
+                                  </span>
+                                  <span className="block text-xs text-muted">{s.navHint}</span>
                                 </span>
                               </Link>
                             </li>
@@ -162,12 +166,12 @@ export default function HeaderNav() {
                         <div>
                           <p className="font-display text-lg font-semibold text-ink">Not sure where to start?</p>
                           <p className="mt-2 text-sm leading-relaxed text-muted">
-                            See how our services connect, or tell us about your goals and we will suggest a starting point.
+                            See how all six services connect, or tell us about your goals and we will suggest a starting point.
                           </p>
                         </div>
                         <div className="mt-6 flex flex-col gap-3">
                           <Link href="/services/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-orbit-600 hover:text-orbit-700">
-                            View all services <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                            View all 6 services <ArrowRight className="h-4 w-4" aria-hidden="true" />
                           </Link>
                           <Link href="/contact/" className="btn btn-primary min-h-10 px-4 py-2 text-xs">
                             Talk to our team <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -197,7 +201,8 @@ export default function HeaderNav() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          <LanguageTranslator mountWidget />
           <Link href="/contact/" className="btn btn-primary hidden min-h-11 px-5 text-sm sm:inline-flex">
             Get a Free Consultation
           </Link>
@@ -242,7 +247,7 @@ export default function HeaderNav() {
               ))}
           </ul>
 
-          <p className="mt-8 text-xs font-semibold tracking-[0.18em] text-muted uppercase">Services</p>
+          <p className="mt-8 text-xs font-semibold tracking-[0.18em] text-muted uppercase">Services (01 – 06)</p>
           <ul className="mt-3 grid gap-2">
             <li>
               <Link href="/services/" className="flex items-center gap-3 rounded-xl border border-line bg-mist p-3 text-ink hover:border-orbit-300">
@@ -251,6 +256,7 @@ export default function HeaderNav() {
             </li>
             {services.map((s) => {
               const Icon = s.icon;
+              const a = accentStyles[s.accent] ?? accentStyles.blue;
               return (
                 <li key={s.slug}>
                   <Link
@@ -258,15 +264,20 @@ export default function HeaderNav() {
                     aria-current={pathname === servicePath(s.slug) ? 'page' : undefined}
                     className="flex items-center gap-3 rounded-xl border border-line bg-white p-3 text-slate-800 hover:border-orbit-300 hover:bg-mist"
                   >
-                    <span className={`grid h-9 w-9 place-items-center rounded-lg ring-1 ${accentStyles[s.accent].iconBg}`}>
+                    <span className={`grid h-9 w-9 place-items-center rounded-lg ring-1 ${a.iconBg}`}>
                       <Icon className="h-4 w-4" aria-hidden="true" />
                     </span>
-                    <span className="font-medium">{s.navLabel}</span>
+                    <span className="font-medium">
+                      <span className="mr-1.5 font-display text-xs font-bold text-orbit-600">{s.number}.</span>
+                      {s.navLabel}
+                    </span>
                   </Link>
                 </li>
               );
             })}
           </ul>
+
+          <LanguageTranslator variant="mobile" />
 
           <div className="mt-auto flex flex-col gap-3 pt-8">
             <Link href="/contact/" className="btn btn-primary w-full">

@@ -1,168 +1,23 @@
 /**
- * Detailed content for each service page.
- * Keyed by service slug (see services.js). Server-only usage.
- *
- * Copy is written to be realistic: no guaranteed results, rankings or ROI.
- * Edit freely — the ServicePageTemplate renders whatever is defined here.
+ * Detailed content for each of the 6 ordered service pages:
+ * 01. website-development          — Website Development
+ * 02. search-engine-optimization   — Search Engine Optimization
+ * 03. social-media-management      — Social Media Management
+ * 04. meta-ads-management          — Meta Ads Management
+ * 05. google-ads-management        — Google Ads Management
+ * 06. lead-generation-for-business — Lead Generation for Business
  */
 
 export const serviceContent = {
   /* --------------------------------------------------------------------- */
-  'social-media-marketing': {
-    metaTitle: 'Social Media Marketing Services',
-    metaDescription:
-      'Social media marketing services covering strategy, content planning, platform-specific campaigns, community engagement and clear reporting, built around your business goals.',
-    hero: {
-      eyebrow: 'Social Media Marketing',
-      title: 'Social Media Marketing That Builds Recognition, Trust and Conversation',
-      intro:
-        'We help businesses show up consistently on the platforms their customers actually use, with a clear strategy, purposeful content and reporting that connects social activity to business goals.',
-    },
-    overview: {
-      heading: 'Social media works best when it has a job to do',
-      paragraphs: [
-        'Many businesses post because they feel they should, not because each post supports a goal. The result is irregular activity, mixed messaging and little insight into what is working. Our social media marketing service starts by defining the role social plays in your business: building awareness in a new market, supporting launches, nurturing existing customers or driving visits to your website.',
-        'From there we build a practical content system: the platforms worth prioritising, the themes you want to be known for, a realistic publishing rhythm and a clear approach to engagement. Organic content and paid social work well together, so where advertising makes sense we coordinate it with our Meta Ads planning instead of treating the two as separate projects.',
-        'Reporting focuses on the measures that match your objective. For awareness, that means reach and engagement quality; for traffic and lead goals, clicks and enquiries. We explain what the numbers mean in plain language and what we will change next.',
-      ],
-    },
-    problems: {
-      heading: 'Common social media challenges we help solve',
-      items: [
-        {
-          title: 'Inconsistent posting',
-          text: 'Weeks of silence followed by bursts of activity make a brand look less established and make it harder for audiences to build familiarity.',
-        },
-        {
-          title: 'Content without a clear message',
-          text: 'Posts that jump between unrelated topics fail to communicate what the business does or why someone should care.',
-        },
-        {
-          title: 'Every platform treated the same',
-          text: 'Copying identical content across Instagram, LinkedIn and Facebook ignores how differently people use each platform.',
-        },
-        {
-          title: 'No connection to business results',
-          text: 'Likes are easy to count but hard to link to enquiries or sales without clear objectives and proper tracking.',
-        },
-      ],
-    },
-    spotlight: {
-      variant: 'cards',
-      heading: 'Choosing platforms by audience, not habit',
-      intro:
-        'We recommend a smaller number of platforms managed well over a presence everywhere that cannot be maintained. Typical roles look like this:',
-      items: [
-        {
-          title: 'Instagram',
-          text: 'Visual storytelling, short-form video and behind-the-scenes content for consumer brands, hospitality, lifestyle and ecommerce.',
-        },
-        {
-          title: 'Facebook',
-          text: 'Community building, local awareness, events and broad-reach content, often supported by Meta advertising.',
-        },
-        {
-          title: 'LinkedIn',
-          text: 'Thought leadership, company updates and relationship building for B2B services, recruitment and professional brands.',
-        },
-        {
-          title: 'TikTok & YouTube',
-          text: 'Video-first discovery and education, recommended when your audience is active there and video production is sustainable.',
-        },
-      ],
-    },
-    deliverables: [
-      {
-        title: 'Social media strategy',
-        text: 'Goals, audience insights, platform priorities, content pillars and tone-of-voice guidance in one practical document.',
-      },
-      {
-        title: 'Content calendar',
-        text: 'Planned posts with captions, formats and dates, shared for your review before anything goes live.',
-      },
-      {
-        title: 'Content creation & adaptation',
-        text: 'Graphics, carousels and captions adapted to each platform, plus short-video concepts and scripts where video is part of the plan.',
-      },
-      {
-        title: 'Platform-specific campaigns',
-        text: 'Focused pushes around launches, offers, seasonal moments or events, each with a defined objective.',
-      },
-      {
-        title: 'Community engagement',
-        text: 'Agreed guidelines for replying to comments and messages so your audience receives timely, on-brand responses.',
-      },
-      {
-        title: 'Performance reporting',
-        text: 'Regular reports on what was published, how it performed and the adjustments planned for the next period.',
-      },
-    ],
-    process: [
-      { title: 'Audit & discovery', text: 'Review your current profiles, competitors, audience and goals.' },
-      { title: 'Strategy & pillars', text: 'Define platforms, content themes, voice and success measures.' },
-      { title: 'Create & schedule', text: 'Produce content, gather your approval and schedule publishing.' },
-      { title: 'Engage & refine', text: 'Manage engagement, review results and refine the plan.' },
-    ],
-    benefits: [
-      {
-        title: 'A recognisable brand presence',
-        text: 'Consistent visuals and messaging help people remember you and understand what you offer.',
-      },
-      {
-        title: 'Time back for your team',
-        text: 'A planned calendar and approval workflow replace last-minute decisions about what to post.',
-      },
-      {
-        title: 'Better-informed decisions',
-        text: 'Reporting shows which topics and formats resonate, so effort goes where it is most useful.',
-      },
-      {
-        title: 'Stronger customer relationships',
-        text: 'Responsive engagement shows prospects and customers there are real people behind the brand.',
-      },
-    ],
-    suitableFor: [
-      'Businesses with inactive or inconsistent profiles that want a reliable, professional presence.',
-      'Ecommerce and consumer brands that depend on visual discovery and repeat customers.',
-      'B2B and professional service firms building authority on LinkedIn.',
-      'Teams that create content in-house but need strategy, planning and reporting support.',
-    ],
-    faqs: [
-      {
-        q: 'Which social media platforms do you manage?',
-        a: 'We work across the major platforms, including Instagram, Facebook and LinkedIn, and TikTok or YouTube where they suit your audience and resources. Recommendations are based on where your customers spend time and what you can sustain, rather than trying to be everywhere.',
-      },
-      {
-        q: 'Do you create the content, or do we?',
-        a: 'Either approach works. We can plan and create content for you, or provide strategy, calendars and guidance while your team produces some or all of it. Responsibilities are agreed at the start so nothing falls through the gaps.',
-      },
-      {
-        q: 'Will I approve posts before they are published?',
-        a: 'Yes. Content is shared in advance for review, so you stay in control of everything published on behalf of your brand.',
-      },
-      {
-        q: 'How do you measure social media success?',
-        a: 'It depends on the goal. For awareness we look at reach and engagement quality; for traffic or lead goals we track link clicks, website behaviour and enquiries using analytics and UTM tagging. We explain the results and what we plan to adjust.',
-      },
-      {
-        q: 'Can organic social media work alongside paid ads?',
-        a: 'Yes, and they usually perform better together. Organic content builds trust and gives your ads credibility, while paid campaigns extend reach to new audiences. Our Meta Ads & Google Ads service covers the paid side.',
-      },
-    ],
-    related: ['meta-google-ads', 'lead-generation', 'website-development'],
-    cta: {
-      title: "Let's plan a social presence your audience will notice",
-      text: 'Tell us about your business and current channels, and we will suggest where to focus first.',
-    },
-  },
-
+  /* 01. Website Development                                               */
   /* --------------------------------------------------------------------- */
   'website-development': {
     metaTitle: 'Website Development Services',
     metaDescription:
       'Website development services for fast, responsive, conversion-focused business websites and landing pages, designed around your brand, your visitors and search visibility.',
     hero: {
-      eyebrow: 'Website Development',
+      eyebrow: '01 · Website Development',
       title: 'Websites Built to Communicate Clearly and Turn Visitors Into Enquiries',
       intro:
         'Your website is often the first serious conversation a prospect has with your business. We design and build fast, responsive websites that explain your value quickly and make it easy for the right people to take the next step.',
@@ -264,7 +119,7 @@ export const serviceContent = {
     suitableFor: [
       'New businesses and startups that need a credible first website.',
       'Established companies whose current site no longer reflects their quality or services.',
-      'Businesses running ads that need dedicated landing pages.',
+      'Businesses running Meta or Google Ads that need dedicated landing pages.',
       'Service providers who want their website to generate more qualified enquiries.',
     ],
     faqs: [
@@ -282,14 +137,14 @@ export const serviceContent = {
       },
       {
         q: 'Is SEO included in website development?',
-        a: 'Every build includes on-page SEO foundations such as clean URLs, metadata, a logical heading structure, image alt text and a sitemap. Ongoing keyword research and content optimisation are available through our On-Page SEO service.',
+        a: 'Every build includes on-page SEO foundations such as clean URLs, metadata, a logical heading structure, image alt text and a sitemap. Ongoing keyword research and content optimisation are available through our Search Engine Optimization service.',
       },
       {
         q: 'Can you redesign my existing website?',
         a: 'Yes. We review what currently works, what does not and which content should be kept, then plan a redesign that improves clarity and performance while protecting valuable existing pages and URLs where possible.',
       },
     ],
-    related: ['on-page-seo', 'lead-generation', 'meta-google-ads'],
+    related: ['search-engine-optimization', 'lead-generation-for-business', 'google-ads-management'],
     cta: {
       title: "Let's build a website that works as hard as you do",
       text: 'Share a little about your business and what your website needs to achieve, and we will outline a sensible approach.',
@@ -297,457 +152,751 @@ export const serviceContent = {
   },
 
   /* --------------------------------------------------------------------- */
-  'meta-google-ads': {
-    metaTitle: 'Meta Ads & Google Ads Management',
-    metaDescription:
-      'Meta Ads and Google Ads management: paid social on Facebook and Instagram plus paid search on Google, with audience research, creative planning, conversion tracking and optimisation.',
-    hero: {
-      eyebrow: 'Meta Ads & Google Ads',
-      title: 'Paid Advertising That Reaches the Right People at the Right Moment',
-      intro:
-        'Meta Ads and Google Ads serve different purposes. We help you decide which fits your goals, or how they can work together, then plan, launch and optimise campaigns with tracking you can trust.',
-    },
-    overview: {
-      heading: 'Two platforms, two different jobs',
-      paragraphs: [
-        'Google Ads, particularly Search campaigns, reaches people who are actively looking for something. They type a query and your ad can appear alongside the results, which makes paid search well suited to capturing existing demand. Meta Ads place your message in the feeds, Stories and Reels of Facebook and Instagram users based on their interests, behaviours and demographics, which makes paid social well suited to creating demand, often before someone has started searching.',
-        'Treating both platforms the same tends to waste budget: broad awareness messages on search, or "buy now" offers shown to cold social audiences who have never heard of you. Our approach starts with your objective, budget and buying cycle, then gives each platform a clear role.',
-        'Campaigns are built on conversion tracking so decisions are based on meaningful actions such as enquiries, purchases or bookings, not clicks alone. We review performance regularly, test new creative, audiences and keywords, and report in plain language.',
-      ],
-    },
-    problems: {
-      heading: 'Paid advertising issues we often see',
-      items: [
-        {
-          title: 'Spending without clear measurement',
-          text: 'Without reliable conversion tracking it is impossible to know which campaigns are producing enquiries or sales.',
-        },
-        {
-          title: 'Ads reaching the wrong people',
-          text: 'Broad targeting, missing negative keywords or loose audiences can use budget on clicks that were never likely to convert.',
-        },
-        {
-          title: 'Creative fatigue',
-          text: 'Running the same ads for months often leads to declining engagement and rising costs.',
-        },
-        {
-          title: 'Landing pages that do not match the ad',
-          text: 'Sending ad traffic to a generic homepage breaks the promise made in the ad and loses interested visitors.',
-        },
-      ],
-    },
-    spotlight: {
-      variant: 'comparison',
-      heading: 'Meta Ads vs Google Ads at a glance',
-      intro: 'Both can be valuable. The difference lies in how people are reached and what they are doing at that moment.',
-      columns: [
-        {
-          title: 'Meta Ads',
-          subtitle: 'Paid social',
-          channels: 'Facebook · Instagram · Messenger · Audience Network',
-          bestFor: 'Building awareness and creating demand',
-          points: [
-            'Targets people by interests, behaviours, demographics and custom audiences',
-            'Visual creative: images, video, carousels and Stories/Reels formats',
-            'Strong for product discovery, launches, events and retargeting',
-            'Reaches people before they start actively searching',
-          ],
-        },
-        {
-          title: 'Google Ads',
-          subtitle: 'Paid search & more',
-          channels: 'Google Search · Performance Max · Display · YouTube',
-          bestFor: 'Capturing existing intent',
-          points: [
-            'Targets people by the keywords and phrases they search for',
-            'Text ads matched to the search query, with extensions and assets',
-            'Strong for services people actively look for and urgent needs',
-            'Reaches people at the moment they are looking for a solution',
-          ],
-        },
-      ],
-      note: 'Many businesses benefit from both: Meta to introduce the brand and re-engage visitors, Google to capture people who are ready to act.',
-    },
-    deliverables: [
-      {
-        title: 'Campaign strategy',
-        text: 'Objectives, platform roles, budget allocation and success measures agreed before anything launches.',
-      },
-      {
-        title: 'Audience & keyword research',
-        text: 'Audience definitions for Meta, plus keyword lists, match types and negative keywords for Google.',
-      },
-      {
-        title: 'Ad creative planning',
-        text: 'Ad copy, creative briefs and format recommendations tailored to each platform and placement.',
-      },
-      {
-        title: 'Conversion tracking',
-        text: 'Setup or review of Meta Pixel, Google Ads conversions and analytics events in your own accounts.',
-      },
-      {
-        title: 'Ongoing optimisation',
-        text: 'Budget, bid, audience, keyword and creative adjustments based on performance data.',
-      },
-      {
-        title: 'Clear reporting',
-        text: 'Regular summaries of spend, results and the actions planned next, without unnecessary jargon.',
-      },
-    ],
-    process: [
-      { title: 'Audit & objectives', text: 'Review existing accounts, tracking, offers and goals.' },
-      { title: 'Build & track', text: 'Structure campaigns, prepare creative and verify conversion tracking.' },
-      { title: 'Launch & test', text: 'Go live and test audiences, keywords and creative variations.' },
-      { title: 'Optimise & report', text: 'Refine based on data and share clear, regular updates.' },
-    ],
-    benefits: [
-      {
-        title: 'Visibility when it matters',
-        text: 'Search ads can place you in front of people actively looking for what you offer.',
-      },
-      {
-        title: 'Control over budget',
-        text: 'You set the budget, and campaigns can be scaled, paused or adjusted as results and priorities change.',
-      },
-      {
-        title: 'Measurable activity',
-        text: 'With proper tracking, you can see what ad spend is producing and make decisions accordingly.',
-      },
-      {
-        title: 'Faster feedback',
-        text: 'Paid campaigns generate data quickly, which can inform messaging, offers and even SEO priorities.',
-      },
-    ],
-    suitableFor: [
-      'Service businesses whose customers search on Google when they need help.',
-      'Ecommerce brands looking to reach new buyers and re-engage past visitors.',
-      'Businesses launching a new product, location or offer.',
-      'Companies already advertising that want clearer tracking and a structured optimisation process.',
-    ],
-    faqs: [
-      {
-        q: 'Should I advertise on Meta or Google?',
-        a: 'It depends on how your customers buy. If people actively search for your service, Google Search is often the natural starting point. If your product benefits from visual discovery, or people do not yet know they need it, Meta can be more effective. Many businesses use both, with different roles.',
-      },
-      {
-        q: 'How much should I spend on ads?',
-        a: 'There is no universal figure. The right budget depends on your market, competition, typical cost per click and how much data campaigns need to learn. We recommend a starting budget based on your goals and adjust it as real data arrives. Ad spend is paid directly to the platforms and is separate from management fees.',
-      },
-      {
-        q: 'Do you guarantee results from ads?',
-        a: 'No honest agency can guarantee specific results, because performance depends on competition, your offer, your website and factors outside anyone’s control. We commit to a structured strategy, accurate tracking, regular optimisation and transparent reporting.',
-      },
-      {
-        q: 'Will I own my ad accounts?',
-        a: 'Yes. We recommend running campaigns in ad accounts owned by your business, with access granted to us. Your data, history and creative assets always remain yours.',
-      },
-      {
-        q: 'How soon will I see results?',
-        a: 'Campaigns can start generating traffic soon after launch, but the first weeks are usually a learning phase while platforms gather data and we test audiences, keywords and creative. Expect performance to be refined over time rather than perfected on day one.',
-      },
-    ],
-    related: ['lead-generation', 'social-media-marketing', 'website-development'],
-    cta: {
-      title: 'Find out which ad platform fits your goals',
-      text: 'Tell us what you sell, who you sell to and any campaigns you have tried. We will suggest a practical starting point.',
-    },
-  },
-
+  /* 02. Search Engine Optimization                                        */
   /* --------------------------------------------------------------------- */
-  'lead-generation': {
-    metaTitle: 'Lead Generation Services',
+  'search-engine-optimization': {
+    metaTitle: 'Search Engine Optimization (SEO) Services',
     metaDescription:
-      'Lead generation services that connect targeting, landing pages, lead capture, qualification and follow-up, helping businesses attract relevant prospects and more sales conversations.',
+      'Search Engine Optimization services covering search intent, keyword mapping, title tags, meta descriptions, headings, content quality, internal linking, image SEO, and structured data.',
     hero: {
-      eyebrow: 'Lead Generation',
-      title: 'Lead Generation Built Around Quality, Not Just Volume',
+      eyebrow: '02 · Search Engine Optimization',
+      title: 'Search Engine Optimization That Makes Your Pages Clearer to Google and Buyers',
       intro:
-        'A lead only has value if it is the right person, with a real need, who hears back from you quickly. We design lead generation systems that connect every step, from who you target to how enquiries are followed up.',
+        'Search engines rank individual pages based on relevance, structure, and usefulness. We optimise the content, metadata, internal architecture, and technical signals of your key pages so the right customers can find you organically.',
     },
     overview: {
-      heading: 'Lead generation is a system, not a single campaign',
+      heading: 'Sustainable organic visibility starts with search intent and page clarity',
       paragraphs: [
-        'Most lead generation problems are not caused by one weak link but by gaps between the steps. Ads attract the wrong audience, the landing page does not match the promise, the form asks too much or too little, and good enquiries wait days for a reply. Each stage affects the next.',
-        'Our lead generation service looks at the whole journey. We define who your ideal prospects are, choose the channels most likely to reach them, build or improve landing pages with a single clear goal, design lead capture that balances ease with qualification, and help you set up follow-up so opportunities do not go cold.',
-        'Success is measured by lead quality as well as quantity: how many enquiries become genuine sales conversations. That feedback is used to keep refining targeting, messaging and offers.',
+        'Search Engine Optimization (SEO) covers the structure, content, and signals that help search engines understand what each page on your website offers—and whether it satisfies the person searching. Done properly, it connects your most important services with people actively researching solutions.',
+        'The foundation is search intent. Someone searching "what is lead generation" wants an educational explanation; someone searching "B2B lead generation agency" is comparing providers. We research the queries your customers actually use, identify the intent behind them, and map each topic to a dedicated page so your own URLs never compete against one another.',
+        'Organic search is a compounding long-term channel, and no honest agency promises overnight #1 rankings. What we deliver is a transparent, methodical improvement of your site’s relevance, page structure, internal linking, and technical hygiene—documented clearly at every step.',
       ],
     },
     problems: {
-      heading: 'Lead generation challenges we address',
+      heading: 'Common SEO issues that hold business websites back',
       items: [
         {
-          title: 'Plenty of enquiries, few real opportunities',
-          text: 'Leads that are outside your area, budget or service range waste sales time and hide the good ones.',
+          title: 'Pages that miss buyer search intent',
+          text: 'Targeting broad informational terms on a service page—or burying five services on a single generic page—makes it hard to rank for commercial searches.',
         },
         {
-          title: 'Not enough enquiries',
-          text: 'Interested visitors arrive but leave without contacting you because the next step is unclear or too demanding.',
+          title: 'Missing, generic, or duplicate metadata',
+          text: 'Default titles like "Home" or repeated meta descriptions reduce click-through rates and fail to signal what makes each page distinct.',
         },
         {
-          title: 'Slow or inconsistent follow-up',
-          text: 'Prospects often contact several providers. Delayed replies can hand the opportunity to a competitor.',
+          title: 'Weak heading hierarchy & internal links',
+          text: 'Unstructured copy and isolated "orphan" pages make content harder for visitors to scan and harder for crawlers to prioritise.',
         },
         {
-          title: 'No idea which source works',
-          text: 'Without source tracking, it is difficult to know which campaigns or pages deserve more investment.',
-        },
-      ],
-    },
-    spotlight: {
-      variant: 'flow',
-      heading: 'How targeting, landing pages, capture, qualification and follow-up connect',
-      intro: 'Each step shapes the quality of the next. We plan them together rather than in isolation.',
-      items: [
-        {
-          title: 'Targeting',
-          text: 'Define the ideal customer: industry, needs, location, budget and buying triggers. Everything else depends on getting this right.',
-        },
-        {
-          title: 'Traffic',
-          text: 'Reach those prospects through the most suitable channels, such as search ads, paid social, SEO content or email.',
-        },
-        {
-          title: 'Landing page',
-          text: 'Send visitors to a focused page that matches the promise of the ad, answers key questions and presents one clear action.',
-        },
-        {
-          title: 'Lead capture',
-          text: 'Use forms or booking tools that ask enough to qualify, but not so much that good prospects give up.',
-        },
-        {
-          title: 'Qualification',
-          text: 'Sort leads by fit and intent so your team spends its time on the most promising conversations.',
-        },
-        {
-          title: 'Follow-up',
-          text: 'Respond quickly with confirmation, notification and a clear next step, then record what happens.',
-        },
-      ],
-    },
-    deliverables: [
-      {
-        title: 'Ideal customer profile',
-        text: 'A clear definition of who you want to reach, what they need and what prompts them to buy.',
-      },
-      {
-        title: 'Funnel plan',
-        text: 'A map of channels, offers, pages and follow-up steps, with how each stage will be measured.',
-      },
-      {
-        title: 'Landing page optimisation',
-        text: 'New or improved landing pages focused on one audience and one action.',
-      },
-      {
-        title: 'Lead capture forms',
-        text: 'Forms designed for completion and qualification, connected to your email or CRM.',
-      },
-      {
-        title: 'Tracking & attribution',
-        text: 'UTM parameters and conversion events so you can see where each lead came from.',
-      },
-      {
-        title: 'Lead quality review',
-        text: 'Regular review of lead outcomes with your team to refine targeting and messaging.',
-      },
-    ],
-    process: [
-      { title: 'Research', text: 'Understand your offer, ideal customers and sales process.' },
-      { title: 'Build the funnel', text: 'Plan channels, landing pages, forms and follow-up.' },
-      { title: 'Launch & capture', text: 'Go live with tracking in place from the first lead.' },
-      { title: 'Measure & refine', text: 'Review lead quality with you and improve each stage.' },
-    ],
-    benefits: [
-      {
-        title: 'Better use of sales time',
-        text: 'Clearer qualification helps your team focus on prospects who are a good fit.',
-      },
-      {
-        title: 'Clearer view of what works',
-        text: 'Source tracking shows which channels and pages produce valuable enquiries.',
-      },
-      {
-        title: 'A more consistent pipeline',
-        text: 'A repeatable system can make enquiries less dependent on referrals or chance.',
-      },
-      {
-        title: 'Faster responses',
-        text: 'Automated confirmations and notifications help you reply while interest is high.',
-      },
-    ],
-    suitableFor: [
-      'B2B companies and professional services with a considered sales process.',
-      'Local and service-based businesses that rely on enquiries, quotes or bookings.',
-      'Businesses whose current campaigns generate leads that rarely convert.',
-      'Sales teams that want a steadier flow of relevant conversations.',
-    ],
-    faqs: [
-      {
-        q: 'How does your lead generation process work?',
-        a: 'We start by understanding your offer, ideal customers and sales process. We then plan the funnel (channels, landing pages, forms and follow-up), launch with tracking in place and review lead quality with you regularly to improve each stage.',
-      },
-      {
-        q: 'Can you guarantee a specific number of leads?',
-        a: 'No. Lead volume depends on your market, offer, budget, competition and many other factors. We focus on building a well-measured system and improving it based on real results, and we are open about what the data shows.',
-      },
-      {
-        q: 'What counts as a qualified lead?',
-        a: 'We define that with you at the start. It usually combines fit (the right industry, location, size or budget) with intent (a real need and timeframe). Clear criteria let us optimise toward the leads your team actually wants.',
-      },
-      {
-        q: 'Do I need a new website for lead generation?',
-        a: 'Not necessarily. Often a dedicated landing page or improvements to a few key pages is enough. If your website is a major barrier, we will explain why and discuss options through our Website Development service.',
-      },
-      {
-        q: 'Can leads go directly into our CRM?',
-        a: 'In many cases, yes. Depending on the tools you use, enquiries can be sent by email or connected to popular CRM and automation platforms. We confirm what is possible with your setup before building anything.',
-      },
-    ],
-    related: ['meta-google-ads', 'website-development', 'on-page-seo'],
-    cta: {
-      title: "Let's map out a lead generation system for your business",
-      text: 'Tell us who your ideal customers are and how you currently win new business, and we will identify the biggest opportunities.',
-    },
-  },
-
-  /* --------------------------------------------------------------------- */
-  'on-page-seo': {
-    metaTitle: 'On-Page SEO Services',
-    metaDescription:
-      'On-page SEO services covering search intent, keyword mapping, title tags, meta descriptions, headings, content quality, internal links, image optimisation and structured data.',
-    hero: {
-      eyebrow: 'On-Page SEO',
-      title: 'On-Page SEO That Makes Your Pages Clearer to Search Engines and People',
-      intro:
-        'Search engines rank pages, not just websites. We optimise the structure, content and signals of your most important pages so they match what people search for and are easy for search engines to understand.',
-    },
-    overview: {
-      heading: 'Relevance starts on the page',
-      paragraphs: [
-        'On-page SEO covers everything you control on a page: the words you use, how content is structured, the title and description shown in search results, how pages link to each other, image optimisation and technical signals such as structured data. Done well, it helps search engines understand what each page is about and helps visitors quickly find what they came for.',
-        'The foundation is search intent. Someone searching "what is lead generation" wants an explanation; someone searching "lead generation agency" is comparing providers. We research the terms your customers use, identify the intent behind them and map each topic to the page best suited to answer it, which also prevents several pages from competing for the same query.',
-        'SEO takes time, and nobody can promise specific rankings. What we can do is remove barriers, improve relevance and quality, and give your pages a strong on-page foundation, with clear documentation of what changed and why.',
-      ],
-    },
-    problems: {
-      heading: 'On-page issues that hold pages back',
-      items: [
-        {
-          title: 'Content that misses search intent',
-          text: 'A sales page competing for an informational query, or a thin page for a complex topic, rarely satisfies searchers.',
-        },
-        {
-          title: 'Missing or duplicate metadata',
-          text: 'Generic or repeated titles and descriptions make results less appealing and harder to tell apart.',
-        },
-        {
-          title: 'Weak structure and internal linking',
-          text: 'Unclear headings and isolated pages make content harder to scan and harder for search engines to prioritise.',
-        },
-        {
-          title: 'Pages competing with each other',
-          text: 'Several pages targeting the same topic can split relevance and confuse search engines about which to show.',
+          title: 'Keyword cannibalisation',
+          text: 'Multiple pages targeting the exact same phrase split relevance and leave search engines unsure which URL to display.',
         },
       ],
     },
     spotlight: {
       variant: 'cards',
-      heading: 'The on-page elements we review and improve',
-      intro: 'Every recommendation is tied to a specific page and a clear reason.',
+      heading: 'The SEO elements we audit and optimise',
+      intro: 'Every recommendation is tied to a specific page on your site and a clear strategic reason.',
       items: [
-        { title: 'Search intent', text: 'Making sure each page’s content type and depth fit what searchers are looking for.' },
-        { title: 'Keyword mapping', text: 'Assigning primary and supporting topics to the most relevant page on your site.' },
-        { title: 'Title tags', text: 'Unique, descriptive titles that reflect the page topic and encourage the right clicks.' },
-        { title: 'Meta descriptions', text: 'Accurate summaries that set clear expectations in the search results.' },
-        { title: 'Heading structure', text: 'One clear H1 and a logical H2/H3 hierarchy that mirrors the content.' },
-        { title: 'Content quality', text: 'Improving clarity, depth, accuracy and usefulness, without keyword stuffing.' },
-        { title: 'Internal linking', text: 'Descriptive links that connect related pages and guide visitors and crawlers.' },
-        { title: 'Image optimisation', text: 'Descriptive alt text, sensible file names, modern formats and correct sizing.' },
-        { title: 'Structured data', text: 'Relevant, valid schema markup that accurately reflects visible page content.' },
-        { title: 'Technical checks', text: 'Indexability, canonical tags, crawlable links, mobile usability and speed signals.' },
+        { title: 'Search intent alignment', text: 'Matching each page’s angle, format, and depth to what searchers expect to see.' },
+        { title: 'Keyword research & mapping', text: 'Assigning primary and secondary topics to the right URLs across your site.' },
+        { title: 'Title tags & meta descriptions', text: 'Unique, natural metadata written to earn clicks from qualified searchers.' },
+        { title: 'Heading structure (H1–H3)', text: 'One focused H1 per page supported by scannable H2 and H3 subheadings.' },
+        { title: 'Content depth & clarity', text: 'Refining service and educational copy to answer real buyer questions without keyword stuffing.' },
+        { title: 'Internal linking architecture', text: 'Connecting related services and articles with descriptive anchor text.' },
+        { title: 'Image SEO & alt attributes', text: 'Descriptive alt text, modern WebP/AVIF formats, and explicit dimensions.' },
+        { title: 'Schema & structured data', text: 'Valid Organization, Service, FAQ, and Article JSON-LD consistent with visible content.' },
+        { title: 'Indexability & technical checks', text: 'Reviewing canonical URLs, sitemaps, robots directives, and mobile page experience.' },
       ],
     },
     deliverables: [
       {
-        title: 'On-page SEO audit',
-        text: 'A prioritised review of your key pages, highlighting issues and opportunities.',
+        title: 'Comprehensive SEO audit',
+        text: 'A prioritised review of your key pages, indexing setup, and immediate on-page opportunities.',
       },
       {
-        title: 'Keyword & intent map',
-        text: 'A document showing which topics each page targets and why.',
+        title: 'Keyword & search intent map',
+        text: 'A clear blueprint mapping target search themes to specific existing or new pages.',
       },
       {
-        title: 'Metadata optimisation',
-        text: 'Rewritten title tags and meta descriptions for priority pages.',
+        title: 'Metadata & heading overhaul',
+        text: 'Custom title tags, meta descriptions, and H1–H3 hierarchies for your priority URLs.',
       },
       {
-        title: 'Content improvements',
-        text: 'Specific recommendations for headings, copy, FAQs and supporting sections, or implemented changes where agreed.',
+        title: 'On-page content optimisation',
+        text: 'Actionable copy improvements, service FAQs, and topical expansions implemented or ready for your team.',
       },
       {
         title: 'Internal linking plan',
-        text: 'Suggested links between related pages using clear, descriptive anchor text.',
+        text: 'Exact page-to-page link recommendations that strengthen authority around core services.',
       },
       {
-        title: 'Technical & schema checks',
-        text: 'Review of indexing, canonicals, structured data and images, with fixes or developer-ready notes.',
+        title: 'Schema & technical verification',
+        text: 'Validation of canonical tags, XML sitemap, robots.txt, image alt text, and JSON-LD markup.',
       },
     ],
     process: [
-      { title: 'Audit & research', text: 'Crawl key pages and research how your customers search.' },
-      { title: 'Map & prioritise', text: 'Assign topics to pages and rank fixes by likely impact.' },
-      { title: 'Optimise', text: 'Improve metadata, content, structure, links and markup.' },
-      { title: 'Monitor & refine', text: 'Track Search Console data and refine over time.' },
+      { title: 'Audit & research', text: 'Inspect key pages and research how your ideal buyers search.' },
+      { title: 'Map & prioritise', text: 'Assign search topics to pages and rank fixes by business value.' },
+      { title: 'Optimise pages', text: 'Upgrade metadata, headings, content depth, internal links, and schema.' },
+      { title: 'Monitor & refine', text: 'Review Search Console impressions, clicks, and queries to iterate.' },
     ],
     benefits: [
       {
-        title: 'Clearer relevance',
-        text: 'Well-structured, intent-focused pages give search engines stronger signals about what you offer.',
+        title: 'Stronger topical relevance',
+        text: 'Focused, well-structured pages help search engines connect your business to the right queries.',
       },
       {
-        title: 'Better click-through potential',
-        text: 'Accurate, compelling titles and descriptions can help more searchers choose your result.',
+        title: 'Higher-quality organic traffic',
+        text: 'Targeting commercial and service-specific intent attracts visitors who are actually looking for what you sell.',
       },
       {
-        title: 'Improved user experience',
-        text: 'Clear headings, useful content and helpful internal links benefit visitors as much as search engines.',
+        title: 'Better visitor experience',
+        text: 'Clear headings, helpful answers, and logical internal navigation improve conversion rates for all traffic.',
       },
       {
-        title: 'Long-term value',
-        text: 'Unlike ad spend, optimised content keeps working after the work is done, though it benefits from periodic review.',
+        title: 'Compounding long-term asset',
+        text: 'Unlike paid clicks that stop when budget pauses, well-optimised pages continue working over time.',
       },
     ],
     suitableFor: [
-      'Businesses whose websites receive little organic search traffic.',
-      'Companies planning a new website or redesign that want SEO built in from the start.',
-      'Service businesses competing for industry-specific or local searches.',
-      'Teams publishing content that want it to be easier to discover.',
+      'Service businesses and B2B companies looking to grow organic enquiries.',
+      'Brands launching a new website or redesign that want SEO built in from day one.',
+      'Websites that have helpful services but rarely appear for non-branded searches.',
+      'Marketing teams publishing blog content that needs stronger structure and internal linking.',
     ],
     faqs: [
       {
-        q: 'How long does SEO take to show results?',
-        a: 'On-page changes can be crawled within days or weeks, but meaningful changes in rankings and traffic usually develop over several months. Timelines vary with competition, your site’s existing authority, content quality and how often search engines crawl your pages.',
+        q: 'How long does Search Engine Optimization usually take to show results?',
+        a: 'Search engines can crawl and index on-page updates within days or weeks, but meaningful growth in organic rankings and qualified traffic typically develops over several months. Timelines depend on market competition, your website’s current foundation, and content depth.',
       },
       {
-        q: 'What is the difference between on-page and off-page SEO?',
-        a: 'On-page SEO covers elements on your own website: content, structure, metadata, internal links and technical signals. Off-page SEO refers to factors elsewhere, such as links from other websites and brand mentions. Our service focuses on on-page optimisation, the foundation other SEO work builds on.',
+        q: 'Can you guarantee a #1 ranking on Google?',
+        a: 'No. Search engine algorithms weigh hundreds of signals that no agency controls, and rankings shift continuously. Any provider promising guaranteed positions should be treated with caution. We focus on measurable, best-practice improvements that make your pages genuinely more relevant and competitive.',
       },
       {
-        q: 'Can you guarantee first-page rankings?',
-        a: 'No. Search engines decide rankings using many factors that no agency controls, and results change over time. Anyone guaranteeing a specific position should be treated with caution. We focus on improvements that make your pages genuinely more relevant and useful.',
+        q: 'Do you implement the SEO changes or hand over recommendations?',
+        a: 'Either way works. With CMS or codebase access we can implement metadata, content, internal linking, and schema updates directly—or we can deliver structured documentation for your developers and editors.',
       },
       {
-        q: 'Do you need access to my website?',
-        a: 'To implement changes directly, we need appropriate access to your CMS. We also recommend access to Google Search Console and analytics so decisions are based on real search data. Alternatively, we can provide recommendations for your team to implement.',
-      },
-      {
-        q: 'Does structured data improve rankings?',
-        a: 'Structured data helps search engines understand page content and can make pages eligible for some enhanced search features, but it does not guarantee rich results or higher rankings. We only add markup that accurately reflects visible content.',
+        q: 'How does SEO work alongside Google Ads?',
+        a: 'SEO builds sustainable organic visibility over time, while Google Search Ads captures immediate demand. Search term data from Google Ads often reveals which phrases convert best, helping us prioritise the highest-value pages for SEO.',
       },
     ],
-    related: ['website-development', 'lead-generation', 'social-media-marketing'],
+    related: ['website-development', 'google-ads-management', 'lead-generation-for-business'],
     cta: {
-      title: 'Get a clearer picture of your on-page SEO',
-      text: 'Send us your website and the services you most want to be found for, and we will discuss where on-page improvements could help.',
+      title: 'Strengthen your search visibility with practical SEO',
+      text: 'Share your website URL and the services you want to be found for, and we will identify your clearest SEO opportunities.',
+    },
+  },
+
+  /* --------------------------------------------------------------------- */
+  /* 03. Social Media Management                                           */
+  /* --------------------------------------------------------------------- */
+  'social-media-management': {
+    metaTitle: 'Social Media Management Services',
+    metaDescription:
+      'Social media management services covering strategy, content calendars, platform-specific creatives, community management, and performance reporting.',
+    hero: {
+      eyebrow: '03 · Social Media Management',
+      title: 'Social Media Management That Keeps Your Brand Active, Consistent, and Credible',
+      intro:
+        'When prospects discover your business, your social profiles are often the first place they check to see if you are active and trustworthy. We plan, create, and manage consistent social content aligned with your commercial goals.',
+    },
+    overview: {
+      heading: 'Consistent presence without the weekly scramble for post ideas',
+      paragraphs: [
+        'Many business owners know they should stay active on social media, yet day-to-day operations push posting to the bottom of the list. The result is months of silence followed by rushed posts that do not reflect the quality of the business.',
+        'Our Social Media Management service replaces ad-hoc posting with a reliable monthly system. We define your core content pillars, select the platforms where your buyers actually spend time, prepare a structured content calendar for your approval, and handle scheduling, community interaction, and reporting.',
+        'Where paid reach makes sense to accelerate audience growth or promote key offers, we coordinate your organic calendar directly with our Meta Ads Management team so organic and paid social reinforce each other.',
+      ],
+    },
+    problems: {
+      heading: 'Social media challenges we take off your plate',
+      items: [
+        {
+          title: 'Dormant or irregular profiles',
+          text: 'Long gaps between posts can make an active, thriving company look inactive to prospects checking your pages.',
+        },
+        {
+          title: 'Posting without a clear strategy',
+          text: 'Random updates that do not explain your expertise, products, or customer outcomes fail to build buying confidence.',
+        },
+        {
+          title: 'Identical posts copied everywhere',
+          text: 'Each platform has its own format and audience expectations—LinkedIn buyers read differently than Instagram browsers.',
+        },
+        {
+          title: 'No visibility into what resonates',
+          text: 'Without structured monthly reporting, it is hard to tell which topics earn real engagement and website visits.',
+        },
+      ],
+    },
+    spotlight: {
+      variant: 'cards',
+      heading: 'Tailoring management to the platforms that fit your audience',
+      intro:
+        'Rather than stretching thin across every network, we focus on the channels that match how your customers discover and evaluate brands:',
+      items: [
+        {
+          title: 'Instagram',
+          text: 'Carousel education, visual brand storytelling, Reels concepts, and Stories that keep consumer and lifestyle brands front of mind.',
+        },
+        {
+          title: 'Facebook',
+          text: 'Community updates, service highlights, event promotion, and local trust-building supported by responsive page management.',
+        },
+        {
+          title: 'LinkedIn',
+          text: 'Authority-building company updates, industry insights, and B2B positioning for professional services and corporate brands.',
+        },
+        {
+          title: 'TikTok & YouTube Shorts',
+          text: 'Short-form video planning and scripting when visual demonstrations and educational hooks suit your audience.',
+        },
+      ],
+    },
+    deliverables: [
+      {
+        title: 'Channel strategy & brand playbook',
+        text: 'Defined content pillars, visual direction, tone of voice, and platform priorities tailored to your brand.',
+      },
+      {
+        title: 'Monthly content calendar',
+        text: 'Planned post topics, captions, visuals, and publishing dates shared in advance for straightforward sign-off.',
+      },
+      {
+        title: 'Visual design & copywriting',
+        text: 'On-brand graphics, carousel layouts, captions, and short-form video briefs formatted for each network.',
+      },
+      {
+        title: 'Profile & bio optimisation',
+        text: 'Clear profile descriptions, highlights, cover graphics, and tracked website links that guide visitors to enquire.',
+      },
+      {
+        title: 'Community engagement',
+        text: 'Monitoring and responding to comments and routine page messages using agreed brand guidelines.',
+      },
+      {
+        title: 'Monthly performance report',
+        text: 'A plain-English summary of reach, engagement quality, website clicks, and next month’s priorities.',
+      },
+    ],
+    process: [
+      { title: 'Audit & align', text: 'Review your current profiles, brand assets, audience, and business objectives.' },
+      { title: 'Plan the calendar', text: 'Map monthly content pillars, post formats, and campaign moments.' },
+      { title: 'Create & approve', text: 'Design visuals and write captions for your review before scheduling.' },
+      { title: 'Publish & report', text: 'Schedule posts, manage community interaction, and review monthly insights.' },
+    ],
+    benefits: [
+      {
+        title: 'A dependable, professional presence',
+        text: 'Prospects researching your business see an active, cohesive brand that communicates clearly.',
+      },
+      {
+        title: 'Hours saved every week',
+        text: 'Your team reviews a complete monthly calendar in one sitting instead of scrambling for daily ideas.',
+      },
+      {
+        title: 'Stronger brand recall',
+        text: 'Consistent visual identity and repeatable content themes help your audience remember what you do.',
+      },
+      {
+        title: 'Ready foundation for paid social',
+        text: 'Active profiles and proven organic posts strengthen the performance of Meta Ads campaigns.',
+      },
+    ],
+    suitableFor: [
+      'Growing businesses that want a consistent, professional social presence without hiring full-time in-house.',
+      'Ecommerce, retail, and hospitality brands that rely on visual discovery and customer familiarity.',
+      'B2B and service companies building credibility on LinkedIn, Facebook, and Instagram.',
+      'Brands running Meta Ads that want their organic profiles to reinforce paid campaigns.',
+    ],
+    faqs: [
+      {
+        q: 'Will we approve posts before they go live?',
+        a: 'Yes. We share the content calendar—including visuals and captions—in advance so you can review, request edits, and approve everything before it is scheduled.',
+      },
+      {
+        q: 'Which social media platforms do you manage?',
+        a: 'We primarily manage Instagram, Facebook, and LinkedIn, and can include TikTok or YouTube Shorts where short-form video fits your audience and workflow.',
+      },
+      {
+        q: 'What is the difference between Social Media Management and Meta Ads Management?',
+        a: 'Social Media Management focuses on your ongoing organic presence: content calendars, posts, profile presentation, and community engagement. Meta Ads Management focuses on paid advertising campaigns on Facebook and Instagram to reach targeted new audiences and drive tracked conversions.',
+      },
+      {
+        q: 'Can we supply photos or videos from our business?',
+        a: 'Absolutely—and we encourage it. Authentic photos or clips of your team, products, or work combined with our design templates and copywriting create the strongest content.',
+      },
+    ],
+    related: ['meta-ads-management', 'website-development', 'lead-generation-for-business'],
+    cta: {
+      title: 'Build a consistent social presence without the guesswork',
+      text: 'Tell us which platforms matter most to your customers, and we will outline a practical monthly management plan.',
+    },
+  },
+
+  /* --------------------------------------------------------------------- */
+  /* 04. Meta Ads Management                                               */
+  /* --------------------------------------------------------------------- */
+  'meta-ads-management': {
+    metaTitle: 'Meta Ads Management Services (Facebook & Instagram Ads)',
+    metaDescription:
+      'Meta Ads management for Facebook and Instagram: audience targeting, creative strategy, Meta Pixel & conversion tracking, retargeting funnels, and transparent optimisation.',
+    hero: {
+      eyebrow: '04 · Meta Ads Management',
+      title: 'Strategic Facebook & Instagram Advertising Built Around Real Conversions',
+      intro:
+        'Meta Ads let you put your offer in front of ideal buyers across Facebook and Instagram before they even start searching. We plan, launch, and optimise paid social campaigns backed by accurate conversion tracking and disciplined creative testing.',
+    },
+    overview: {
+      heading: 'Turning paid social attention into measurable enquiries and sales',
+      paragraphs: [
+        'Facebook and Instagram offer remarkable reach, but boosting random posts or running a single generic ad rarely delivers sustainable results. Effective Meta Ads management combines three elements: reaching the right audience segments, presenting thumb-stopping creative that communicates a clear offer, and sending clicks to a fast landing page with reliable conversion tracking.',
+        'We structure Meta campaigns around your full buyer journey. Prospecting campaigns introduce your brand and offer to carefully defined interest, lookalike, or broad audiences; retargeting campaigns follow up with people who engaged with your social profiles or visited your website without converting.',
+        'Every campaign is built inside your own Meta Business Manager and Ad Account so you retain full ownership of your data, audiences, and history. We test creative angles methodically, monitor cost per result, and report in clear business terms.',
+      ],
+    },
+    problems: {
+      heading: 'Common Meta advertising pitfalls we solve',
+      items: [
+        {
+          title: 'Boosted posts with no conversion goal',
+          text: 'Spending budget on engagement boosts without proper campaign objectives or landing pages rarely produces qualified leads or sales.',
+        },
+        {
+          title: 'Missing or broken Meta Pixel tracking',
+          text: 'If conversion events are not firing accurately, Meta’s algorithm cannot optimise for buyers and you cannot see true campaign ROI.',
+        },
+        {
+          title: 'Creative fatigue & rising costs',
+          text: 'Showing the exact same graphic to the same audience for months causes click-through rates to drop and cost per result to climb.',
+        },
+        {
+          title: 'No follow-up for warm website visitors',
+          text: 'Most first-time visitors do not enquire immediately; without structured retargeting, that paid traffic is lost.',
+        },
+      ],
+    },
+    spotlight: {
+      variant: 'cards',
+      heading: 'How we structure high-performing Meta Ad accounts',
+      intro: 'Every campaign layer has a defined role, audience, and measurement metric:',
+      items: [
+        {
+          title: 'Audience prospecting',
+          text: 'Reaching new buyers across Facebook and Instagram Feeds, Stories, and Reels using data-backed audience signals and creative hooks.',
+        },
+        {
+          title: 'Creative & format testing',
+          text: 'Testing static visuals, carousels, and short-form video hooks to identify which messages earn the strongest response.',
+        },
+        {
+          title: 'Multi-window retargeting',
+          text: 'Re-engaging website visitors, video viewers, and social engagers with relevant proof, FAQs, and clear calls to action.',
+        },
+        {
+          title: 'Pixel & event verification',
+          text: 'Configuring and testing Meta Pixel and standard/custom conversion events so optimisation follows real enquiries or purchases.',
+        },
+        {
+          title: 'Landing page alignment',
+          text: 'Ensuring the page visitors land on matches the visual and headline promise of the ad they clicked.',
+        },
+        {
+          title: 'Budget & bid discipline',
+          text: 'Allocating spend toward winning ad sets and pausing underperforming variations before budget is wasted.',
+        },
+      ],
+    },
+    deliverables: [
+      {
+        title: 'Meta Ads strategy & funnel map',
+        text: 'Campaign objectives, audience structure, placement selection, and budget allocation plan.',
+      },
+      {
+        title: 'Meta Pixel & conversion setup',
+        text: 'Installation and verification of tracking events across your website, forms, or checkout.',
+      },
+      {
+        title: 'Audience research & build',
+        text: 'Creation of custom audiences (website traffic, customer lists, engagers), lookalikes, and prospecting segments.',
+      },
+      {
+        title: 'Ad copy & creative briefs',
+        text: 'Primary text, headlines, call-to-action selection, and visual/video creative direction for Feed, Story, and Reel placements.',
+      },
+      {
+        title: 'Ongoing A/B testing & optimisation',
+        text: 'Continuous refinement of creatives, audiences, placements, and budget distribution.',
+      },
+      {
+        title: 'Transparent performance reporting',
+        text: 'Regular breakdowns of ad spend, reach, clicks, conversion volume, cost per result, and next testing steps.',
+      },
+    ],
+    process: [
+      { title: 'Audit & tracking', text: 'Review your Meta Business Manager, past data, offer, and conversion tracking.' },
+      { title: 'Funnel & creative build', text: 'Configure audiences, write ad copy, prepare visuals, and structure campaigns.' },
+      { title: 'Launch & test', text: 'Go live across Facebook and Instagram and test creative and audience variations.' },
+      { title: 'Scale & refine', text: 'Shift budget to top performers, refresh creatives, and report clearly.' },
+    ],
+    benefits: [
+      {
+        title: 'Create demand proactively',
+        text: 'Introduce your product or service to ideal customers even before they know to search for you.',
+      },
+      {
+        title: 'Visual storytelling at scale',
+        text: 'Showcase your offer through video, carousels, and imagery across Facebook and Instagram.',
+      },
+      {
+        title: 'Recover interested visitors',
+        text: 'Retargeting keeps your brand visible to warm prospects while they are deciding.',
+      },
+      {
+        title: 'Full account ownership',
+        text: 'All campaigns, pixels, and audience data remain inside your own business ad account.',
+      },
+    ],
+    suitableFor: [
+      'Ecommerce and consumer brands looking to drive product discovery and repeat purchases.',
+      'Service businesses promoting consultations, local offers, or lead magnets.',
+      'B2B and education brands using paid social to build awareness and retarget website visitors.',
+      'Companies already running Facebook or Instagram ads that want sharper tracking and creative testing.',
+    ],
+    faqs: [
+      {
+        q: 'What is the difference between Meta Ads and Google Ads?',
+        a: 'Meta Ads (Facebook and Instagram) reaches people based on interests, demographics, behaviours, and custom audiences while they browse social feeds—making it ideal for creating demand and retargeting. Google Ads reaches people actively typing search queries—making it ideal for capturing existing intent. Many businesses use both together.',
+      },
+      {
+        q: 'Who pays Meta for the ad spend?',
+        a: 'Your business pays ad spend directly to Meta via the billing method in your own Meta Ad Account. Our management fee is separate so you always have 100% visibility into exact media costs.',
+      },
+      {
+        q: 'Do you guarantee a specific cost per lead or ROAS?',
+        a: 'No honest agency can guarantee exact auction outcomes because results depend on market competition, your offer, pricing, and landing page conversion rate. We commit to accurate tracking, structured creative testing, and disciplined budget management.',
+      },
+      {
+        q: 'Can you help if we do not have a landing page yet?',
+        a: 'Yes. Through our Website Development and Lead Generation services, we can design and build a dedicated conversion landing page before launching your Meta campaigns.',
+      },
+    ],
+    related: ['social-media-management', 'google-ads-management', 'lead-generation-for-business'],
+    cta: {
+      title: 'Ready to run structured Facebook & Instagram campaigns?',
+      text: 'Tell us about your offer, target audience, and goals, and we will recommend a clear Meta Ads strategy.',
+    },
+  },
+
+  /* --------------------------------------------------------------------- */
+  /* 05. Google Ads Management                                             */
+  /* --------------------------------------------------------------------- */
+  'google-ads-management': {
+    metaTitle: 'Google Ads Management Services (Search & PPC)',
+    metaDescription:
+      'Google Ads management services covering high-intent Search campaigns, keyword and negative keyword research, conversion tracking, landing page alignment, and ongoing PPC optimisation.',
+    hero: {
+      eyebrow: '05 · Google Ads Management',
+      title: 'Capture High-Intent Buyers at the Exact Moment They Search on Google',
+      intro:
+        'When someone types the exact service you offer into Google, they are actively looking for a solution. We build, track, and optimise Google Ads campaigns that turn commercial search intent into qualified enquiries and sales.',
+    },
+    overview: {
+      heading: 'Precision paid search built on intent, relevance, and clean tracking',
+      paragraphs: [
+        'Google Search Ads is one of the most direct channels in digital marketing because you are reaching people who already have a need in mind. However, poorly structured accounts waste budget quickly—paying for broad informational clicks, irrelevant search terms, or traffic sent to slow, generic pages.',
+        'Our Google Ads Management service focuses on commercial intent. We research the exact phrases buyers use when they are ready to hire or purchase, group keywords tightly so every ad matches the user’s search query, maintain thorough negative keyword lists to block wasted spend, and connect each ad group to a relevant landing page.',
+        'Before spending a dollar, we verify conversion tracking in your own Google Ads and Google Analytics accounts so bidding decisions are guided by real enquiries, calls, or purchases rather than clicks alone.',
+      ],
+    },
+    problems: {
+      heading: 'Google Ads leaks we regularly identify and fix',
+      items: [
+        {
+          title: 'Paying for irrelevant search terms',
+          text: 'Loose broad-match keywords without negative keyword lists often spend budget on job seekers, DIY searches, or unrelated categories.',
+        },
+        {
+          title: 'Broken or inflated conversion tracking',
+          text: 'Counting every page view as a "conversion" misleads automated bidding strategies and hides true lead costs.',
+        },
+        {
+          title: 'Generic ads & low Quality Scores',
+          text: 'Cramming dozens of different services into one ad group lowers ad relevance, reduces click-through rates, and increases cost per click.',
+        },
+        {
+          title: 'Sending paid clicks to an unfocused homepage',
+          text: 'Visitors who click a specific service ad expect to land on a page dedicated to that exact service and offer.',
+        },
+      ],
+    },
+    spotlight: {
+      variant: 'comparison',
+      heading: 'Choosing the right Google Ads campaign types for your business',
+      intro: 'We select campaign formats based on how your customers search and buy:',
+      columns: [
+        {
+          title: 'Google Search Campaigns',
+          subtitle: 'High-Intent Capture',
+          channels: 'Google Search Results',
+          bestFor: 'Service businesses, B2B & urgent commercial needs',
+          points: [
+            'Targets users actively searching specific commercial keywords',
+            'Tightly themed ad groups with tailored responsive search ads',
+            'Ad assets (sitelinks, callouts, structured snippets) to maximise screen presence',
+            'Proactive negative keyword management to filter out non-buyers',
+          ],
+        },
+        {
+          title: 'Performance Max, Shopping & Remarketing',
+          subtitle: 'Full-Network Reach & Follow-Up',
+          channels: 'Search · Shopping · YouTube · Display · Discover',
+          bestFor: 'Ecommerce product catalogues & multi-touch remarketing',
+          points: [
+            'Showcases product feeds or multi-format assets across Google properties',
+            'Re-engages past website visitors as they browse across the web and YouTube',
+            'Guided by clean conversion value and audience signals',
+            'Paired with brand/search exclusions where needed to protect efficiency',
+          ],
+        },
+      ],
+      note: 'For most service and B2B businesses, focused Google Search campaigns paired with dedicated landing pages provide the clearest starting point.',
+    },
+    deliverables: [
+      {
+        title: 'Account audit & keyword strategy',
+        text: 'Deep research into commercial search queries, match types, competitor positioning, and negative keywords.',
+      },
+      {
+        title: 'Campaign & ad group architecture',
+        text: 'Clean account structure separating services, locations, and intent levels for stronger ad relevance.',
+      },
+      {
+        title: 'Responsive Search Ads & assets',
+        text: 'Compelling headlines, descriptions, sitelinks, callouts, and structured snippets matched to buyer queries.',
+      },
+      {
+        title: 'Conversion tracking setup',
+        text: 'Accurate Google Tag / GA4 conversion tracking for form enquiries, bookings, calls, or ecommerce sales.',
+      },
+      {
+        title: 'Search term & bid optimisation',
+        text: 'Regular search term audits, negative keyword additions, bid adjustments, and ad copy testing.',
+      },
+      {
+        title: 'Clear monthly reporting',
+        text: 'Plain-language reporting on spend, search queries, conversions, cost per enquiry, and next optimisations.',
+      },
+    ],
+    process: [
+      { title: 'Research & audit', text: 'Analyse search demand, existing account history, competitors, and landing pages.' },
+      { title: 'Structure & track', text: 'Build campaigns, write ads, add negative keywords, and verify conversion tracking.' },
+      { title: 'Launch & monitor', text: 'Go live and closely inspect actual search terms, click quality, and early conversions.' },
+      { title: 'Optimise & refine', text: 'Prune wasted queries, refine bids and ads, and report transparently.' },
+    ],
+    benefits: [
+      {
+        title: 'Immediate high-intent visibility',
+        text: 'Appear in front of prospects actively searching for your service without waiting months for organic rankings.',
+      },
+      {
+        title: 'Strict control over budget & geography',
+        text: 'Target the exact locations, days, hours, and search themes that match your operational capacity.',
+      },
+      {
+        title: 'Protected ad spend',
+        text: 'Ongoing negative keyword filtering keeps your budget focused on commercial searches.',
+      },
+      {
+        title: 'Insights that improve SEO',
+        text: 'Real conversion data from Google Ads reveals which keywords deserve long-term SEO investment.',
+      },
+    ],
+    suitableFor: [
+      'Service providers and B2B companies whose customers search Google when ready to hire.',
+      'Local and regional businesses wanting enquiries from specific service areas.',
+      'Ecommerce brands looking to capture product and category searches.',
+      'Businesses with existing Google Ads accounts that want to reduce wasted spend and improve tracking.',
+    ],
+    faqs: [
+      {
+        q: 'How much budget do I need for Google Ads?',
+        a: 'The right starting budget depends on average cost-per-click in your industry, your geographic target area, and how many clicks are needed to generate reliable conversion data. During our consultation we review typical CPCs for your services and suggest a realistic test budget.',
+      },
+      {
+        q: 'Do I own my Google Ads account?',
+        a: 'Yes, always. We set up or manage campaigns inside a Google Ads account owned by your business, with billing connected directly to your company.',
+      },
+      {
+        q: 'How quickly can Google Ads generate enquiries?',
+        a: 'Search campaigns can begin driving high-intent visitors as soon as ads are approved. The first 3–6 weeks serve as an important calibration phase as we review search term reports, add negative keywords, and refine bids based on real conversion data.',
+      },
+      {
+        q: 'Should we run Google Ads, Meta Ads, or both?',
+        a: 'If customers actively search for your service by name, Google Search Ads is often the strongest first step. If your offer relies on visual discovery or reaching people before they search, Meta Ads is ideal. Many growing businesses pair Google Search (to capture intent) with Meta retargeting (to stay visible while buyers compare options).',
+      },
+    ],
+    related: ['lead-generation-for-business', 'website-development', 'meta-ads-management'],
+    cta: {
+      title: 'Capture high-intent Google searches with confidence',
+      text: 'Share your services, target locations, and goals, and we will outline a focused Google Ads plan.',
+    },
+  },
+
+  /* --------------------------------------------------------------------- */
+  /* 06. Lead Generation for Business                                      */
+  /* --------------------------------------------------------------------- */
+  'lead-generation-for-business': {
+    metaTitle: 'Lead Generation for Business Services',
+    metaDescription:
+      'Lead generation services for businesses that connect audience targeting, landing pages, lead capture, qualification, and follow-up to generate more qualified sales conversations.',
+    hero: {
+      eyebrow: '06 · Lead Generation for Business',
+      title: 'Lead Generation Systems Built Around Prospect Quality, Not Just Volume',
+      intro:
+        'A lead only helps your business if it is the right prospect, with a genuine need, who hears back from your team promptly. We design end-to-end lead generation systems that connect targeting, landing pages, qualification, and follow-up.',
+    },
+    overview: {
+      heading: 'Lead generation is a connected system, not an isolated campaign',
+      paragraphs: [
+        'Most lead generation disappointments happen in the gaps between steps: ads attract the wrong audience, the landing page is generic, the form asks too much or too little, or promising enquiries wait days for a response. Fixing only one piece rarely solves the pipeline problem.',
+        'Our Lead Generation for Business service looks at the entire customer acquisition journey. We clarify your ideal customer profile and offer, choose the traffic channels that fit how your buyers research, build or optimise focused landing pages, design lead capture forms that balance ease with qualification, and establish clear follow-up and attribution.',
+        'We measure success with you based on lead quality as well as quantity—how many enquiries turn into real sales conversations—and feed those insights back into your targeting and messaging.',
+      ],
+    },
+    problems: {
+      heading: 'Lead generation bottlenecks we help businesses solve',
+      items: [
+        {
+          title: 'Unqualified enquiries wasting sales time',
+          text: 'Leads outside your service scope, geography, or budget range drain team energy and obscure genuine buyers.',
+        },
+        {
+          title: 'Website traffic that leaves without enquiring',
+          text: 'Interested visitors bounce when the value proposition is vague or the next step feels complicated.',
+        },
+        {
+          title: 'Slow or disconnected lead follow-up',
+          text: 'Buyers often contact two or three providers; delayed notifications or unclear next steps hand deals to competitors.',
+        },
+        {
+          title: 'No attribution on which channel works',
+          text: 'Without UTM and conversion tracking, you cannot tell whether SEO, Google Ads, or Meta Ads produced your best clients.',
+        },
+      ],
+    },
+    spotlight: {
+      variant: 'flow',
+      heading: 'How targeting, landing pages, capture, qualification, and follow-up connect',
+      intro: 'Every stage shapes the quality of the next. We design and measure all six stages together:',
+      items: [
+        {
+          title: 'Ideal customer targeting',
+          text: 'Define the industry, location, need, budget level, and buying trigger of the prospects you actually want.',
+        },
+        {
+          title: 'Traffic acquisition',
+          text: 'Reach those buyers through the right mix of Google Search Ads, Meta Ads, or organic search content.',
+        },
+        {
+          title: 'Focused landing page',
+          text: 'Direct visitors to a fast, distraction-free page that matches the ad promise and answers buyer objections.',
+        },
+        {
+          title: 'Balanced lead capture',
+          text: 'Use forms or booking flows that are easy to complete while capturing the details your team needs.',
+        },
+        {
+          title: 'Lead qualification',
+          text: 'Include smart qualifying questions (service type, timeline, or scope) to filter out poor-fit enquiries.',
+        },
+        {
+          title: 'Prompt follow-up & feedback',
+          text: 'Route enquiries immediately to your inbox or CRM and review lead outcomes to refine campaign targeting.',
+        },
+      ],
+    },
+    deliverables: [
+      {
+        title: 'Ideal customer & offer blueprint',
+        text: 'Clear definition of target buyer segments, value propositions, and qualifying criteria.',
+      },
+      {
+        title: 'Funnel & channel architecture',
+        text: 'End-to-end map connecting traffic sources, landing pages, lead capture, and follow-up steps.',
+      },
+      {
+        title: 'Conversion landing page design',
+        text: 'New or optimised single-goal landing pages built for mobile speed and message clarity.',
+      },
+      {
+        title: 'Qualifying enquiry forms',
+        text: 'Accessible, spam-protected forms with service/budget selectors and instant delivery.',
+      },
+      {
+        title: 'Source & UTM attribution',
+        text: 'Tracking setup so you know which campaign, keyword, or page generated each enquiry.',
+      },
+      {
+        title: 'Lead quality review loop',
+        text: 'Regular reviews with your sales team to adjust targeting and form questions based on real conversation quality.',
+      },
+    ],
+    process: [
+      { title: 'Research & define', text: 'Clarify your offer, ideal customer profile, and sales qualification criteria.' },
+      { title: 'Build the funnel', text: 'Create or refine landing pages, qualifying forms, and campaign structure.' },
+      { title: 'Launch with tracking', text: 'Drive targeted traffic with end-to-end source and conversion attribution.' },
+      { title: 'Review & improve', text: 'Evaluate lead quality with your team and refine every stage.' },
+    ],
+    benefits: [
+      {
+        title: 'Better use of your sales team’s time',
+        text: 'Thoughtful qualification helps your team focus on prospects who match your services and budget.',
+      },
+      {
+        title: 'Higher conversion from existing traffic',
+        text: 'Clearer landing pages and simpler forms help more of your current visitors get in touch.',
+      },
+      {
+        title: 'Clear source visibility',
+        text: 'Know which channels and pages produce real opportunities so budget goes where it works.',
+      },
+      {
+        title: 'More predictable enquiry flow',
+        text: 'A structured funnel reduces reliance on sporadic referrals alone.',
+      },
+    ],
+    suitableFor: [
+      'B2B companies, consultants, and professional service firms with a consultative sales process.',
+      'Local and regional service businesses that grow through quote requests, calls, or bookings.',
+      'Companies generating ad clicks or website traffic that rarely convert into enquiries.',
+      'Businesses receiving too many low-fit enquiries that want better pre-qualification.',
+    ],
+    faqs: [
+      {
+        q: 'Can you guarantee a specific number of leads each month?',
+        a: 'No. Lead volume depends on market demand, competition, your offer, and media budget. We focus on building a transparent, well-tracked acquisition system and continuously improving conversion rates and lead relevance based on real data.',
+      },
+      {
+        q: 'How do you improve lead quality when too many enquiries are unqualified?',
+        a: 'We tighten three areas together: excluding irrelevant keywords or audiences in your ads, stating who your service is for clearly on the landing page, and adding one or two friction-light qualifying fields (such as service scope or estimated budget) to the enquiry form.',
+      },
+      {
+        q: 'Do we need a brand-new website to run lead generation campaigns?',
+        a: 'Not always. Often a dedicated campaign landing page or targeted improvements to your core service pages and contact form are sufficient. If your wider site needs a rebuild, we can pair this with our Website Development service.',
+      },
+      {
+        q: 'Where are leads delivered?',
+        a: 'Enquiries can be delivered directly to your business email inbox or routed to your preferred CRM or webhook provider using your own account credentials.',
+      },
+    ],
+    related: ['google-ads-management', 'meta-ads-management', 'website-development'],
+    cta: {
+      title: "Let's build a lead generation system tailored to your business",
+      text: 'Tell us who your ideal customers are and how you currently win new business, and we will map out a practical funnel.',
     },
   },
 };

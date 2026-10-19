@@ -16,7 +16,10 @@ import {
 import { services } from '@/lib/services';
 import { budgetRanges, siteConfig } from '@/lib/site-config';
 
-const serviceOptions = [...services.map((s) => s.name), 'Other / Not Sure Yet'];
+const serviceOptions = [
+  ...services.map((s) => `${s.number}. ${s.name}`),
+  'Other / Not Sure Yet',
+];
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -83,8 +86,12 @@ function ContactFormInner() {
   // Pre-select service if passed via ?service= query param
   useEffect(() => {
     const requested = searchParams?.get('service');
-    if (requested && serviceOptions.includes(requested)) {
-      setValues((prev) => (prev.service ? prev : { ...prev, service: requested }));
+    if (!requested) return;
+    const match =
+      serviceOptions.find((opt) => opt === requested) ||
+      serviceOptions.find((opt) => opt.endsWith(`. ${requested}`));
+    if (match) {
+      setValues((prev) => (prev.service ? prev : { ...prev, service: match }));
     }
   }, [searchParams]);
 

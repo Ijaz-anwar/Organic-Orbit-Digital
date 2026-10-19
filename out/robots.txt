@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /thank-you/
+
+Host: https://organicorbitdigital.com
+Sitemap: https://organicorbitdigital.com/sitemap.xml

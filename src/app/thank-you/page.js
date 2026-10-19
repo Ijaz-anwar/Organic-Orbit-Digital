@@ -108,7 +108,10 @@ export default function ThankYouPage() {
                       href={servicePath(s.slug)}
                       className="flex items-center justify-between rounded-xl border border-line bg-mist px-4 py-3 font-medium text-ink transition hover:border-orbit-300 hover:text-orbit-700"
                     >
-                      <span>{s.name}</span>
+                      <span>
+                        <span className="mr-1.5 font-display text-xs font-bold text-orbit-600">{s.number}.</span>
+                        {s.name}
+                      </span>
                       <ArrowRight className="h-4 w-4 text-slate-400" aria-hidden="true" />
                     </Link>
                   </li>

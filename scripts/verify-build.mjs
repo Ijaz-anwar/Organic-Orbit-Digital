@@ -7,11 +7,12 @@ const requiredRoutes = [
   '/',
   '/about/',
   '/services/',
-  '/services/social-media-marketing/',
   '/services/website-development/',
-  '/services/meta-google-ads/',
-  '/services/lead-generation/',
-  '/services/on-page-seo/',
+  '/services/search-engine-optimization/',
+  '/services/social-media-management/',
+  '/services/meta-ads-management/',
+  '/services/google-ads-management/',
+  '/services/lead-generation-for-business/',
   '/contact/',
   '/blog/',
   '/blog/how-website-seo-and-paid-ads-work-together/',
@@ -137,7 +138,7 @@ const sitemapXml = await readFile(path.join(outDir, 'sitemap.xml'), 'utf8');
 if (sitemapXml.includes('/thank-you')) {
   errors.push('sitemap.xml must not include non-indexable /thank-you/ route');
 }
-if (!sitemapXml.includes('https://organicorbitdigital.com/services/on-page-seo/')) {
+if (!sitemapXml.includes('https://organicorbitdigital.com/services/search-engine-optimization/')) {
   errors.push('sitemap.xml is missing service URLs');
 }
 

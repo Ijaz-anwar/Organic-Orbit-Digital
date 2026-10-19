@@ -3,13 +3,13 @@
  *
  * Each post contains practical, original educational content with a table of
  * contents, structured sections, and natural internal links to relevant
- * services. No placeholder lorem ipsum or fabricated case studies.
+ * services (01 – 06).
  */
 
 export const blogPosts = [
   {
     slug: 'how-website-seo-and-paid-ads-work-together',
-    title: 'How Your Website, On-Page SEO, and Paid Ads Work Better Together',
+    title: 'How Your Website, Search Engine Optimization, and Paid Ads Work Better Together',
     excerpt:
       'Treating web development, SEO, and paid advertising as separate projects often leads to wasted budget and missed enquiries. Here is how a connected digital marketing approach compounds your effort.',
     category: 'Digital Strategy',
@@ -18,7 +18,7 @@ export const blogPosts = [
     readingTime: '6 min read',
     image: '/images/blog/connected-ecosystem.webp',
     imageAlt: 'Diagram of website, SEO, social media, and paid ads orbiting a central business goal',
-    relatedServices: ['website-development', 'on-page-seo', 'meta-google-ads'],
+    relatedServices: ['website-development', 'search-engine-optimization', 'google-ads-management'],
     sections: [
       {
         id: 'why-disconnected-marketing-stalls',
@@ -44,10 +44,10 @@ export const blogPosts = [
       },
       {
         id: 'using-paid-ads-and-seo-together',
-        heading: 'How paid advertising and on-page SEO inform each other',
+        heading: 'How paid advertising and Search Engine Optimization inform each other',
         paragraphs: [
-          'On-page SEO builds long-term visibility for the searches your customers make, while Google Ads and Meta Ads provide immediate visibility and faster feedback. Used together, each channel makes the other smarter.',
-          'Search ad data reveals which queries and value propositions actually lead to enquiries, rather than clicks alone. Those insights can guide which service pages and blog topics you prioritise for on-page SEO. Conversely, strong on-page relevance and page experience help improve landing page quality for paid search campaigns.',
+          'Search Engine Optimization builds long-term visibility for the searches your customers make, while Google Ads and Meta Ads provide immediate visibility and faster feedback. Used together, each channel makes the other smarter.',
+          'Search ad data reveals which queries and value propositions actually lead to enquiries, rather than clicks alone. Those insights can guide which service pages and blog topics you prioritise for SEO. Conversely, strong on-page relevance and page experience help improve landing page quality for paid search campaigns.',
         ],
       },
       {
@@ -76,7 +76,7 @@ export const blogPosts = [
     readingTime: '7 min read',
     image: '/images/blog/meta-vs-google.webp',
     imageAlt: 'Comparison illustration showing paid social discovery alongside paid search intent',
-    relatedServices: ['meta-google-ads', 'lead-generation', 'social-media-marketing'],
+    relatedServices: ['meta-ads-management', 'google-ads-management', 'lead-generation-for-business'],
     sections: [
       {
         id: 'intent-vs-discovery',
@@ -88,7 +88,7 @@ export const blogPosts = [
       },
       {
         id: 'when-google-ads-fits-best',
-        heading: 'When Google Search Ads is usually the stronger starting point',
+        heading: 'When Google Ads Management is usually the stronger starting point',
         paragraphs: [
           'If customers already search for your category when they have a need, capturing that existing demand is often the most direct path to enquiries.',
         ],
@@ -100,7 +100,7 @@ export const blogPosts = [
       },
       {
         id: 'when-meta-ads-fits-best',
-        heading: 'When Meta Ads (Facebook & Instagram) plays the lead role',
+        heading: 'When Meta Ads Management (Facebook & Instagram) plays the lead role',
         paragraphs: [
           'If your product is highly visual, new to the market, or bought on impulse and inspiration rather than keyword search, Meta Ads gives you creative formats that text search ads cannot match.',
         ],
@@ -121,22 +121,22 @@ export const blogPosts = [
   },
   {
     slug: 'on-page-seo-checklist-for-service-websites',
-    title: 'A Practical On-Page SEO Checklist for Service Website Pages',
+    title: 'A Practical Search Engine Optimization Checklist for Service Websites',
     excerpt:
       'Learn how search intent, page structure, title tags, headings, internal links, and image alt text help both search engines and potential clients understand your service pages.',
-    category: 'On-Page SEO',
+    category: 'Search Engine Optimization',
     publishedAt: '2025-02-24',
     updatedAt: '2025-02-24',
     readingTime: '6 min read',
     image: '/images/blog/on-page-seo-structure.webp',
     imageAlt: 'Structured webpage wireframe highlighting H1, H2 headings, metadata, and internal links',
-    relatedServices: ['on-page-seo', 'website-development', 'lead-generation'],
+    relatedServices: ['search-engine-optimization', 'website-development', 'lead-generation-for-business'],
     sections: [
       {
         id: 'start-with-search-intent',
         heading: '1. Match one clear topic and search intent per page',
         paragraphs: [
-          'When a single page tries to rank for five distinct services, it usually struggles to explain any of them well. Give each core service its own dedicated page so the title, headings, examples, and FAQs can focus completely on what that buyer needs to know.',
+          'When a single page tries to rank for six distinct services, it usually struggles to explain any of them well. Give each core service its own dedicated page so the title, headings, examples, and FAQs can focus completely on what that buyer needs to know.',
           'Before writing or editing a page, look at what types of pages currently appear for that topic. Are searchers looking for a service provider, a step-by-step guide, or a comparison? Align the depth and format of your page accordingly.',
         ],
       },
@@ -156,7 +156,7 @@ export const blogPosts = [
         id: 'internal-links-and-images',
         heading: '3. Connect related pages with descriptive internal links',
         paragraphs: [
-          'Internal links help visitors navigate to related services and help search engines understand how your pages relate to one another. Instead of generic "click here" links, use natural anchor text that describes the destination page, such as linking from a website development guide to your on-page SEO service.',
+          'Internal links help visitors navigate to related services and help search engines understand how your pages relate to one another. Instead of generic "click here" links, use natural anchor text that describes the destination page, such as linking from a website development guide to your Search Engine Optimization service.',
           'Pair clean internal linking with optimised images: use modern formats like WebP or SVG, specify width and height attributes to prevent layout shifts, and write concise alt text that describes informative visuals for screen readers and search engines.',
         ],
       },

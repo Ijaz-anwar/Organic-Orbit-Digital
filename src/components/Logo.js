@@ -45,7 +45,7 @@ export default function Logo({ tone = 'light', idPrefix = 'logo', className = ''
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
       <LogoMark idPrefix={idPrefix} className="h-10 w-10 shrink-0" />
-      <span className="flex flex-col leading-none">
+      <span translate="no" className="notranslate flex flex-col leading-none">
         <span className={`font-display text-[1.05rem] font-bold tracking-tight ${primary}`}>
           Organic Orbit
         </span>

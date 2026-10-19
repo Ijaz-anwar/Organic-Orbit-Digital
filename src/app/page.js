@@ -14,7 +14,7 @@ import { buildMetadata } from '@/lib/seo';
 export const metadata = buildMetadata({
   title: 'Organic Orbit Digital | Digital Marketing & Web Development',
   description:
-    'Grow your online presence with Organic Orbit Digital. Explore social media marketing, website development, Meta and Google Ads, lead generation, and on-page SEO.',
+    'Grow your online presence with Organic Orbit Digital: Website Development, Search Engine Optimization, Social Media Management, Meta Ads, Google Ads, and Lead Generation for Business.',
   path: '/',
   absoluteTitle: true,
 });
@@ -22,7 +22,7 @@ export const metadata = buildMetadata({
 const homeFaqs = [
   {
     q: 'What services does Organic Orbit Digital offer?',
-    a: 'We offer five core digital marketing and web services: Social Media Marketing, Website Development, Meta Ads and Google Ads management, Lead Generation, and On-Page SEO. Each service can be engaged on its own or combined into a coordinated growth plan.',
+    a: 'We offer six core digital marketing and web services: 01. Website Development, 02. Search Engine Optimization, 03. Social Media Management, 04. Meta Ads Management, 05. Google Ads Management, and 06. Lead Generation for Business. Each service can be engaged on its own or combined into a coordinated growth plan.',
   },
   {
     q: 'How can digital marketing help my business?',
