@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=$HOME/public_html/
+    - export DEPLOYPATH=$HOME/organicorbitdigital.com/
     - /bin/mkdir -p $DEPLOYPATH
     - /bin/cp -R out/. $DEPLOYPATH
