@@ -4,5 +4,6 @@ deployment:
     - export DEPLOYPATH=$HOME/organicorbitdigital.com/
     - /bin/mkdir -p $DEPLOYPATH
     - /bin/cp -R out/. $DEPLOYPATH
-    - /bin/rm -rf $HOME/public_html/404 $HOME/public_html/_next $HOME/public_html/_not-found $HOME/public_html/about $HOME/public_html/blog $HOME/public_html/contact $HOME/public_html/images $HOME/public_html/privacy-policy $HOME/public_html/services $HOME/public_html/terms-and-conditions $HOME/public_html/thank-you
-    - /bin/rm -f $HOME/public_html/index.html $HOME/public_html/.htaccess $HOME/public_html/robots.txt $HOME/public_html/sitemap.xml $HOME/public_html/404.html $HOME/public_html/404.txt $HOME/public_html/__next.__PAGE__.txt $HOME/public_html/__next._full.txt $HOME/public_html/__next._index.txt $HOME/public_html/__next._tree.txt $HOME/public_html/apple-touch-icon.png $HOME/public_html/favicon-32x32.png $HOME/public_html/favicon.svg $HOME/public_html/index.txt $HOME/public_html/logo-512.png $HOME/public_html/logo.svg $HOME/public_html/og-image.png
+    - printf '%s\n' '# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN' 'PassengerAppRoot "/home/onlinepr/german-tool"' 'PassengerBaseURI "/"' 'PassengerNodejs "/home/onlinepr/nodevenv/german-tool/22/bin/node"' 'PassengerAppType node' 'PassengerStartupFile server/src/server.js' '# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END' > $HOME/public_html/.htaccess
+    - /bin/mkdir -p $HOME/german-tool/tmp
+    - /bin/touch $HOME/german-tool/tmp/restart.txt
