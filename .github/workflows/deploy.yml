@@ -1,0 +1,34 @@
+name: Deploy Organic Orbit Digital
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "out/**"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy static website to cPanel
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy exported website
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.CPANEL_HOST }}
+          username: ${{ secrets.CPANEL_USERNAME }}
+          key: ${{ secrets.CPANEL_SSH_KEY }}
+          port: ${{ secrets.CPANEL_PORT }}
+          source: "out/*"
+          target: "/home/onlinepr/organicorbitdigital.com/"
+          strip_components: 1
+          overwrite: true
