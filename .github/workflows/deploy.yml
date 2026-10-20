@@ -22,13 +22,34 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Deploy exported website
+        id: scp_primary
+        uses: appleboy/scp-action@v0.1.7
+        continue-on-error: true
+        with:
+          host: ${{ secrets.CPANEL_HOST }}
+          username: ${{ secrets.CPANEL_USERNAME }}
+          key: ${{ secrets.CPANEL_SSH_KEY }}
+          port: ${{ secrets.CPANEL_PORT }}
+          source: "out/*,out/.htaccess"
+          target: "/home/onlinepr/organicorbitdigital.com/"
+          strip_components: 1
+          overwrite: true
+          timeout: 120s
+
+      - name: Pause before retry if host connection dropped
+        if: steps.scp_primary.outcome == 'failure'
+        run: sleep 10
+
+      - name: Deploy exported website (retry)
+        if: steps.scp_primary.outcome == 'failure'
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.CPANEL_HOST }}
           username: ${{ secrets.CPANEL_USERNAME }}
           key: ${{ secrets.CPANEL_SSH_KEY }}
           port: ${{ secrets.CPANEL_PORT }}
-          source: "out/*"
+          source: "out/*,out/.htaccess"
           target: "/home/onlinepr/organicorbitdigital.com/"
           strip_components: 1
           overwrite: true
+          timeout: 180s
