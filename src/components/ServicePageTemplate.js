@@ -56,7 +56,7 @@ export default function ServicePageTemplate({ slug }) {
         breadcrumbs={[
           { name: 'Home', path: '/' },
           { name: 'Services', path: '/services/' },
-          { name: `${service.number}. ${service.name}`, path },
+          { name: service.name, path },
         ]}
       >
         <div className="flex flex-col gap-3.5 sm:flex-row sm:items-center">
@@ -126,7 +126,7 @@ export default function ServicePageTemplate({ slug }) {
                 <div className="flex items-center gap-2.5">
                   <ListChecks className="h-5 w-5 text-orbit-600" aria-hidden="true" />
                   <h3 className="text-lg font-semibold text-ink">
-                    {service.number}. {service.name} Highlights
+                    {service.name} Highlights
                   </h3>
                 </div>
                 <ul className="mt-5 space-y-3 text-[0.95rem] text-slate-700">

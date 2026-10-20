@@ -43,13 +43,13 @@ export default function Logo({ tone = 'light', idPrefix = 'logo', className = ''
   const primary = tone === 'light' ? 'text-white' : 'text-midnight-900';
   const secondary = tone === 'light' ? 'text-organic-300' : 'text-organic-700';
   return (
-    <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <LogoMark idPrefix={idPrefix} className="h-10 w-10 shrink-0" />
+    <span className={`inline-flex items-center gap-2 sm:gap-2.5 ${className}`}>
+      <LogoMark idPrefix={idPrefix} className="h-8 w-8 shrink-0 sm:h-10 sm:w-10" />
       <span translate="no" className="notranslate flex flex-col leading-none">
-        <span className={`font-display text-[1.05rem] font-bold tracking-tight ${primary}`}>
+        <span className={`font-display text-[0.95rem] font-bold tracking-tight sm:text-[1.05rem] ${primary}`}>
           Organic Orbit
         </span>
-        <span className={`mt-1 text-[0.68rem] font-semibold tracking-[0.32em] uppercase ${secondary}`}>
+        <span className={`mt-1 text-[0.6rem] font-semibold tracking-[0.28em] uppercase sm:text-[0.68rem] sm:tracking-[0.32em] ${secondary}`}>
           Digital
         </span>
       </span>

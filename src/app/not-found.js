@@ -51,7 +51,6 @@ export default function NotFound() {
                   href={servicePath(s.slug)}
                   className="inline-block rounded-full border border-line bg-white px-4 py-2 text-sm text-ink shadow-2xs transition hover:border-orbit-300 hover:text-orbit-600"
                 >
-                  <span className="mr-1 font-display text-xs font-bold text-orbit-600">{s.number}.</span>
                   {s.name}
                 </Link>
               </li>

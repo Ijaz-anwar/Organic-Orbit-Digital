@@ -19,18 +19,18 @@ export default function PageHero({ eyebrow, title, intro, breadcrumbs, children,
         <span className="absolute bottom-24 left-8 h-2 w-2 rounded-full bg-orbit-500 shadow-[0_0_14px_3px_rgb(65_105_245/0.4)]" />
       </div>
 
-      <div className="container-site relative py-14 sm:py-18 lg:py-22">
+      <div className="container-site relative py-9 sm:py-16 lg:py-22">
         {breadcrumbs && <Breadcrumbs items={breadcrumbs} tone="light" />}
-        <div className="mt-7 max-w-3xl">
+        <div className="mt-5 max-w-3xl sm:mt-7">
           {eyebrow && (
-            <p className="eyebrow rounded-full border border-orbit-100 bg-white px-3.5 py-1 shadow-2xs">
-              {Icon && <Icon className="h-4 w-4 text-orbit-600" aria-hidden="true" />}
-              {eyebrow}
+            <p className="eyebrow rounded-full border border-orbit-100 bg-white px-3 py-1 text-[0.66rem] leading-snug tracking-[0.1em] shadow-2xs sm:px-3.5 sm:text-xs sm:tracking-[0.14em]">
+              {Icon && <Icon className="h-3.5 w-3.5 shrink-0 text-orbit-600 sm:h-4 sm:w-4" aria-hidden="true" />}
+              <span>{eyebrow}</span>
             </p>
           )}
-          <h1 className="mt-4 text-4xl leading-[1.1] font-bold text-ink sm:text-5xl lg:text-[3.35rem]">{title}</h1>
-          {intro && <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">{intro}</p>}
-          {children && <div className="mt-8">{children}</div>}
+          <h1 className="mt-3.5 text-[1.75rem] leading-[1.2] font-bold text-ink sm:mt-4 sm:text-4xl lg:text-[3.35rem] lg:leading-[1.1]">{title}</h1>
+          {intro && <p className="mt-4 max-w-2xl text-[0.95rem] leading-relaxed text-muted sm:mt-5 sm:text-lg">{intro}</p>}
+          {children && <div className="mt-6 sm:mt-8">{children}</div>}
         </div>
       </div>
     </section>

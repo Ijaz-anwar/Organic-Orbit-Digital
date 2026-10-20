@@ -29,11 +29,6 @@ export default function ServiceCard({ service, headingLevel = 'h3', compact = fa
           <span className={`grid h-13 w-13 place-items-center rounded-2xl ring-1 ${a.iconBg}`}>
             <Icon className="h-6 w-6" aria-hidden="true" />
           </span>
-          {service.number && (
-            <span className={`rounded-full px-3 py-1 font-display text-xs font-bold tracking-wider ring-1 ${a.badgeBg}`}>
-              SERVICE {service.number}
-            </span>
-          )}
         </div>
         <span
           className="grid h-10 w-10 place-items-center rounded-full border border-line text-slate-400 transition duration-300 group-hover:border-orbit-500 group-hover:bg-orbit-500 group-hover:text-white"
@@ -44,7 +39,7 @@ export default function ServiceCard({ service, headingLevel = 'h3', compact = fa
       </div>
 
       <Heading className="mt-6 text-xl font-semibold text-ink sm:text-[1.32rem]">
-        {service.number ? `${service.number}. ${service.name}` : service.name}
+        {service.name}
       </Heading>
       <p className="mt-3 leading-relaxed text-muted">{service.description}</p>
 

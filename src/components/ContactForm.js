@@ -17,7 +17,7 @@ import { services } from '@/lib/services';
 import { budgetRanges, siteConfig } from '@/lib/site-config';
 
 const serviceOptions = [
-  ...services.map((s) => `${s.number}. ${s.name}`),
+  ...services.map((s) => s.name),
   'Other / Not Sure Yet',
 ];
 

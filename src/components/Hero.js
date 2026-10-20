@@ -101,30 +101,30 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      <div className="container-site relative py-16 sm:py-22 lg:py-26">
-        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
+      <div className="container-site relative py-9 sm:py-18 lg:py-24">
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-10">
           {/* Copy column */}
           <div className="lg:col-span-7">
-            <p className="eyebrow rounded-full border border-orbit-100 bg-orbit-50/80 px-4 py-1.5">
-              <Sparkles className="h-3.5 w-3.5 text-orbit-600" aria-hidden="true" />
-              Web Development and Digital Marketing Services: Grow Your Business Online
+            <p className="eyebrow rounded-full border border-orbit-100 bg-orbit-50/80 px-3 py-1.5 text-[0.65rem] leading-snug tracking-[0.09em] sm:px-4 sm:text-xs sm:tracking-[0.14em]">
+              <Sparkles className="h-3.5 w-3.5 shrink-0 text-orbit-600" aria-hidden="true" />
+              <span>Web Development and Digital Marketing Services: Grow Your Business Online</span>
             </p>
 
-            <h1 className="mt-6 text-4xl leading-[1.1] font-bold tracking-tight text-ink sm:text-5xl lg:text-[3.35rem]">
+            <h1 className="mt-4 text-[1.75rem] leading-[1.2] font-bold tracking-tight text-ink sm:mt-6 sm:text-4xl lg:text-[3.35rem] lg:leading-[1.1]">
               Web Development and Digital Marketing Services for{' '}
               <span className="bg-gradient-to-r from-orbit-700 via-orbit-500 to-organic-600 bg-clip-text text-transparent">
                 Business Growth
               </span>
             </h1>
 
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted sm:text-[1.1rem]">
+            <p className="mt-4 max-w-2xl text-[0.95rem] leading-relaxed text-muted sm:mt-6 sm:text-lg sm:text-[1.1rem]">
               In today&apos;s competitive digital world, having a strong online presence is essential for businesses
               that want to attract customers, generate leads, and increase sales. Whether you own a small business,
               manage an established company, or operate an online store, investing in professional web development and
               digital marketing services can help you reach your target audience and build a successful brand.
             </p>
 
-            <div className="mt-9 flex flex-col gap-3.5 sm:flex-row sm:items-center">
+            <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:items-center sm:gap-3.5">
               <Link href="/contact/" className="btn btn-primary">
                 Book a Free Consultation
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -134,7 +134,7 @@ export default function Hero() {
               </Link>
             </div>
 
-            <ul className="mt-10 grid gap-3 border-t border-line pt-8 text-sm text-slate-700 sm:grid-cols-3">
+            <ul className="mt-8 grid gap-2.5 border-t border-line pt-6 text-xs text-slate-700 sm:mt-10 sm:grid-cols-3 sm:gap-3 sm:pt-8 sm:text-sm">
               {workingPillars.map((pillar) => (
                 <li key={pillar} className="flex items-start gap-2.5">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-orbit-600" aria-hidden="true" />
@@ -144,12 +144,12 @@ export default function Hero() {
             </ul>
           </div>
 
-          {/* Orbital Ecosystem Illustration (6 Numbered Services) */}
+          {/* Orbital Ecosystem Illustration */}
           <div className="lg:col-span-5">
             <div
-              className="relative mx-auto aspect-square w-full max-w-[26rem] sm:max-w-[30rem]"
+              className="relative mx-auto aspect-square w-full max-w-[24rem] sm:max-w-[30rem]"
               role="img"
-              aria-label="Orbital diagram showing 01 Website Development, 02 Search Engine Optimization, 03 Social Media Management, 04 Meta Ads Management, 05 Google Ads Management, and 06 Lead Generation for Business connected around your business."
+              aria-label="Orbital diagram showing Website Development, Search Engine Optimization, Social Media Management, Meta Ads Management, Google Ads Management, and Lead Generation for Business connected around your business."
             >
               {/* Soft central aura */}
               <div
@@ -194,22 +194,22 @@ export default function Hero() {
 
               {/* Central core — Your Business */}
               <div className="absolute inset-0 grid place-items-center">
-                <div className="relative flex h-28 w-28 flex-col items-center justify-center rounded-full border border-orbit-200 bg-white p-3 text-center shadow-[0_16px_40px_-12px_rgb(65_105_245/0.25)] sm:h-32 sm:w-32">
-                  <LogoMark idPrefix="hero-core" className="h-10 w-10" />
-                  <span className="mt-1.5 font-display text-xs font-semibold tracking-wide text-ink">
+                <div className="relative flex h-24 w-24 flex-col items-center justify-center rounded-full border border-orbit-200 bg-white p-2.5 text-center shadow-[0_16px_40px_-12px_rgb(65_105_245/0.25)] sm:h-32 sm:w-32 sm:p-3">
+                  <LogoMark idPrefix="hero-core" className="h-8 w-8 sm:h-10 sm:w-10" />
+                  <span className="mt-1 font-display text-[0.7rem] font-semibold tracking-wide text-ink sm:mt-1.5 sm:text-xs">
                     Your Business
                   </span>
-                  <span className="text-[0.65rem] font-medium text-orbit-600">Connected Core</span>
+                  <span className="text-[0.6rem] font-medium text-orbit-600 sm:text-[0.65rem]">Connected Core</span>
                 </div>
               </div>
 
-              {/* Orbiting channel nodes (01 – 06) */}
+              {/* Orbiting channel nodes */}
               {orbitNodes.map((node) => {
                 const Icon = node.icon;
                 const insetCls = node.ring === 'inner' ? 'inset-[22%]' : 'inset-6';
                 return (
                   <div
-                    key={node.number}
+                    key={node.label}
                     className={`orbit-arm pointer-events-none absolute ${insetCls}`}
                     style={{ '--start': node.angle, '--duration': node.duration }}
                   >
@@ -224,9 +224,6 @@ export default function Hero() {
                         </span>
                         <span className="pr-1 text-left leading-tight whitespace-nowrap">
                           <span className="block text-[0.72rem] font-semibold text-ink group-hover:text-orbit-600">
-                            <span className="mr-1 font-display text-[0.65rem] font-bold text-orbit-600">
-                              {node.number}.
-                            </span>
                             {node.label}
                           </span>
                           <span className="hidden text-[0.64rem] text-muted sm:block">{node.sub}</span>

@@ -23,7 +23,7 @@ const challenges = [
       'Visitors land on your site, look around briefly, and leave without calling, booking, or submitting your contact form.',
     solution:
       'Our Website Development process focuses on clear messaging, mobile speed, logical navigation, and straightforward enquiry paths that reduce friction for interested buyers.',
-    serviceLabel: '01. Website Development',
+    serviceLabel: 'Website Development',
     serviceHref: '/services/website-development/',
   },
   {
@@ -34,7 +34,7 @@ const challenges = [
       'Potential customers search Google for the services you offer, but your pages rarely appear or fail to match buyer search intent.',
     solution:
       'With Search Engine Optimization, we align your key pages with search intent and improve headings, metadata, content depth, internal linking, and structured data.',
-    serviceLabel: '02. Search Engine Optimization',
+    serviceLabel: 'Search Engine Optimization',
     serviceHref: '/services/search-engine-optimization/',
   },
   {
@@ -45,7 +45,7 @@ const challenges = [
       'Months of quiet profiles or ad-hoc posts make it harder for prospects researching your brand to see what you stand for.',
     solution:
       'Through Social Media Management, we establish clear content pillars, a reliable monthly calendar, and platform-tailored visuals so your brand stays active and credible.',
-    serviceLabel: '03. Social Media Management',
+    serviceLabel: 'Social Media Management',
     serviceHref: '/services/social-media-management/',
   },
   {
@@ -56,7 +56,7 @@ const challenges = [
       'Boosting posts on Facebook or Instagram without proper audience structure, pixel tracking, or retargeting burns budget on surface-level likes.',
     solution:
       'Our Meta Ads Management builds full-funnel prospecting and retargeting campaigns backed by verified Meta Pixel tracking and structured creative testing.',
-    serviceLabel: '04. Meta Ads Management',
+    serviceLabel: 'Meta Ads Management',
     serviceHref: '/services/meta-ads-management/',
   },
   {
@@ -67,7 +67,7 @@ const challenges = [
       'Broad keywords without negative keyword filtering or conversion tracking spend budget on searches that never become customers.',
     solution:
       'Our Google Ads Management focuses on high-intent commercial queries, tight ad groups, proactive negative keywords, and accurate conversion tracking.',
-    serviceLabel: '05. Google Ads Management',
+    serviceLabel: 'Google Ads Management',
     serviceHref: '/services/google-ads-management/',
   },
   {
@@ -78,7 +78,7 @@ const challenges = [
       'Enquiries arrive that do not fit your service scope or budget—or interested prospects drop off between click and follow-up.',
     solution:
       'Through Lead Generation for Business, we connect ideal customer targeting, dedicated landing pages, qualifying forms, and prompt follow-up steps.',
-    serviceLabel: '06. Lead Generation for Business',
+    serviceLabel: 'Lead Generation for Business',
     serviceHref: '/services/lead-generation-for-business/',
   },
 ];
@@ -91,7 +91,7 @@ export default function ChallengesSection() {
           id="challenges-heading"
           eyebrow="Business challenges we solve"
           title="Where digital growth often gets stuck—and which service addresses it"
-          intro="Every business has different bottlenecks. Here is how our six numbered services address the most common challenges we discuss with business owners."
+          intro="Every business has different bottlenecks. Here is how our core services address the most common challenges we discuss with business owners."
         />
 
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -108,7 +108,7 @@ export default function ChallengesSection() {
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </span>
                     <span className="rounded-full bg-mist px-3 py-1 font-display text-xs font-bold tracking-wider text-orbit-600 uppercase">
-                      Challenge {item.number}
+                      {item.serviceLabel}
                     </span>
                   </div>
 

@@ -13,53 +13,53 @@ import { mailtoHref } from '@/lib/site-config';
 export const metadata = buildMetadata({
   title: 'Digital Marketing & Web Development Services',
   description:
-    'Explore Organic Orbit Digital’s six core services: 01. Website Development, 02. Search Engine Optimization, 03. Social Media Management, 04. Meta Ads Management, 05. Google Ads Management, and 06. Lead Generation for Business.',
+    'Explore Organic Orbit Digital’s six core services: Website Development, Search Engine Optimization, Social Media Management, Meta Ads Management, Google Ads Management, and Lead Generation for Business.',
   path: '/services/',
 });
 
 const startingPoints = [
   {
-    situation: '“01. We need a credible, high-converting website or landing page first.”',
+    situation: '“We need a credible, high-converting website or landing page first.”',
     recommendation: 'Start with Website Development paired with clean technical and on-page SEO foundations.',
     slug: 'website-development',
-    linkText: '01. Explore Website Development',
+    linkText: 'Explore Website Development',
   },
   {
-    situation: '“02. Our website is solid, but customers cannot find us on Google.”',
+    situation: '“Our website is solid, but customers cannot find us on Google.”',
     recommendation: 'Focus on Search Engine Optimization (SEO) to build sustainable organic visibility and search relevance.',
     slug: 'search-engine-optimization',
-    linkText: '02. Explore Search Engine Optimization',
+    linkText: 'Explore Search Engine Optimization',
   },
   {
-    situation: '“03. We want to stay active and build trust across social platforms.”',
+    situation: '“We want to stay active and build trust across social platforms.”',
     recommendation: 'Establish consistent Social Media Management with planned content calendars and community care.',
     slug: 'social-media-management',
-    linkText: '03. Explore Social Media Management',
+    linkText: 'Explore Social Media Management',
   },
   {
-    situation: '“04. We want to reach ideal buyers on Facebook and Instagram.”',
+    situation: '“We want to reach ideal buyers on Facebook and Instagram.”',
     recommendation: 'Launch structured Meta Ads Management with creative testing, retargeting, and conversion tracking.',
     slug: 'meta-ads-management',
-    linkText: '04. Explore Meta Ads Management',
+    linkText: 'Explore Meta Ads Management',
   },
   {
-    situation: '“05. We want to capture prospects actively searching on Google right now.”',
+    situation: '“We want to capture prospects actively searching on Google right now.”',
     recommendation: 'Run high-intent Google Ads Management with negative keyword hygiene and conversion tracking.',
     slug: 'google-ads-management',
-    linkText: '05. Explore Google Ads Management',
+    linkText: 'Explore Google Ads Management',
   },
   {
-    situation: '“06. We are getting traffic or clicks, but not enough qualified enquiries.”',
+    situation: '“We are getting traffic or clicks, but not enough qualified enquiries.”',
     recommendation: 'Build a structured Lead Generation for Business system connecting targeting, landing pages, forms, and follow-up.',
     slug: 'lead-generation-for-business',
-    linkText: '06. Explore Lead Generation for Business',
+    linkText: 'Explore Lead Generation for Business',
   },
 ];
 
 const servicesOverviewFaqs = [
   {
     q: 'Do I have to use all six services at once?',
-    a: 'No. Many engagements begin with a single priority—such as 01. Website Development, 02. Search Engine Optimization, or 05. Google Ads Management—and expand as your goals and capacity grow.',
+    a: 'No. Many engagements begin with a single priority—such as Website Development, Search Engine Optimization, or Google Ads Management—and expand as your goals and capacity grow.',
   },
   {
     q: 'How do we decide which service to start with?',
@@ -79,7 +79,7 @@ export default function ServicesOverviewPage() {
   return (
     <>
       <PageHero
-        eyebrow="Our Services (01 — 06)"
+        eyebrow="Our Services"
         title="Six Focused Services Designed to Work Together"
         intro="Whether you need a conversion-ready website, stronger search visibility, consistent social management, targeted Meta or Google advertising, or a complete lead generation system, each service is built to support your wider business goals."
         breadcrumbs={[
@@ -101,7 +101,7 @@ export default function ServicesOverviewPage() {
 
       {/* All 6 Service Cards */}
       <ServicesSection
-        eyebrow="Core capabilities (01 — 06)"
+        eyebrow="Core capabilities"
         title="Explore our six digital marketing and web services"
         intro="Select any service below to see the problems it solves, what is included, our step-by-step process, and answers to common questions."
         className="bg-mist"
@@ -163,7 +163,6 @@ export default function ServicesOverviewPage() {
                 {services.map((s) => (
                   <tr key={s.slug} className="hover:bg-mist/50">
                     <th scope="row" className="px-6 py-5 font-display text-base font-semibold text-ink">
-                      <span className="mr-1.5 text-orbit-600">{s.number}.</span>
                       {s.name}
                     </th>
                     <td className="px-6 py-5 text-muted">{s.navHint}</td>

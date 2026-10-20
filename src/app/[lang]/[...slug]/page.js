@@ -17,8 +17,9 @@ const LANGS = {
   de: 'Deutsch',
   es: 'Español',
   fr: 'Français',
+  it: 'Italiano',
+  pt: 'Português',
   ar: 'العربية',
-  ur: 'اردو',
 };
 
 const SUB_ROUTES = [

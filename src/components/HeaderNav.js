@@ -19,7 +19,6 @@ export default function HeaderNav() {
   const pathname = usePathname() || '/';
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const [menuTop, setMenuTop] = useState(72);
   const rowRef = useRef(null);
   const dropdownRef = useRef(null);
   const servicesButtonRef = useRef(null);
@@ -27,9 +26,6 @@ export default function HeaderNav() {
   const hoverTimer = useRef(null);
 
   const toggleMobileMenu = () => {
-    if (!menuOpen && rowRef.current) {
-      setMenuTop(Math.max(0, Math.round(rowRef.current.getBoundingClientRect().bottom)));
-    }
     setMenuOpen((v) => !v);
   };
 
@@ -92,8 +88,8 @@ export default function HeaderNav() {
   };
 
   return (
-    <>
-      <div ref={rowRef} className="container-site relative z-50 flex h-[4.5rem] items-center justify-between gap-6">
+    <div className="relative">
+      <div ref={rowRef} className="container-site relative z-50 flex h-16 items-center justify-between gap-2 sm:h-[4.5rem] sm:gap-6">
         <Link
           href="/"
           className="shrink-0 rounded-lg"
@@ -153,7 +149,6 @@ export default function HeaderNav() {
                                 </span>
                                 <span>
                                   <span className="block font-semibold text-ink group-hover:text-orbit-600">
-                                    <span className="mr-1.5 font-display text-xs font-bold text-orbit-600">{s.number}.</span>
                                     {s.navLabel}
                                   </span>
                                   <span className="block text-xs text-muted">{s.navHint}</span>
@@ -172,7 +167,7 @@ export default function HeaderNav() {
                         </div>
                         <div className="mt-6 flex flex-col gap-3">
                           <Link href="/services/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-orbit-600 hover:text-orbit-700">
-                            View all 6 services <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                            View all services <ArrowRight className="h-4 w-4" aria-hidden="true" />
                           </Link>
                           <Link href="/contact/" className="btn btn-primary min-h-10 px-4 py-2 text-xs">
                             Talk to our team <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -202,7 +197,7 @@ export default function HeaderNav() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2.5 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <LanguageTranslator mountWidget />
           <Link href="/contact/" className="btn btn-primary hidden min-h-11 px-5 text-sm sm:inline-flex">
             Get a Free Consultation
@@ -210,7 +205,7 @@ export default function HeaderNav() {
           <button
             ref={mobileToggleRef}
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-ink transition-colors hover:bg-mist lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white text-ink transition-colors hover:bg-mist sm:h-11 sm:w-11 lg:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
@@ -222,74 +217,81 @@ export default function HeaderNav() {
       </div>
 
       {/* Mobile navigation (Light theme) */}
-      <div
-        id="mobile-menu"
-        hidden={!menuOpen}
-        style={{ top: `${menuTop}px` }}
-        className="fixed inset-x-0 bottom-0 z-40 overflow-y-auto border-t border-line bg-white lg:hidden"
-      >
-        <nav aria-label="Mobile" className="container-site flex min-h-full flex-col py-6">
-          <ul className="flex flex-col">
-            {mainNav
-              .filter((i) => !i.hasDropdown)
-              .map((item) => (
-                <li key={item.href} className="border-b border-line">
-                  <Link
-                    href={item.href}
-                    aria-current={pathname === item.href ? 'page' : undefined}
-                    className={`flex items-center justify-between py-4 font-display text-xl font-semibold ${
-                      isActive(pathname, item.href) ? 'text-orbit-600' : 'text-ink'
-                    }`}
-                  >
-                    {item.label}
-                    <ArrowRight className="h-5 w-5 text-slate-400" aria-hidden="true" />
-                  </Link>
-                </li>
-              ))}
-          </ul>
+      {menuOpen && (
+        <div
+          id="mobile-menu"
+          className="absolute top-full inset-x-0 z-50 h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-white pb-10 shadow-2xl lg:hidden"
+        >
+          <nav aria-label="Mobile" className="container-site flex min-h-full flex-col py-5">
+            <ul className="flex flex-col">
+              {mainNav
+                .filter((i) => !i.hasDropdown)
+                .map((item) => (
+                  <li key={item.href} className="border-b border-line">
+                    <Link
+                      href={item.href}
+                      onClick={() => setMenuOpen(false)}
+                      aria-current={pathname === item.href ? 'page' : undefined}
+                      className={`flex items-center justify-between py-3.5 font-display text-lg font-semibold ${
+                        isActive(pathname, item.href) ? 'text-orbit-600' : 'text-ink'
+                      }`}
+                    >
+                      {item.label}
+                      <ArrowRight className="h-4 w-4 text-slate-400" aria-hidden="true" />
+                    </Link>
+                  </li>
+                ))}
+            </ul>
 
-          <p className="mt-8 text-xs font-semibold tracking-[0.18em] text-muted uppercase">Services (01 – 06)</p>
-          <ul className="mt-3 grid gap-2">
-            <li>
-              <Link href="/services/" className="flex items-center gap-3 rounded-xl border border-line bg-mist p-3 text-ink hover:border-orbit-300">
-                <span className="font-semibold">All services overview</span>
+            <p className="mt-6 text-xs font-semibold tracking-[0.18em] text-muted uppercase">Our Services</p>
+            <ul className="mt-2.5 grid gap-2">
+              <li>
+                <Link
+                  href="/services/"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center gap-3 rounded-xl border border-line bg-mist p-3 text-sm text-ink hover:border-orbit-300"
+                >
+                  <span className="font-semibold">All services overview</span>
+                </Link>
+              </li>
+              {services.map((s) => {
+                const Icon = s.icon;
+                const a = accentStyles[s.accent] ?? accentStyles.blue;
+                return (
+                  <li key={s.slug}>
+                    <Link
+                      href={servicePath(s.slug)}
+                      onClick={() => setMenuOpen(false)}
+                      aria-current={pathname === servicePath(s.slug) ? 'page' : undefined}
+                      className="flex items-center gap-3 rounded-xl border border-line bg-white p-2.5 text-sm text-slate-800 hover:border-orbit-300 hover:bg-mist"
+                    >
+                      <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-lg ring-1 ${a.iconBg}`}>
+                        <Icon className="h-4 w-4" aria-hidden="true" />
+                      </span>
+                      <span className="font-medium">{s.navLabel}</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <LanguageTranslator variant="mobile" />
+
+            <div className="mt-auto flex flex-col gap-3 pt-6">
+              <Link
+                href="/contact/"
+                onClick={() => setMenuOpen(false)}
+                className="btn btn-primary w-full text-sm"
+              >
+                Get a Free Consultation
               </Link>
-            </li>
-            {services.map((s) => {
-              const Icon = s.icon;
-              const a = accentStyles[s.accent] ?? accentStyles.blue;
-              return (
-                <li key={s.slug}>
-                  <Link
-                    href={servicePath(s.slug)}
-                    aria-current={pathname === servicePath(s.slug) ? 'page' : undefined}
-                    className="flex items-center gap-3 rounded-xl border border-line bg-white p-3 text-slate-800 hover:border-orbit-300 hover:bg-mist"
-                  >
-                    <span className={`grid h-9 w-9 place-items-center rounded-lg ring-1 ${a.iconBg}`}>
-                      <Icon className="h-4 w-4" aria-hidden="true" />
-                    </span>
-                    <span className="font-medium">
-                      <span className="mr-1.5 font-display text-xs font-bold text-orbit-600">{s.number}.</span>
-                      {s.navLabel}
-                    </span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-
-          <LanguageTranslator variant="mobile" />
-
-          <div className="mt-auto flex flex-col gap-3 pt-8">
-            <Link href="/contact/" className="btn btn-primary w-full">
-              Get a Free Consultation
-            </Link>
-            <a href={mailtoHref} className="btn btn-outline w-full">
-              <Mail className="h-4 w-4" aria-hidden="true" /> {siteConfig.email}
-            </a>
-          </div>
-        </nav>
-      </div>
-    </>
+              <a href={mailtoHref} className="btn btn-outline w-full text-sm">
+                <Mail className="h-4 w-4" aria-hidden="true" /> {siteConfig.email}
+              </a>
+            </div>
+          </nav>
+        </div>
+      )}
+    </div>
   );
 }

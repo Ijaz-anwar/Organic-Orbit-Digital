@@ -153,7 +153,6 @@ export default function AboutPage() {
                           <li key={s.slug} className="flex items-center gap-2">
                             <CheckCircle2 className="h-4 w-4 shrink-0 text-organic-600" aria-hidden="true" />
                             <Link href={servicePath(s.slug)} className="hover:text-orbit-600 hover:underline">
-                              <span className="mr-1 font-display text-xs font-bold text-orbit-600">{s.number}.</span>
                               {s.name}
                             </Link>
                           </li>

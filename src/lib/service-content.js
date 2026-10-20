@@ -12,7 +12,7 @@ export const serviceContent = {
     metaDescription:
       'Explore professional web development services, including custom website development, WordPress, eCommerce, responsive design, SEO optimization, and website maintenance to grow your business online.',
     hero: {
-      eyebrow: 'Service 01 · Web Development Services',
+      eyebrow: 'Web Development Services',
       title: 'Professional Web Development Services for Your Business',
       intro:
         "In today's digital world, a professional website is essential for businesses that want to attract customers, establish credibility, and increase sales. Whether you operate a small business, a growing startup, or an established company, investing in reliable web development services can help you build a strong online presence and compete effectively in your industry.",
@@ -327,7 +327,7 @@ export const serviceContent = {
     metaDescription:
       'Boost your online visibility with professional search engine optimization services. Improve Google rankings, attract targeted traffic, and generate quality leads.',
     hero: {
-      eyebrow: 'Service 02 · Search Engine Optimization Services',
+      eyebrow: 'Search Engine Optimization Services',
       title: 'Professional Search Engine Optimization Services to Grow Your Business',
       intro:
         "In today's competitive digital marketplace, having a professional website is only the first step toward online success. Your potential customers must be able to find your business when they search for relevant products, services, and solutions online. This is where professional search engine optimization services become essential.",
@@ -686,7 +686,7 @@ export const serviceContent = {
     metaDescription:
       'Grow your brand with professional social media management services. We create engaging content, manage social accounts, improve engagement, and generate leads.',
     hero: {
-      eyebrow: 'Service 03 · Social Media Management Services',
+      eyebrow: 'Social Media Management Services',
       title: 'Social Media Management Services to Grow Your Brand and Business',
       intro:
         "In today's digital world, social media has become one of the most effective ways for businesses to connect with customers, promote their products, and build a recognizable brand. Platforms such as Facebook, Instagram, LinkedIn, TikTok, Pinterest, and X allow companies to reach potential customers, share valuable content, and develop long-term relationships with their audiences.",
@@ -977,7 +977,7 @@ export const serviceContent = {
     metaDescription:
       'Drive more leads, sales, and business growth with Facebook Meta Ads Management Services. Get expert ad strategy, campaign optimization, and ROI-focused advertising.',
     hero: {
-      eyebrow: 'Service 04 · Facebook Meta Ads Management Services',
+      eyebrow: 'Facebook Meta Ads Management Services',
       title: 'Facebook Meta Ads Management Services to Grow Your Business',
       intro:
         "In today's competitive digital marketplace, reaching the right audience is essential for business growth. Facebook and Instagram advertising provide powerful opportunities to connect with potential customers through targeted campaigns, engaging creatives, and data-driven optimization.",
@@ -1328,7 +1328,7 @@ export const serviceContent = {
     metaDescription:
       'Grow your business with professional Google Ads management services. Reach targeted customers, improve conversions, reduce wasted ad spend, and maximize ROI.',
     hero: {
-      eyebrow: 'Service 05 · Google Ads Management Services',
+      eyebrow: 'Google Ads Management Services',
       title: 'Google Ads Management Services to Grow Your Business',
       intro:
         "In today's competitive digital marketplace, businesses need effective advertising strategies to reach potential customers and generate consistent growth. Google Ads is one of the most powerful platforms for connecting businesses with people who are actively searching for their products or services.",
@@ -1617,7 +1617,7 @@ export const serviceContent = {
     metaDescription:
       'Grow your business with professional lead generation services. Attract qualified prospects, increase conversions, and generate more sales opportunities.',
     hero: {
-      eyebrow: 'Service 06 · Lead Generation Services for Businesses',
+      eyebrow: 'Lead Generation Services for Businesses',
       title: 'Lead Generation Services for Businesses That Drive Growth',
       intro:
         "In today's competitive digital marketplace, finding potential customers and converting them into paying clients is essential for sustainable business growth. Companies need more than a website or social media presence to generate consistent sales opportunities—they need a strategic approach to attracting the right audience, building trust, and encouraging prospects to take action.",

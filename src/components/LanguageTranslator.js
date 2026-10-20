@@ -5,19 +5,20 @@ import { usePathname } from 'next/navigation';
 import { Globe, ChevronDown, Check, RotateCcw } from 'lucide-react';
 
 /**
- * 6 Major International Languages
- * Default English uses root URLs (/); other languages use URL prefixes (/de, /es, /fr, /ar, /ur).
+ * 7 Major International Languages
+ * Default English uses root URLs (/); other languages use URL prefixes (/de, /es, /fr, /it, /pt, /ar).
  */
 export const SUPPORTED_LANGUAGES = [
   { code: 'en', short: 'EN', name: 'English', native: 'English' },
   { code: 'de', short: 'DE', name: 'German', native: 'Deutsch' },
   { code: 'es', short: 'ES', name: 'Spanish', native: 'Español' },
   { code: 'fr', short: 'FR', name: 'French', native: 'Français' },
+  { code: 'it', short: 'IT', name: 'Italian', native: 'Italiano' },
+  { code: 'pt', short: 'PT', name: 'Portuguese', native: 'Português' },
   { code: 'ar', short: 'AR', name: 'Arabic', native: 'العربية' },
-  { code: 'ur', short: 'UR', name: 'Urdu', native: 'اردو' },
 ];
 
-export const NON_DEFAULT_LANGS = ['de', 'es', 'fr', 'ar', 'ur'];
+export const NON_DEFAULT_LANGS = ['de', 'es', 'fr', 'it', 'pt', 'ar'];
 
 export function parseLocalizedPathname(pathname = '/') {
   const clean = pathname || '/';
@@ -327,13 +328,13 @@ export default function LanguageTranslator({ mountWidget = false, variant = 'dro
         aria-expanded={open}
         aria-haspopup="listbox"
         aria-label={`Select language (current: ${activeObj.name})`}
-        className="inline-flex h-10 items-center gap-1.5 rounded-full border border-line bg-mist/70 px-3.5 text-xs font-semibold text-ink transition-colors hover:border-orbit-300 hover:bg-orbit-50/60 hover:text-orbit-700"
+        className="inline-flex h-9 items-center gap-1.5 rounded-full border border-line bg-mist/70 px-2.5 text-xs font-semibold text-ink transition-colors hover:border-orbit-300 hover:bg-orbit-50/60 hover:text-orbit-700 sm:h-10 sm:px-3.5"
       >
-        <Globe className="h-4 w-4 text-orbit-600" aria-hidden="true" />
+        <Globe className="h-3.5 w-3.5 text-orbit-600 sm:h-4 sm:w-4" aria-hidden="true" />
         <span className="font-display tracking-wider">{activeObj.short}</span>
         <span className="hidden text-muted xl:inline">· {activeObj.native}</span>
         <ChevronDown
-          className={`h-3.5 w-3.5 text-slate-500 transition-transform duration-200 ${
+          className={`h-3 w-3 text-slate-500 transition-transform duration-200 sm:h-3.5 sm:w-3.5 ${
             open ? 'rotate-180' : ''
           }`}
           aria-hidden="true"
@@ -348,7 +349,7 @@ export default function LanguageTranslator({ mountWidget = false, variant = 'dro
         >
           <div className="flex items-center justify-between border-b border-line px-3 py-2">
             <span className="text-[0.7rem] font-semibold tracking-wider text-muted uppercase">
-              6 Languages
+              Select Language
             </span>
             {currentLang !== 'en' && (
               <button

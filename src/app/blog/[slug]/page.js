@@ -129,10 +129,7 @@ export default async function BlogArticlePage({ params }) {
                           href={servicePath(svc.slug)}
                           className="group flex items-center justify-between font-medium text-ink hover:text-orbit-600"
                         >
-                          <span>
-                            <span className="mr-1 font-display text-xs font-bold text-orbit-600">{svc.number}.</span>
-                            {svc.name}
-                          </span>
+                          <span>{svc.name}</span>
                           <ArrowRight
                             className="h-4 w-4 text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:text-orbit-600"
                             aria-hidden="true"
@@ -244,7 +241,6 @@ export default async function BlogArticlePage({ params }) {
                         href={servicePath(svc.slug)}
                         className="btn btn-outline min-h-10 px-4 py-2 text-sm"
                       >
-                        <span className="font-display text-xs font-bold text-orbit-600">{svc.number}.</span>
                         {svc.name}
                         <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                       </Link>

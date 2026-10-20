@@ -32,7 +32,7 @@ const homepageDeepSections = [
     number: '1',
     title: '1. Professional Website Design and Development',
     href: '/services/website-development/',
-    linkLabel: 'Explore 01. Website Development',
+    linkLabel: 'Explore Website Development',
     paragraphs: [
       'Your website often creates the first impression potential customers have of your business. A slow, outdated, or confusing website may discourage visitors from exploring your offerings. A modern, user-friendly website helps communicate professionalism and makes it easier for customers to understand what you provide.',
       'Professional website development involves more than creating attractive pages. It requires careful planning, reliable technology, clear navigation, and a structure designed around your business goals.',
@@ -68,7 +68,7 @@ const homepageDeepSections = [
     number: '2',
     title: '2. Search Engine Optimization (SEO) Services',
     href: '/services/search-engine-optimization/',
-    linkLabel: 'Explore 02. Search Engine Optimization',
+    linkLabel: 'Explore Search Engine Optimization',
     paragraphs: [
       "Search engine optimization helps improve a website's visibility in organic search results. When people search for products, services, or information related to your business, SEO can help your pages become easier to discover.",
       'Unlike advertising campaigns that charge for each click, organic SEO focuses on earning visibility through relevant content, useful pages, and a technically sound website. However, SEO requires ongoing effort, and rankings or traffic increases cannot be guaranteed.',
@@ -136,7 +136,7 @@ const homepageDeepSections = [
     number: '4',
     title: '4. Social Media Marketing Services',
     href: '/services/social-media-management/',
-    linkLabel: 'Explore 03. Social Media Management',
+    linkLabel: 'Explore Social Media Management',
     paragraphs: [
       'Social media marketing helps businesses connect with their audiences, share valuable content, build brand recognition, and encourage customer interaction.',
       'Platforms such as Facebook, Instagram, LinkedIn, TikTok, and Pinterest offer different opportunities depending on your audience and industry.',
@@ -166,7 +166,7 @@ const homepageDeepSections = [
     number: '5',
     title: '5. Pay-Per-Click (PPC) Advertising',
     href: '/services/google-ads-management/',
-    linkLabel: 'Explore 05. Google Ads & 04. Meta Ads',
+    linkLabel: 'Explore Google Ads & Meta Ads',
     paragraphs: [
       'Pay-per-click advertising allows businesses to display paid advertisements across search engines and other advertising platforms. Advertisers generally pay when users click their ads, although pricing models vary by campaign type and platform.',
       'PPC can help businesses reach people actively searching for particular products or services, making it a useful option for generating targeted traffic.',
@@ -234,7 +234,7 @@ const homepageDeepSections = [
     number: '8',
     title: '8. Conversion Rate Optimization and Lead Generation',
     href: '/services/lead-generation-for-business/',
-    linkLabel: 'Explore 06. Lead Generation for Business',
+    linkLabel: 'Explore Lead Generation for Business',
     paragraphs: [
       'Attracting website visitors is important, but traffic alone does not guarantee business growth. Conversion rate optimization (CRO) focuses on helping more visitors complete valuable actions.',
       'These actions might include submitting a contact form, requesting a quote, scheduling an appointment, signing up for a newsletter, or purchasing a product.',
@@ -319,7 +319,7 @@ const agencySelectionFactors = [
 const homeFaqs = [
   {
     q: 'What services does Organic Orbit Digital offer?',
-    a: 'We offer six core digital marketing and web services: 01. Website Development, 02. Search Engine Optimization, 03. Social Media Management, 04. Meta Ads Management, 05. Google Ads Management, and 06. Lead Generation for Business. Each service can be engaged on its own or combined into a coordinated growth plan.',
+    a: 'We offer six core digital marketing and web services: Website Development, Search Engine Optimization, Social Media Management, Meta Ads Management, Google Ads Management, and Lead Generation for Business. Each service can be engaged on its own or combined into a coordinated growth plan.',
   },
   {
     q: 'How can digital marketing help my business?',
