@@ -12,6 +12,11 @@ ErrorDocument 404 /404.html
   RewriteEngine On
   RewriteBase /
 
+  # Permanently strip ?service=... query strings on /contact/ to clean /contact/ URL
+  RewriteCond %{REQUEST_URI} ^/(?:(de|es|fr|ar|ur)/)?contact/?$ [NC]
+  RewriteCond %{QUERY_STRING} (^|&)service= [NC]
+  RewriteRule ^ https://organicorbitdigital.com%{REQUEST_URI}? [R=301,L,QSD]
+
   # Allow clean /de, /es, /fr, /ar, /ur URLs without forcing a trailing slash redirect
   RewriteRule ^(de|es|fr|ar|ur)$ /$1/index.html [L]
 </IfModule>

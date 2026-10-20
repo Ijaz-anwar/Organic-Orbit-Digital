@@ -60,7 +60,7 @@ export default function ServicePageTemplate({ slug }) {
         ]}
       >
         <div className="flex flex-col gap-3.5 sm:flex-row sm:items-center">
-          <Link href={`/contact/?service=${encodeURIComponent(service.name)}`} className="btn btn-primary">
+          <Link href="/contact/" className="btn btn-primary">
             Book a Free Consultation
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
@@ -142,7 +142,7 @@ export default function ServicePageTemplate({ slug }) {
                     Ready to discuss how {service.name} fits your business goals?
                   </p>
                   <Link
-                    href={`/contact/?service=${encodeURIComponent(service.name)}`}
+                    href="/contact/"
                     className="btn btn-primary mt-4 w-full text-sm"
                   >
                     Request a Free Consultation
@@ -441,7 +441,7 @@ export default function ServicePageTemplate({ slug }) {
                 )}
                 <div className="mt-8 border-t border-line pt-6">
                   <Link
-                    href={`/contact/?service=${encodeURIComponent(service.name)}`}
+                    href="/contact/"
                     className="btn btn-primary w-full"
                   >
                     Ask About {service.name}
@@ -563,7 +563,7 @@ export default function ServicePageTemplate({ slug }) {
       <CTASection
         title={content.cta.title}
         text={content.cta.text}
-        primaryHref={`/contact/?service=${encodeURIComponent(service.name)}`}
+        primaryHref="/contact/"
       />
     </>
   );

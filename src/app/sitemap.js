@@ -4,7 +4,7 @@ import { getAllPosts } from '@/lib/blog';
 
 export const dynamic = 'force-static';
 
-const LAST_MODIFIED = '2025-02-24';
+const LAST_MODIFIED = '2026-10-20';
 
 /**
  * Generates /sitemap.xml at build time.

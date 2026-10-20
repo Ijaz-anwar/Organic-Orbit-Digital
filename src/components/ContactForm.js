@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { Suspense, useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useRef, useState } from 'react';
 import {
   Send,
   Mail,
@@ -54,9 +54,8 @@ function buildMailtoUrl(fields) {
   return `mailto:${siteConfig.email}?${params.toString().replace(/\+/g, '%20')}`;
 }
 
-function ContactFormInner() {
+export default function ContactForm() {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const mountedAtRef = useRef(Date.now());
 
   const provider = (process.env.NEXT_PUBLIC_FORM_PROVIDER || '').toLowerCase().trim();
@@ -82,18 +81,6 @@ function ContactFormInner() {
   const [status, setStatus] = useState('idle'); // idle | submitting | mailto-ready | error
   const [errorMessage, setErrorMessage] = useState('');
   const [copied, setCopied] = useState(false);
-
-  // Pre-select service if passed via ?service= query param
-  useEffect(() => {
-    const requested = searchParams?.get('service');
-    if (!requested) return;
-    const match =
-      serviceOptions.find((opt) => opt === requested) ||
-      serviceOptions.find((opt) => opt.endsWith(`. ${requested}`));
-    if (match) {
-      setValues((prev) => (prev.service ? prev : { ...prev, service: match }));
-    }
-  }, [searchParams]);
 
   function validate(raw) {
     const nextErrors = {};
@@ -573,19 +560,5 @@ function ContactFormInner() {
         </p>
       </div>
     </form>
-  );
-}
-
-export default function ContactForm() {
-  return (
-    <Suspense
-      fallback={
-        <div className="card p-7 sm:p-10" aria-busy="true">
-          <p className="text-sm text-muted">Loading enquiry form…</p>
-        </div>
-      }
-    >
-      <ContactFormInner />
-    </Suspense>
   );
 }
