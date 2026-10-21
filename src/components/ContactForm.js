@@ -15,10 +15,24 @@ import {
 } from 'lucide-react';
 import { services } from '@/lib/services';
 import { budgetRanges, siteConfig } from '@/lib/site-config';
+import {
+  countryPhoneData,
+  getCountry,
+  validatePhoneNumber,
+} from '@/lib/country-phone-data';
 
 const serviceOptions = [
   ...services.map((s) => s.name),
   'Other / Not Sure Yet',
+];
+
+export const contactTimeOptions = [
+  'Anytime / Flexible',
+  'Morning (9:00 AM – 12:00 PM)',
+  'Afternoon (12:00 PM – 5:00 PM)',
+  'Evening (5:00 PM – 8:00 PM)',
+  'Weekdays only',
+  'Weekends only',
 ];
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -39,9 +53,11 @@ function buildMailtoUrl(fields) {
     '',
     `Full name: ${fields.name}`,
     `Business email: ${fields.email}`,
+    `Phone / WhatsApp: ${fields.phone || 'Not provided'}`,
     `Company / Website: ${fields.company || 'Not provided'}`,
     `Service of interest: ${fields.service}`,
     `Estimated budget: ${fields.budget || 'Not specified'}`,
+    `Preferred time to contact: ${fields.preferredTime || 'Anytime / Flexible'}`,
     '',
     'Project details:',
     fields.message,
@@ -58,20 +74,24 @@ export default function ContactForm() {
   const router = useRouter();
   const mountedAtRef = useRef(Date.now());
 
-  const provider = (process.env.NEXT_PUBLIC_FORM_PROVIDER || '').toLowerCase().trim();
+  const provider = (process.env.NEXT_PUBLIC_FORM_PROVIDER || 'formsubmit').toLowerCase().trim();
   const endpoint = (process.env.NEXT_PUBLIC_FORM_ENDPOINT || '').trim();
   const web3Key = (process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '').trim();
 
   const isOnlineConfigured =
+    provider === 'formsubmit' ||
     ((provider === 'formspree' || provider === 'custom') && endpoint.startsWith('https://')) ||
     (provider === 'web3forms' && Boolean(web3Key));
 
   const [values, setValues] = useState({
     name: '',
     email: '',
+    countryCode: 'US',
+    phone: '',
     company: '',
     service: '',
     budget: '',
+    preferredTime: '',
     message: '',
     consent: false,
     botField: '', // honeypot
@@ -95,6 +115,10 @@ export default function ContactForm() {
     }
     if (!EMAIL_RE.test(email)) {
       nextErrors.email = 'Please enter a valid business email address.';
+    }
+    const phoneRes = validatePhoneNumber(raw.phone, raw.countryCode || 'US');
+    if (!phoneRes.valid) {
+      nextErrors.phone = phoneRes.error;
     }
     if (company && company.length > 200) {
       nextErrors.company = 'Please keep the company or website field under 200 characters.';
@@ -122,6 +146,14 @@ export default function ContactForm() {
         return copy;
       });
     }
+    if (name === 'countryCode') {
+      setErrors((prev) => {
+        if (!prev.phone) return prev;
+        const copy = { ...prev };
+        delete copy.phone;
+        return copy;
+      });
+    }
   }
 
   async function handleSubmit(e) {
@@ -141,12 +173,22 @@ export default function ContactForm() {
       return;
     }
 
+    const phoneRes = validatePhoneNumber(values.phone, values.countryCode || 'US');
+    if (!phoneRes.valid) {
+      setErrors((prev) => ({ ...prev, phone: phoneRes.error }));
+      setStatus('idle');
+      return;
+    }
+    const fullPhone = phoneRes.formatted;
+
     const clean = {
       name: sanitizeText(values.name, 120),
       email: sanitizeText(values.email, 160),
+      phone: sanitizeText(fullPhone, 60),
       company: sanitizeText(values.company, 200),
       service: sanitizeText(values.service, 120),
       budget: sanitizeText(values.budget, 80),
+      preferredTime: sanitizeText(values.preferredTime, 80),
       message: sanitizeText(values.message, 3000),
     };
 
@@ -170,11 +212,31 @@ export default function ContactForm() {
             subject: `New Enquiry (${clean.service}) — ${siteConfig.name}`,
             from_name: clean.name,
             email: clean.email,
+            phone: clean.phone,
             company: clean.company || 'Not provided',
             service: clean.service,
             budget: clean.budget || 'Not specified',
+            preferred_contact_time: clean.preferredTime || 'Anytime / Flexible',
             message: clean.message,
             botcheck: '',
+          }),
+        });
+      } else if (provider === 'formsubmit') {
+        response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(siteConfig.email)}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            name: clean.name,
+            email: clean.email,
+            phone: clean.phone,
+            company: clean.company || 'Not provided',
+            service: clean.service,
+            budget: clean.budget || 'Not specified',
+            preferred_contact_time: clean.preferredTime || 'Anytime / Flexible',
+            message: clean.message,
+            _subject: `New Enquiry (${clean.service}) — ${siteConfig.name}`,
+            _template: 'table',
+            _captcha: 'false',
           }),
         });
       } else {
@@ -191,9 +253,18 @@ export default function ContactForm() {
 
       const data = await response.json().catch(() => ({}));
       const accepted =
-        response.ok && (data.ok === true || data.success === true || provider === 'formspree');
+        response.ok &&
+        (data.ok === true ||
+          data.success === true ||
+          data.success === 'true' ||
+          provider === 'formspree');
 
       if (!accepted) {
+        if (data.message && typeof data.message === 'string' && data.message.includes('Activation')) {
+          throw new Error(
+            `One-time confirmation needed: Please check your inbox at ${siteConfig.email} and click the "Activate Form" link from FormSubmit to verify your receiving address.`
+          );
+        }
         throw new Error(
           data.message || data.error || 'The form service could not confirm delivery of your enquiry.'
         );
@@ -210,12 +281,18 @@ export default function ContactForm() {
     }
   }
 
+  const currentCountry = getCountry(values.countryCode);
+  const currentPhoneRes = validatePhoneNumber(values.phone, values.countryCode || 'US');
+  const formattedPhone = currentPhoneRes.valid ? currentPhoneRes.formatted : values.phone;
+
   const mailtoUrl = buildMailtoUrl({
     name: sanitizeText(values.name, 120),
     email: sanitizeText(values.email, 160),
+    phone: sanitizeText(formattedPhone, 60),
     company: sanitizeText(values.company, 200),
     service: sanitizeText(values.service, 120),
     budget: sanitizeText(values.budget, 80),
+    preferredTime: sanitizeText(values.preferredTime, 80),
     message: sanitizeText(values.message, 3000),
   });
 
@@ -223,9 +300,11 @@ export default function ContactForm() {
     const text = [
       `Name: ${values.name}`,
       `Email: ${values.email}`,
+      `Phone/WhatsApp: ${formattedPhone || 'Not provided'}`,
       `Company/Website: ${values.company || 'Not provided'}`,
       `Service: ${values.service}`,
       `Budget: ${values.budget || 'Not specified'}`,
+      `Preferred contact time: ${values.preferredTime || 'Anytime / Flexible'}`,
       `Project details:\n${values.message}`,
     ].join('\n');
     try {
@@ -323,6 +402,64 @@ export default function ContactForm() {
           )}
         </div>
 
+        {/* Phone or WhatsApp number */}
+        <div>
+          <label htmlFor="contact-phone" className="block text-sm font-semibold text-ink">
+            Phone or WhatsApp number <span aria-hidden="true">*</span>
+          </label>
+          <div
+            className={`mt-2 flex rounded-xl border bg-white shadow-xs transition-colors focus-within:ring-2 focus-within:ring-orbit-500/20 ${
+              errors.phone
+                ? 'border-red-500 focus-within:border-red-500'
+                : 'border-line focus-within:border-orbit-500'
+            }`}
+          >
+            <label htmlFor="contact-country-code" className="sr-only">
+              Country calling code
+            </label>
+            <select
+              id="contact-country-code"
+              name="countryCode"
+              value={values.countryCode}
+              onChange={handleChange}
+              aria-label="Country calling code"
+              className="w-32 sm:w-36 shrink-0 rounded-l-xl border-r border-line bg-mist/50 px-2.5 py-3 text-xs sm:text-sm font-medium text-ink focus:bg-white focus:outline-none"
+            >
+              {countryPhoneData.map((c) => (
+                <option key={c.code} value={c.code}>
+                  {c.flag} {c.dialCode} ({c.name})
+                </option>
+              ))}
+            </select>
+            <input
+              id="contact-phone"
+              name="phone"
+              type="tel"
+              required
+              autoComplete="tel-national"
+              placeholder={currentCountry.placeholder}
+              value={values.phone}
+              onChange={handleChange}
+              aria-invalid={Boolean(errors.phone)}
+              aria-describedby={errors.phone ? 'error-phone' : 'phone-hint'}
+              className="w-full min-w-0 rounded-r-xl bg-transparent px-3.5 py-3 text-sm text-ink placeholder:text-slate-400 focus:outline-none"
+            />
+          </div>
+          <div className="mt-1.5 text-xs">
+            {errors.phone ? (
+              <p id="error-phone" role="alert" className="font-medium text-red-600">
+                {errors.phone}
+              </p>
+            ) : (
+              <p id="phone-hint" className="text-muted">
+                {currentCountry.minDigits === currentCountry.maxDigits
+                  ? `${currentCountry.flag} Requires exact ${currentCountry.minDigits} digits (${currentCountry.dialCode})`
+                  : `${currentCountry.flag} Requires ${currentCountry.minDigits}–${currentCountry.maxDigits} digits (${currentCountry.dialCode})`}
+              </p>
+            )}
+          </div>
+        </div>
+
         {/* Company or Website URL (optional) */}
         <div>
           <label htmlFor="contact-company" className="block text-sm font-semibold text-ink">
@@ -377,7 +514,7 @@ export default function ContactForm() {
         </div>
 
         {/* Estimated Budget (optional) */}
-        <div className="sm:col-span-2">
+        <div>
           <label htmlFor="contact-budget" className="block text-sm font-semibold text-ink">
             Estimated budget <span className="font-normal text-muted">(optional)</span>
           </label>
@@ -392,6 +529,27 @@ export default function ContactForm() {
             {budgetRanges.map((range) => (
               <option key={range} value={range}>
                 {range}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Preferred Time to Contact (optional) */}
+        <div className="sm:col-span-2">
+          <label htmlFor="contact-preferred-time" className="block text-sm font-semibold text-ink">
+            Preferred time to contact you <span className="font-normal text-muted">(optional)</span>
+          </label>
+          <select
+            id="contact-preferred-time"
+            name="preferredTime"
+            value={values.preferredTime}
+            onChange={handleChange}
+            className={`${inputBase} border-line`}
+          >
+            <option value="">When is the best time for us to reach out? (optional)…</option>
+            {contactTimeOptions.map((timeOpt) => (
+              <option key={timeOpt} value={timeOpt}>
+                {timeOpt}
               </option>
             ))}
           </select>

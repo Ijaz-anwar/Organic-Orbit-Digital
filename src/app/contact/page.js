@@ -40,7 +40,7 @@ const contactFaqs = [
   },
   {
     q: 'Can I email your team directly instead of using the form?',
-    a: 'Of course. You can write to info@organicorbitdigital.com at any time with your questions or project brief.',
+    a: 'Of course. You can write to contact@organicorbitdigital.com at any time with your questions or project brief.',
   },
   {
     q: 'What if I am not sure which service I need yet?',

@@ -122,8 +122,8 @@ for (const route of requiredRoutes) {
   }
 
   // 7. Verify official email presence (from footer / CTAs)
-  if (!html.includes('mailto:info@organicorbitdigital.com')) {
-    errors.push(`Route ${route} is missing mailto:info@organicorbitdigital.com`);
+  if (!html.includes('mailto:contact@organicorbitdigital.com')) {
+    errors.push(`Route ${route} is missing mailto:contact@organicorbitdigital.com`);
   }
 }
 

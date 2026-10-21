@@ -343,7 +343,7 @@ const homeFaqs = [
   },
   {
     q: 'How can I request a proposal?',
-    a: 'Use our Contact page to share a few details about your business, the services you are exploring, and your goals—or email us directly at info@organicorbitdigital.com. We will review your enquiry, ask any clarifying questions, and outline a clear recommendation and scope.',
+    a: 'Use our Contact page to share a few details about your business, the services you are exploring, and your goals—or email us directly at contact@organicorbitdigital.com. We will review your enquiry, ask any clarifying questions, and outline a clear recommendation and scope.',
   },
   {
     q: 'Do you offer customized marketing strategies?',

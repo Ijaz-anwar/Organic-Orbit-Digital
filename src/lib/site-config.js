@@ -10,7 +10,7 @@ export const siteConfig = {
   name: 'Organic Orbit Digital',
   shortName: 'Organic Orbit',
   url: 'https://organicorbitdigital.com',
-  email: 'info@organicorbitdigital.com',
+  email: 'contact@organicorbitdigital.com',
   locale: 'en_US',
   language: 'en',
   tagline: 'Digital Marketing & Web Development',
