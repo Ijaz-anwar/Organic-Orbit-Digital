@@ -21,35 +21,28 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy exported website
-        id: scp_primary
-        uses: appleboy/scp-action@v0.1.7
-        continue-on-error: true
-        with:
-          host: ${{ secrets.CPANEL_HOST }}
-          username: ${{ secrets.CPANEL_USERNAME }}
-          key: ${{ secrets.CPANEL_SSH_KEY }}
-          port: ${{ secrets.CPANEL_PORT }}
-          source: "out/*,out/.htaccess"
-          target: "/home/onlinepr/organicorbitdigital.com/"
-          strip_components: 1
-          overwrite: true
-          timeout: 120s
-
-      - name: Pause before retry if host connection dropped
-        if: steps.scp_primary.outcome == 'failure'
-        run: sleep 10
-
-      - name: Deploy exported website (retry)
-        if: steps.scp_primary.outcome == 'failure'
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.CPANEL_HOST }}
-          username: ${{ secrets.CPANEL_USERNAME }}
-          key: ${{ secrets.CPANEL_SSH_KEY }}
-          port: ${{ secrets.CPANEL_PORT }}
-          source: "out/*,out/.htaccess"
-          target: "/home/onlinepr/organicorbitdigital.com/"
-          strip_components: 1
-          overwrite: true
-          timeout: 180s
+      - name: Deploy to cPanel via native rsync / scp
+        env:
+          SSH_KEY: ${{ secrets.CPANEL_SSH_KEY }}
+          SSH_HOST: ${{ secrets.CPANEL_HOST }}
+          SSH_USER: ${{ secrets.CPANEL_USERNAME }}
+          SSH_PORT: ${{ secrets.CPANEL_PORT }}
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          
+          # Add cPanel host key to known_hosts
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
+          
+          echo "Connecting to cPanel at $SSH_HOST:$SSH_PORT as $SSH_USER..."
+          
+          # Try rsync first (fastest, skips unchanged files, syncs .htaccess)
+          if rsync -avz --delete -e "ssh -p $SSH_PORT -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o ServerAliveInterval=15" out/ "$SSH_USER@$SSH_HOST:/home/onlinepr/organicorbitdigital.com/" ; then
+            echo "Successfully deployed to cPanel via rsync!"
+          else
+            echo "Rsync was not available; deploying via native OpenSSH scp..."
+            scp -P "$SSH_PORT" -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o ServerAliveInterval=15 -r out/. "$SSH_USER@$SSH_HOST:/home/onlinepr/organicorbitdigital.com/"
+            echo "Successfully deployed to cPanel via scp!"
+          fi
