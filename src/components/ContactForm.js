@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   Send,
   Mail,
@@ -12,6 +12,9 @@ import {
   Copy,
   Check,
   ExternalLink,
+  Search,
+  ChevronDown,
+  Globe,
 } from 'lucide-react';
 import { services } from '@/lib/services';
 import { budgetRanges, siteConfig } from '@/lib/site-config';
@@ -101,6 +104,39 @@ export default function ContactForm() {
   const [status, setStatus] = useState('idle'); // idle | submitting | mailto-ready | error
   const [errorMessage, setErrorMessage] = useState('');
   const [copied, setCopied] = useState(false);
+
+  const [countryPickerOpen, setCountryPickerOpen] = useState(false);
+  const [countrySearch, setCountrySearch] = useState('');
+  const countryPickerRef = useRef(null);
+  const searchInputRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (countryPickerRef.current && !countryPickerRef.current.contains(e.target)) {
+        setCountryPickerOpen(false);
+      }
+    }
+    if (countryPickerOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [countryPickerOpen]);
+
+  useEffect(() => {
+    if (countryPickerOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [countryPickerOpen]);
+
+  const filteredCountries = countryPhoneData.filter((c) => {
+    const q = countrySearch.toLowerCase().trim();
+    if (!q) return true;
+    return (
+      c.name.toLowerCase().includes(q) ||
+      c.code.toLowerCase().includes(q) ||
+      c.dialCode.toLowerCase().includes(q)
+    );
+  });
 
   function validate(raw) {
     const nextErrors = {};
@@ -408,29 +444,48 @@ export default function ContactForm() {
             Phone or WhatsApp number <span aria-hidden="true">*</span>
           </label>
           <div
-            className={`mt-2 flex rounded-xl border bg-white shadow-xs transition-colors focus-within:ring-2 focus-within:ring-orbit-500/20 ${
+            ref={countryPickerRef}
+            className={`relative mt-2 flex rounded-xl border bg-white shadow-xs transition-colors focus-within:ring-2 focus-within:ring-orbit-500/20 ${
               errors.phone
                 ? 'border-red-500 focus-within:border-red-500'
                 : 'border-line focus-within:border-orbit-500'
             }`}
           >
-            <label htmlFor="contact-country-code" className="sr-only">
-              Country calling code
-            </label>
-            <select
-              id="contact-country-code"
-              name="countryCode"
-              value={values.countryCode}
-              onChange={handleChange}
-              aria-label="Country calling code"
-              className="w-32 sm:w-36 shrink-0 rounded-l-xl border-r border-line bg-mist/50 px-2.5 py-3 text-xs sm:text-sm font-medium text-ink focus:bg-white focus:outline-none"
+            {/* Compact Country Code Trigger */}
+            <button
+              type="button"
+              onClick={() => {
+                setCountryPickerOpen((prev) => !prev);
+                setCountrySearch('');
+              }}
+              aria-expanded={countryPickerOpen}
+              aria-haspopup="listbox"
+              aria-label={`Select country code, currently ${currentCountry.name} (${currentCountry.dialCode})`}
+              className="flex items-center gap-1.5 shrink-0 rounded-l-xl border-r border-line bg-mist/60 hover:bg-slate-100 px-2.5 py-3 text-xs sm:text-sm font-semibold text-ink transition-colors focus:outline-none"
             >
-              {countryPhoneData.map((c) => (
-                <option key={c.code} value={c.code}>
-                  {c.flag} {c.dialCode} ({c.name})
-                </option>
-              ))}
-            </select>
+              {currentCountry.code !== 'OTHER' ? (
+                <img
+                  src={`https://flagcdn.com/w40/${currentCountry.code.toLowerCase()}.png`}
+                  width="18"
+                  height="13"
+                  alt=""
+                  aria-hidden="true"
+                  className="rounded-xs object-cover shadow-xs shrink-0"
+                />
+              ) : (
+                <Globe className="h-3.5 w-3.5 text-muted shrink-0" aria-hidden="true" />
+              )}
+              <span className="font-bold text-slate-800">{currentCountry.code}</span>
+              <span className="text-muted font-medium">{currentCountry.dialCode}</span>
+              <ChevronDown
+                className={`h-3 w-3 text-slate-400 transition-transform duration-150 ${
+                  countryPickerOpen ? 'rotate-180' : ''
+                }`}
+                aria-hidden="true"
+              />
+            </button>
+
+            {/* Phone Input */}
             <input
               id="contact-phone"
               name="phone"
@@ -442,8 +497,83 @@ export default function ContactForm() {
               onChange={handleChange}
               aria-invalid={Boolean(errors.phone)}
               aria-describedby={errors.phone ? 'error-phone' : 'phone-hint'}
-              className="w-full min-w-0 rounded-r-xl bg-transparent px-3.5 py-3 text-sm text-ink placeholder:text-slate-400 focus:outline-none"
+              className="w-full min-w-0 rounded-r-xl bg-transparent px-3 py-3 text-sm text-ink placeholder:text-slate-400 focus:outline-none"
             />
+
+            {/* Searchable Dropdown Popup */}
+            {countryPickerOpen && (
+              <div
+                role="listbox"
+                aria-label="Country calling codes"
+                className="absolute top-full left-0 z-50 mt-1.5 w-72 sm:w-80 overflow-hidden rounded-xl border border-line bg-white shadow-xl ring-1 ring-black/5"
+              >
+                {/* Search Header */}
+                <div className="relative border-b border-line bg-slate-50/80 p-2">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted pointer-events-none" aria-hidden="true" />
+                  <input
+                    ref={searchInputRef}
+                    type="text"
+                    value={countrySearch}
+                    onChange={(e) => setCountrySearch(e.target.value)}
+                    placeholder="Search country or code (e.g. US, +1)..."
+                    className="w-full rounded-lg border border-line bg-white pl-8 pr-3 py-1.5 text-xs text-ink placeholder:text-muted focus:border-orbit-500 focus:outline-none"
+                  />
+                </div>
+
+                {/* Filtered Country List */}
+                <ul className="max-h-60 overflow-y-auto p-1 divide-y divide-slate-50">
+                  {filteredCountries.length === 0 ? (
+                    <li className="p-3 text-center text-xs text-muted">No matching country found</li>
+                  ) : (
+                    filteredCountries.map((c) => {
+                      const isSelected = c.code === currentCountry.code;
+                      return (
+                        <li key={c.code}>
+                          <button
+                            type="button"
+                            role="option"
+                            aria-selected={isSelected}
+                            onClick={() => {
+                              setValues((prev) => ({ ...prev, countryCode: c.code }));
+                              setCountryPickerOpen(false);
+                              setCountrySearch('');
+                              if (errors.phone) {
+                                setErrors((prev) => {
+                                  const copy = { ...prev };
+                                  delete copy.phone;
+                                  return copy;
+                                });
+                              }
+                            }}
+                            className={`flex w-full items-center justify-between gap-2 rounded-lg px-2.5 py-2 text-left text-xs transition-colors hover:bg-orbit-50 ${
+                              isSelected ? 'bg-orbit-50 font-bold text-orbit-600' : 'text-slate-700'
+                            }`}
+                          >
+                            <div className="flex items-center gap-2 min-w-0">
+                              {c.code !== 'OTHER' ? (
+                                <img
+                                  src={`https://flagcdn.com/w40/${c.code.toLowerCase()}.png`}
+                                  width="18"
+                                  height="13"
+                                  alt=""
+                                  aria-hidden="true"
+                                  className="rounded-xs object-cover shadow-xs shrink-0"
+                                />
+                              ) : (
+                                <Globe className="h-3.5 w-3.5 text-muted shrink-0" aria-hidden="true" />
+                              )}
+                              <span className="truncate">{c.name}</span>
+                              <span className="text-[10px] font-mono uppercase text-muted">({c.code})</span>
+                            </div>
+                            <span className="shrink-0 font-mono font-medium text-muted">{c.dialCode}</span>
+                          </button>
+                        </li>
+                      );
+                    })
+                  )}
+                </ul>
+              </div>
+            )}
           </div>
           <div className="mt-1.5 text-xs">
             {errors.phone ? (
@@ -453,8 +583,8 @@ export default function ContactForm() {
             ) : (
               <p id="phone-hint" className="text-muted">
                 {currentCountry.minDigits === currentCountry.maxDigits
-                  ? `${currentCountry.flag} Requires exact ${currentCountry.minDigits} digits (${currentCountry.dialCode})`
-                  : `${currentCountry.flag} Requires ${currentCountry.minDigits}–${currentCountry.maxDigits} digits (${currentCountry.dialCode})`}
+                  ? `Requires exact ${currentCountry.minDigits} digits for ${currentCountry.name} (${currentCountry.dialCode})`
+                  : `Requires ${currentCountry.minDigits}–${currentCountry.maxDigits} digits for ${currentCountry.name} (${currentCountry.dialCode})`}
               </p>
             )}
           </div>
