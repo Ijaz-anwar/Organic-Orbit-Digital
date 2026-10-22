@@ -21,7 +21,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy to cPanel via native rsync / scp
+      - name: Deploy to cPanel via SSH
         env:
           SSH_KEY: ${{ secrets.CPANEL_SSH_KEY }}
           SSH_HOST: ${{ secrets.CPANEL_HOST }}
@@ -36,13 +36,20 @@ jobs:
           # Add cPanel host key to known_hosts
           ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
           
-          echo "Connecting to cPanel at $SSH_HOST:$SSH_PORT as $SSH_USER..."
+          echo "Testing SSH connection to cPanel at $SSH_HOST:$SSH_PORT as $SSH_USER..."
+          ssh -p "$SSH_PORT" -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o ConnectTimeout=20 "$SSH_USER@$SSH_HOST" "echo 'SSH handshake verified!'" || {
+            echo "Direct echo command skipped or restricted by shell; proceeding with file transfer..."
+          }
           
-          # Try rsync first (fastest, skips unchanged files, syncs .htaccess)
-          if rsync -avz --delete -e "ssh -p $SSH_PORT -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o ServerAliveInterval=15" out/ "$SSH_USER@$SSH_HOST:/home/onlinepr/organicorbitdigital.com/" ; then
-            echo "Successfully deployed to cPanel via rsync!"
+          echo "Deploying website files to /home/onlinepr/organicorbitdigital.com/..."
+          
+          # Method 1: Stream compressed archive over SSH (fastest & native to cPanel Jailshell)
+          if tar -czf - -C out . | ssh -p "$SSH_PORT" -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o ServerAliveInterval=15 "$SSH_USER@$SSH_HOST" "tar -xzf - -C /home/onlinepr/organicorbitdigital.com/" ; then
+            echo "Successfully deployed website to cPanel via SSH archive stream!"
+          # Method 2: Legacy OpenSSH SCP with -O flag (bypasses SFTP subsystem requirement)
+          elif scp -O -P "$SSH_PORT" -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o ServerAliveInterval=15 -r out/. "$SSH_USER@$SSH_HOST:/home/onlinepr/organicorbitdigital.com/" ; then
+            echo "Successfully deployed website to cPanel via legacy SCP (-O)!"
           else
-            echo "Rsync was not available; deploying via native OpenSSH scp..."
-            scp -P "$SSH_PORT" -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o ServerAliveInterval=15 -r out/. "$SSH_USER@$SSH_HOST:/home/onlinepr/organicorbitdigital.com/"
-            echo "Successfully deployed to cPanel via scp!"
+            echo "Deployment failed. Please check server SSH logs."
+            exit 1
           fi
