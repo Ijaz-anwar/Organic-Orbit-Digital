@@ -10,6 +10,7 @@ import {
   ArrowRight,
   Mail,
   CheckCircle2,
+  Calendar,
 } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import SectionHeading from '@/components/SectionHeading';
@@ -92,12 +93,18 @@ export default function AboutPage() {
         ]}
       >
         <div className="flex flex-col gap-3.5 sm:flex-row sm:items-center">
-          <Link href="/contact/" className="btn btn-primary">
-            Start a Conversation
+          <button
+            type="button"
+            data-open-calendly
+            className="btn btn-primary"
+          >
+            <Calendar className="h-4 w-4" aria-hidden="true" />
+            Book a Free Consultation
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
-          <Link href="/services/" className="btn btn-ghost-dark">
-            Explore Our Services
+          </button>
+          <Link href="/contact/" className="btn btn-outline">
+            <Mail className="h-4 w-4 text-orbit-600" aria-hidden="true" />
+            Contact Us
           </Link>
         </div>
       </PageHero>

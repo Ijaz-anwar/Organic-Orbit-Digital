@@ -9,6 +9,8 @@ import {
   Magnet,
   Sparkles,
   CheckCircle2,
+  Calendar,
+  Mail,
 } from 'lucide-react';
 import { LogoMark } from './Logo';
 
@@ -125,12 +127,18 @@ export default function Hero() {
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:items-center sm:gap-3.5">
-              <Link href="/contact/" className="btn btn-primary">
+              <button
+                type="button"
+                data-open-calendly
+                className="btn btn-primary"
+              >
+                <Calendar className="h-4 w-4" aria-hidden="true" />
                 Book a Free Consultation
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-              <Link href="/services/" className="btn btn-outline">
-                Explore Our Services
+              </button>
+              <Link href="/contact/" className="btn btn-outline">
+                <Mail className="h-4 w-4 text-orbit-600" aria-hidden="true" />
+                Contact Us
               </Link>
             </div>
 

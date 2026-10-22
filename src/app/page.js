@@ -7,6 +7,8 @@ import {
   Sparkles,
   Layers,
   Compass,
+  Calendar,
+  Mail,
 } from 'lucide-react';
 import Hero from '@/components/Hero';
 import TrustSection from '@/components/TrustSection';
@@ -666,10 +668,18 @@ export default function HomePage() {
                   biggest marketing challenges, and choosing the services that best support your business goals.
                 </p>
               </div>
-              <div className="mt-7">
-                <Link href="/contact/" className="btn btn-primary w-full">
+              <div className="mt-7 flex flex-col gap-2.5 sm:flex-row">
+                <button
+                  type="button"
+                  data-open-calendly
+                  className="btn btn-primary w-full sm:flex-1"
+                >
+                  <Calendar className="h-4 w-4" aria-hidden="true" />
                   Book a Free Consultation
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </button>
+                <Link href="/contact/" className="btn btn-outline w-full sm:flex-1">
+                  <Mail className="h-4 w-4 text-orbit-600" aria-hidden="true" />
+                  Contact Us
                 </Link>
               </div>
             </div>

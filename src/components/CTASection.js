@@ -1,16 +1,18 @@
 import Link from 'next/link';
-import { ArrowRight, Mail } from 'lucide-react';
-import { mailtoHref } from '@/lib/site-config';
+import { ArrowRight, Mail, Calendar } from 'lucide-react';
+import { siteConfig } from '@/lib/site-config';
 
 /**
  * Light-themed closing call-to-action band used across the site.
+ * Offers two clear options:
+ * 1. Book a Consultation (Calendly meeting)
+ * 2. Contact Us (Written enquiry message form)
  */
 export default function CTASection({
   title = 'Ready to Grow Your Business Online?',
   text = "Let's discuss your goals and identify the digital strategies that make sense for your business.",
-  primaryLabel = 'Get a Free Consultation',
-  primaryHref = '/contact/',
-  secondaryLabel = 'Email Our Team',
+  primaryLabel = 'Book a Free Consultation',
+  secondaryLabel = 'Contact Us',
   headingLevel = 'h2',
 }) {
   const Heading = headingLevel;
@@ -29,12 +31,19 @@ export default function CTASection({
           </Heading>
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted">{text}</p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3.5 sm:flex-row">
-            <Link href={primaryHref} className="btn btn-primary w-full sm:w-auto">
-              {primaryLabel} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            <button
+              type="button"
+              data-open-calendly
+              className="btn btn-primary w-full sm:w-auto"
+            >
+              <Calendar className="h-4 w-4" aria-hidden="true" />
+              {primaryLabel}
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </button>
+            <Link href="/contact/" className="btn btn-outline w-full sm:w-auto">
+              <Mail className="h-4 w-4 text-orbit-600" aria-hidden="true" />
+              {secondaryLabel}
             </Link>
-            <a href={mailtoHref} className="btn btn-outline w-full sm:w-auto">
-              <Mail className="h-4 w-4 text-orbit-600" aria-hidden="true" /> {secondaryLabel}
-            </a>
           </div>
         </div>
       </div>

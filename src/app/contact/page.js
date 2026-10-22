@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { Mail, Clock, ShieldCheck, MessageSquare, CheckCircle2 } from 'lucide-react';
+import { Mail, Clock, ShieldCheck, MessageSquare, CheckCircle2, Calendar, Video } from 'lucide-react';
 import PageHero from '@/components/PageHero';
-import ContactForm from '@/components/ContactForm';
+import ContactOptions from '@/components/ContactOptions';
 import FAQ from '@/components/FAQ';
 import SectionHeading from '@/components/SectionHeading';
 import { buildMetadata } from '@/lib/seo';
@@ -35,6 +35,10 @@ const nextSteps = [
 
 const contactFaqs = [
   {
+    q: 'How does the free 30-minute consultation call work?',
+    a: 'When you choose Option 1 above and select a time on our Calendly calendar, you receive an immediate calendar invitation with a Google Meet link. During the 30 minutes, we review your website, marketing channels, and goals with zero sales pressure and share practical recommendations.',
+  },
+  {
     q: 'What information helps you prepare a useful reply?',
     a: 'Sharing your website URL (if you have one), the main product or service you want to promote, and what success looks like over the next few months gives us helpful context right away.',
   },
@@ -52,9 +56,9 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        eyebrow="Contact Us"
+        eyebrow="Contact & Consultation"
         title="Let’s Discuss Your Goals and Digital Priorities"
-        intro="Tell us a little about your business and what you want to achieve online. Whether you have a defined brief or are exploring options, we will reply with straightforward advice."
+        intro="Choose how you prefer to connect: book an instant 30-minute consultation on our live calendar, or send us a written project enquiry using our detailed form."
         breadcrumbs={[
           { name: 'Home', path: '/' },
           { name: 'Contact', path: '/contact/' },
@@ -68,9 +72,9 @@ export default function ContactPage() {
           </h2>
 
           <div className="grid items-start gap-10 lg:grid-cols-12">
-            {/* Left column: Contact Form */}
+            {/* Left column: Contact Options (Book Consultation & Send Message) */}
             <div className="lg:col-span-7">
-              <ContactForm />
+              <ContactOptions />
             </div>
 
             {/* Right column: Direct Email, What Happens Next & Services */}

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Mail, ArrowUpRight } from 'lucide-react';
+import { Mail, ArrowUpRight, Calendar } from 'lucide-react';
 import Logo from './Logo';
 import { siteConfig, mainNav, legalNav, mailtoHref, getActiveSocialLinks } from '@/lib/site-config';
 import { services, servicePath } from '@/lib/services';
@@ -59,9 +59,23 @@ export default function Footer() {
           <p className="mt-4 text-[0.95rem] leading-relaxed text-muted">
             Tell us about your goals and we&apos;ll suggest a practical next step.
           </p>
-          <Link href="/contact/" className="btn btn-primary mt-5 min-h-11 px-5 text-sm">
-            Get a Free Consultation
-          </Link>
+          <div className="mt-5 flex flex-col gap-2.5">
+            <button
+              type="button"
+              data-open-calendly
+              className="btn btn-primary min-h-11 px-5 text-sm"
+            >
+              <Calendar className="h-4 w-4" aria-hidden="true" />
+              Book a Free Consultation
+            </button>
+            <Link
+              href="/contact/"
+              className="btn btn-outline min-h-10 px-4 text-xs font-medium"
+            >
+              <Mail className="h-3.5 w-3.5 text-orbit-600" aria-hidden="true" />
+              Contact Us (Send Enquiry)
+            </Link>
+          </div>
           {socials.length > 0 && (
             <ul className="mt-6 flex flex-wrap gap-2" aria-label="Social media">
               {socials.map((s) => (

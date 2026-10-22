@@ -3,9 +3,10 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { ChevronDown, Menu, X, ArrowRight, Mail } from 'lucide-react';
+import { ChevronDown, Menu, X, ArrowRight, Mail, Calendar } from 'lucide-react';
 import Logo from './Logo';
 import LanguageTranslator, { parseLocalizedPathname } from './LanguageTranslator';
+import { openCalendlyModal } from './CalendlyModal';
 import { mainNav, siteConfig, mailtoHref } from '@/lib/site-config';
 import { services, servicePath, accentStyles } from '@/lib/services';
 
@@ -165,12 +166,29 @@ export default function HeaderNav() {
                             See how all six services connect, or tell us about your goals and we will suggest a starting point.
                           </p>
                         </div>
-                        <div className="mt-6 flex flex-col gap-3">
+                        <div className="mt-6 flex flex-col gap-2.5">
                           <Link href="/services/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-orbit-600 hover:text-orbit-700">
                             View all services <ArrowRight className="h-4 w-4" aria-hidden="true" />
                           </Link>
-                          <Link href="/contact/" className="btn btn-primary min-h-10 px-4 py-2 text-xs">
-                            Talk to our team <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                          <button
+                            type="button"
+                            data-open-calendly
+                            onClick={() => {
+                              setServicesOpen(false);
+                              openCalendlyModal();
+                            }}
+                            className="btn btn-primary min-h-10 px-4 py-2 text-xs"
+                          >
+                            <Calendar className="h-3.5 w-3.5" aria-hidden="true" />
+                            Book a Consultation
+                          </button>
+                          <Link
+                            href="/contact/"
+                            onClick={() => setServicesOpen(false)}
+                            className="btn btn-outline min-h-10 px-4 py-2 text-xs"
+                          >
+                            <Mail className="h-3.5 w-3.5" aria-hidden="true" />
+                            Contact Us
                           </Link>
                         </div>
                       </div>
@@ -199,9 +217,21 @@ export default function HeaderNav() {
 
         <div className="flex items-center gap-2 sm:gap-3">
           <LanguageTranslator mountWidget />
-          <Link href="/contact/" className="btn btn-primary hidden min-h-11 px-5 text-sm sm:inline-flex">
-            Get a Free Consultation
+          <Link
+            href="/contact/"
+            className="hidden text-[0.92rem] font-medium text-slate-700 transition-colors hover:text-orbit-600 xl:inline-block px-1"
+          >
+            Contact Us
           </Link>
+          <button
+            type="button"
+            data-open-calendly
+            onClick={() => openCalendlyModal()}
+            className="btn btn-primary hidden min-h-11 px-5 text-sm sm:inline-flex"
+          >
+            <Calendar className="h-4 w-4" aria-hidden="true" />
+            Book Consultation
+          </button>
           <button
             ref={mobileToggleRef}
             type="button"
@@ -277,17 +307,27 @@ export default function HeaderNav() {
 
             <LanguageTranslator variant="mobile" />
 
-            <div className="mt-auto flex flex-col gap-3 pt-6">
+            <div className="mt-auto flex flex-col gap-2.5 pt-6">
+              <button
+                type="button"
+                data-open-calendly
+                onClick={() => {
+                  setMenuOpen(false);
+                  openCalendlyModal();
+                }}
+                className="btn btn-primary w-full text-sm"
+              >
+                <Calendar className="h-4 w-4" aria-hidden="true" />
+                Book a Free Consultation
+              </button>
               <Link
                 href="/contact/"
                 onClick={() => setMenuOpen(false)}
-                className="btn btn-primary w-full text-sm"
+                className="btn btn-outline w-full text-sm"
               >
-                Get a Free Consultation
+                <Mail className="h-4 w-4" aria-hidden="true" />
+                Contact Us (Send Enquiry)
               </Link>
-              <a href={mailtoHref} className="btn btn-outline w-full text-sm">
-                <Mail className="h-4 w-4" aria-hidden="true" /> {siteConfig.email}
-              </a>
             </div>
           </nav>
         </div>

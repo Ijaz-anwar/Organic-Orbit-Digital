@@ -21,6 +21,7 @@ export const siteConfig = {
   announcement: 'Helping businesses build a stronger, more connected online presence.',
   ogImage: '/og-image.png',
   logo: '/logo.svg',
+  calendlyUrl: 'https://calendly.com/ijazansari781/free-business-consultation',
 
   /**
    * Social profiles. Add the full URL ONLY when the profile actually exists.

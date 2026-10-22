@@ -3,6 +3,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
+import CalendlyModal from '@/components/CalendlyModal';
 import { siteConfig } from '@/lib/site-config';
 import { organizationSchema, websiteSchema } from '@/lib/seo';
 
@@ -90,6 +91,7 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <Footer />
+        <CalendlyModal />
       </body>
     </html>
   );

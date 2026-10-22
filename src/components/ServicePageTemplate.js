@@ -11,6 +11,7 @@ import {
   Building2,
   ShieldCheck,
   Sparkles,
+  Calendar,
 } from 'lucide-react';
 import PageHero from './PageHero';
 import SectionHeading from './SectionHeading';
@@ -60,14 +61,19 @@ export default function ServicePageTemplate({ slug }) {
         ]}
       >
         <div className="flex flex-col gap-3.5 sm:flex-row sm:items-center">
-          <Link href="/contact/" className="btn btn-primary">
+          <button
+            type="button"
+            data-open-calendly
+            className="btn btn-primary"
+          >
+            <Calendar className="h-4 w-4" aria-hidden="true" />
             Book a Free Consultation
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
-          <a href={mailtoHref} className="btn btn-outline">
+          </button>
+          <Link href="/contact/" className="btn btn-outline">
             <Mail className="h-4 w-4 text-orbit-600" aria-hidden="true" />
-            Email Our Team
-          </a>
+            Contact Us
+          </Link>
         </div>
       </PageHero>
 
